@@ -1,3 +1,8 @@
+
+body {
+    background-color:#1C1C1C;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,13 +11,13 @@
 
 body{
     display: block;
-    background-color:   #FFFFFF;
+    background-color:  #1C1C1C;
     width:100%;
     font-family: 'Raleway', sans-serif;
 }
 
 a {
-    color: #ffff;
+    color: #FDD835;
     text-decoration: none;
 }
 
@@ -27,8 +32,6 @@ nav{
     height: 85px;
     left: 0px;
     top: 0px;
-
-background: #000000;
 }
 
 .nav-list{
@@ -50,7 +53,7 @@ header ul li:nth-child(3) a {
     width: 42px;
     height: 0px;
     right: 15%;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #FDD835;
     transform: rotate(90deg); 
 
 }
@@ -62,21 +65,29 @@ header ul li:nth-child(3) a {
     left: 10px;
 }
 
-/* /////////////////////////// */
+body {
+    background-color:#1C1C1C;
+}
 
 .formulario {
     position: relative;
     top: 60px;
+    color: #FDD835;
+}
+
+.formulariog {
+    width: 40%;
 }
 
 form {
-    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    color: #FDD835;
 }
 
 input[type="text"],
@@ -94,16 +105,20 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #FDD835;
+    color: #1c1c1c;
     border: none;
+    margin-top: 1px;
+    width: 100%;
+    height: 40px;
     padding: 10px 20px;
+    border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #a8a002;
 }
 
 
@@ -123,6 +138,7 @@ footer {
     display: flex;
     background-color: #000;
     justify-content: center;
+    color:#FDD835;
 }
 
 .conteudo-footer{
@@ -130,16 +146,18 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: #FDD835;
 }
 
 .links-footer {
     list-style: none;
     align-items: center;
+
 }
 
 .links-footer a {
     padding-top: 10px;
+    color:#FDD835;
 }
 
 .facebook {
@@ -155,10 +173,11 @@ footer {
     margin-top:-13px;
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
+    font-style: SemiBold;
     color:  #FFFFFF;
     width: 150px;
     height: 44px; 
-    padding:9px;
+    padding: -200px;
     background: #002244;
     /* background: #000000; */
     border-radius: 30px;
