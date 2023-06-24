@@ -50,7 +50,7 @@ nav{
     margin-left:32px;
 }
 
-header ul li:nth-child(7) a {
+header ul li:nth-child(9) a {
     padding: 9px;
     border-radius: 40px;
     border: 2px solid  #FDD835;
@@ -58,11 +58,11 @@ header ul li:nth-child(7) a {
     height: 21px;
 }
 
-header ul li:nth-child(5) a {
+header ul li:nth-child(6) a {
     position: absolute;
     width: 22px;
     height: 0px;
-    right: 27%;
+    right: 24%;
     bottom: 50%;
     border: 1px solid #FDD835;
     transform: rotate(90deg); 
@@ -178,17 +178,39 @@ footer {
     margin-top:-13px;
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
-    font-style: SemiBold;
     color:  #FFFFFF;
     width: 150px;
     height: 44px; 
-    padding: -200px;
+    padding:9px;
     background: #002244;
-    /* background: #000000; */
     border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
-
 .botaocss:hover {
     background-color: #375A7F;
 }
 
+/* botões de A+ e A- */
+#btnAumentarFonte,#btnDiminuirFonte {
+    border-radius: 30px;    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-13px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 80px;
+    height: 44px; 
+    padding:9px;
+    background: #002244;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
+    background-color: #375A7F;
+}

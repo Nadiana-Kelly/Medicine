@@ -36,9 +36,9 @@ body{
     font-weight: 800;
 }
 
-.texto1 h3 {
+.texto1 h2 {
     padding: 1% 10% 0 0;
-    font-size: 20px;
+    /* font-size: 20px; */
     font-weight: 400;
 }
 
@@ -126,7 +126,7 @@ nav {
     margin-left:32px;
 }
 
-header ul li:nth-child(5) a {
+header ul li:nth-child(7) a {
     padding: 9px;
     background-color: none;
     border-radius: 40px;
@@ -135,7 +135,7 @@ header ul li:nth-child(5) a {
     height: 21px;
 }
 
-header ul li:nth-child(3) a {
+header ul li:nth-child(5) a {
     position: relative;
     width: 42px;
     height: 0px;
@@ -190,15 +190,43 @@ footer {
     margin-top:-13px;
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
-    font-style: SemiBold;
     color:  #FFFFFF;
     width: 150px;
     height: 44px; 
-    padding: -200px;
+    padding:9px;
     background: #002244;
-    /* background: #000000; */
     border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
+.botaocss:hover {
+    background-color: #375A7F;
+}
+
+/* botões de A+ e A- */
+#btnAumentarFonte,#btnDiminuirFonte {
+    border-radius: 30px;    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-13px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 80px;
+    height: 44px; 
+    padding:9px;
+    background: #002244;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
+    background-color: #375A7F;
+}
+
 
 .botao {
     border: none;
@@ -219,6 +247,7 @@ footer {
 .botaocss:hover {
     background-color: #375A7F;
 }
+
 .div-botao button:hover {
     background-color: #005a99;
 }

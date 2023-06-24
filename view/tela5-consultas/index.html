@@ -14,6 +14,8 @@
         <nav>
             <img class="logo" src="../HeaderFooter/logo.png" alt="logo">
             <ul class="nav-list">
+                <button id="btnAumentarFonte">A+</button>
+                <button id="btnDiminuirFonte">A-</button>
                 <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
                 <li><a href="#">INÍCIO</a></li>
                 <li><a href="#">PROFISSIONAIS</a></li>
@@ -71,6 +73,39 @@
         </div>
     </footer>
 
+    <script>
+        // Função para aumentar o tamanho da fonte
+        function aumentarFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        if (fontSize <= 20){
+            fontSize += 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Função para diminuir o tamanho da fonte
+        function diminuirFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+    
+        if (fontSize >= 16){
+            fontSize -= 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Event listeners para os botões de alteração de tamanho da fonte
+        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
+        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+
+        // Aplicar o tamanho de fonte armazenado no carregamento da página
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        document.documentElement.style.fontSize = fontSize + 'px';
+
+    </script>
     <script src="../HeaderFooter/scriptColor.js">
     </script>
 </body>

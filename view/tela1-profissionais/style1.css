@@ -1,56 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
-/*CSS ATERNATIVO - TELA1*/
-/* amarelo pra letra grande: #B8860B*/
-/*amarelo pra letra pequena:  #FDD835*/
-/*preto pra fundo: #1C1C1C*/
-/*preto para inicio e footer: #000000 */
-
-
-
-/* MENU */
-nav{
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #000000;
-    position: absolute;
-    width: 100%;
-    height: 85px;
-    left: 0px;
-    top: 0px;
-
-}
-
-.nav-list{
-    list-style: none;
-    display:flex;
-    font-family: 'Raleway', sans-serif;
-    left: 50%;
-    top:38px;
-    height: 21px;
-}
-
-.nav-list li{
-    letter-spacing: 3px;
-    margin-left:32px;
-}
-
-header ul li:nth-child(5) a {
-    padding: 9px;
-    border-radius: 40px;
-    border: 2px solid  #FDD835;
-    top:38px;
-    height: 21px;
-}
-
-header ul li:nth-child(3) a {
-    position: relative;
-    width: 42px;
-    height: 0px;
-    right: 15%;
-    border: 1px solid #FDD835;
-    transform: rotate(90deg); 
+body {
+    background-color:#1C1C1C;
 }
 
 * {
@@ -60,6 +11,7 @@ header ul li:nth-child(3) a {
 }
 
 body{
+    display: block;
     background-color:  #1C1C1C;
     width:100%;
     font-family: 'Raleway', sans-serif;
@@ -70,7 +22,7 @@ a {
     text-decoration: none;
 }
 
-/* MENU */
+/* NavBar */
 nav{
     display:flex;
     justify-content: space-around;
@@ -81,7 +33,6 @@ nav{
     height: 85px;
     left: 0px;
     top: 0px;
-
 }
 
 .nav-list{
@@ -98,7 +49,7 @@ nav{
     margin-left:32px;
 }
 
-header ul li:nth-child(5) a {
+header ul li:nth-child(7) a {
     padding: 9px;
     border-radius: 40px;
     border: 2px solid  #FDD835;
@@ -106,13 +57,14 @@ header ul li:nth-child(5) a {
     height: 21px;
 }
 
-header ul li:nth-child(3) a {
+header ul li:nth-child(5) a {
     position: relative;
     width: 42px;
     height: 0px;
     right: 15%;
     border: 1px solid #FDD835;
     transform: rotate(90deg); 
+
 }
 
 .logo{
@@ -121,8 +73,6 @@ header ul li:nth-child(3) a {
     height: 54px;
     left: 10px;
 }
-
-/*//////////////////////////////////////////////////////////////*/
 
 /*imagem dos médicos */
 .inicio {
@@ -153,9 +103,9 @@ header ul li:nth-child(3) a {
     color: #B8860B; 
 }
 
-.texto1 h3 {
+.texto1 h2 {
     padding: 1% 10% 0 0;
-    font-size: 25px;
+    /* font-size: 25px; */
     font-weight: 800;
     color: #B8860B;
 }
@@ -263,16 +213,48 @@ footer {
     margin-top:-13px;
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
-    font-style: SemiBold;
     color:  #FFFFFF;
     width: 150px;
     height: 44px; 
-    padding: -200px;
+    padding:9px;
     background: #002244;
-    /* background: #000000; */
     border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
+.botaocss:hover {
+    background-color: #375A7F;
+}
+
+/* botões de A+ e A- */
+#btnAumentarFonte,#btnDiminuirFonte {
+    border-radius: 30px;    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-13px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 80px;
+    height: 44px; 
+    padding:9px;
+    background: #002244;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
+    background-color: #375A7F;
+}
+
 
 .botaocss:hover {
     background-color: #375A7F;
+}
+
+.div-botao button:hover {
+    background-color: #333333;
 }

@@ -49,7 +49,7 @@ background: #000000;
     margin-left:32px;
 }
 
-header ul li:nth-child(6) a {
+header ul li:nth-child(8) a {
     padding: 9px;
     background-color: none;
     border-radius: 40px;
@@ -58,7 +58,7 @@ header ul li:nth-child(6) a {
     height: 21px;
 }
 
-header ul li:nth-child(4) a {
+header ul li:nth-child(6) a {
     position: relative;
     width: 42px;
     height: 0px;
@@ -162,7 +162,6 @@ footer {
 .facebook {
     padding: 5px 5px 5px 0;
 }
-
 .botaocss{
     position: relative;
     border: none;
@@ -177,11 +176,35 @@ footer {
     height: 44px; 
     padding:9px;
     background: #002244;
-    /* background: #000000; */
     border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.botaocss:hover {
+    background-color: #375A7F;
 }
 
-.botaocss:hover {
+/* botões de A+ e A- */
+#btnAumentarFonte,#btnDiminuirFonte {
+    border-radius: 30px;    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-13px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 80px;
+    height: 44px; 
+    padding:9px;
+    background: #002244;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
     background-color: #375A7F;
 }
 
