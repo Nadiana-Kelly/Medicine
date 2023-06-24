@@ -190,23 +190,27 @@ header ul li:nth-child(6) a {
     text-align: center;
 }
 
-.tabela .tfoot {
+.tabela tfoot {
     font-size: 14px;
     font-weight: bold;
 }
 
-.tabela .tfoot td {
+.tabela tfoot td {
     font-size: 14px;
 }
 
-.tabela .tfoot .links {
+.tabela tfoot .links {
     text-align: right;
 }
 
-.tabela .tfoot .links a{
+.links > a {
+    color: black;
+}
+
+.tabela tfoot .links a{
     display: inline-block;
     background: #0082E0;
-    color: #FFFFFF;
+    color: #000;
     padding: 4px 10px;
     border-radius: 30px;
 }
