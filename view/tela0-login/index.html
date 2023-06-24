@@ -63,22 +63,23 @@
         </div>
     </footer>
 
-
+    <!-- HTTP síncrono -->
     <script>
         document.getElementById("btn2").addEventListener("click", function() {
             event.preventDefault(); // Impede o envio padrão do formulário
-
+    
             var username = document.getElementById("username").value;
             var senha    = document.getElementById("password").value;
             
             const url = 'http://localhost:3000/login';
-
+    
             data = { username, senha };
-
+    
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 'Content-Type': 'application/json' },
+                async: false // Torna a requisição síncrona
             })
             .then(response => response.json())
             .then(data => {
@@ -90,6 +91,7 @@
             })
         });
     </script>
+    
 
     <script>
         // Função para aumentar o tamanho da fonte
