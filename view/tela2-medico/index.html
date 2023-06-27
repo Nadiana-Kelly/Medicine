@@ -51,8 +51,7 @@
         <table class="tabela">
             <thead class = "dias">
                 <tr>
-                    <th><p>Hoje</p><p class="data">07/05</p></th>
-                    <th><p>Amanhã</p><p class="data">08/05</p></th>
+                    <th><p>Seg</p><p class="data">07/05</p></th>
                     <th><p>Ter</p><p class="data">09/05</p></th>
                     <th><p>Qua</p><p class="data">10/05</p></th>
                     <th><p>Qui</p><p class="data">11/05</p></th>
@@ -63,48 +62,43 @@
             <tbody>
                 <tr>
                     <td class = "indisponivel">08:00</td>
-                    <td class = "indisponivel">08:00</td>
-                    <td>08:00</td>
-                    <td>08:00</td>
+                    <td onclick="selecionarHorario(this)">08:00</td>
+                    <td onclick="selecionarHorario(this)">08:00</td>
                     <td class = "indisponivel">08:00</td>
                     <td class = "indisponivel">08:00</td>
                     <td class = "indisponivel">08:00</td>
                 </tr>
                 <tr>
-                    <td>09:00</td>
-                    <td class = "indisponivel">09:00</td>
-                    <td>09:00</td>
-                    <td>09:00</td>
-                    <td>09:00</td>
-                    <td>09:00</td>
-                    <td>09:00</td>
+                    <td onclick="selecionarHorario(this)">09:00</td>
+                    <td onclick="selecionarHorario(this)">09:00</td>
+                    <td onclick="selecionarHorario(this)">09:00</td>
+                    <td onclick="selecionarHorario(this)">09:00</td>
+                    <td onclick="selecionarHorario(this)">09:00</td>
+                    <td onclick="selecionarHorario(this)">09:00</td>
                 </tr>
                 <tr>
-                    <td>10:00</td>
+                    <td onclick="selecionarHorario(this)">10:00</td>
+                    <td onclick="selecionarHorario(this)">10:00</td>
                     <td class = "indisponivel">10:00</td>
-                    <td>10:00</td>
-                    <td class = "indisponivel">10:00</td>
-                    <td>10:00</td>
+                    <td onclick="selecionarHorario(this)">10:00</td>
                     <td class = "indisponivel">10:00</td>
                     <td class = "indisponivel">10:00</td>
                 </tr>
                 <tr>
-                    <td>11:00</td>
-                    <td class = "indisponivel">11:00</td>
-                    <td>11:00</td>
-                    <td>11:00</td>
-                    <td>11:00</td>
+                    <td onclick="selecionarHorario(this)">11:00</td>
+                    <td onclick="selecionarHorario(this)">11:00</td>
+                    <td onclick="selecionarHorario(this)">11:00</td>
+                    <td onclick="selecionarHorario(this)">11:00</td>
                     <td class = "indisponivel">11:00</td>
                     <td class = "indisponivel">11:00</td>
                 </tr>
                 <tr>
-                    <td>14:00</td>
+                    <td onclick="selecionarHorario(this)">14:00</td>
+                    <td onclick="selecionarHorario(this)">14:00</td>
                     <td class = "indisponivel">14:00</td>
-                    <td>14:00</td>
-                    <td class = "indisponivel">14:00</td>
-                    <td>14:00</td>
-                    <td>14:00</td>
-                    <td>14:00</td>
+                    <td onclick="selecionarHorario(this)">14:00</td>
+                    <td onclick="selecionarHorario(this)">14:00</td>
+                    <td onclick="selecionarHorario(this)">14:00</td>
                 </tr>
                 <tr>
                     <td class = "indisponivel">15:00</td>
@@ -113,16 +107,14 @@
                     <td class = "indisponivel">15:00</td>
                     <td class = "indisponivel">15:00</td>
                     <td class = "indisponivel">15:00</td>
-                    <td class = "indisponivel">15:00</td>
                 </tr>
                 <tr>
-                    <td>16:00</td>
-                    <td class = "indisponivel">16:00</td>
-                    <td>16:00</td>
-                    <td>16:00</td>
-                    <td>16:00</td>
-                    <td>16:00</td>
-                    <td>16:00</td>
+                    <td onclick="selecionarHorario(this)">16:00</td>>
+                    <td onclick="selecionarHorario(this)">16:00</td>
+                    <td onclick="selecionarHorario(this)">16:00</td>
+                    <td onclick="selecionarHorario(this)">16:00</td>
+                    <td onclick="selecionarHorario(this)">16:00</td>
+                    <td onclick="selecionarHorario(this)">16:00</td>
                 </tr>
             </tbody>
             <tfoot>
@@ -141,6 +133,33 @@
         </table>
     </div>
     
+
+    <script>
+        var horario = undefined;
+        var horarioMarcado = '';
+        function selecionarHorario(elemento) {
+            alert("qualquer coisa");
+            // Verificar se o horário está disponível
+            if (!elemento.classList.contains('indisponivel')) {
+                if(horario != undefined){
+                    horario.classList.add('disponivel');
+                }
+                // Lógica para selecionar o horário e armazenar em um banco de dados
+                // Por exemplo, você pode adicionar uma classe ao horário selecionado
+                elemento.classList.add('selecionado');
+                if(horario==elemento){
+                    horarioMarcado='';
+                }else{
+                    horarioMarcado = elemento.textContent;
+                }
+                console.log(horario);
+                // Exemplo de como obter o valor do horário selecionado
+
+                horario=elemento;
+                // Agora você pode usar o horarioSelecionado para salvar no banco de dados ou fazer o que desejar com ele
+            }
+        }
+    </script>
 
     <footer>
         <div class="conteudo-footer">

@@ -89,30 +89,28 @@ app.post('/usuarios/criar-conta', (req, res) => {
   }
 });
 
-app.post('/login', (req, res) => {
-    const { username, senha } = req.body;
+app.post('/login', async (req, res) => {
+  const { username, senha } = req.body;
 
-    try{
-      const { username, senha } = req.body;
-      if(query.validarLogin(username, senha)){
-          data = { 
-            message: '/view/tela1-profissionais/index.html', 
-            result: 1}
-            return res.json(data);
-      }else{
-          data = {
-            message: 'Usuario ou senha incorreta',
-            result: 0
-          }
-    
-        res.status(200).json(data)
-      }
+  try {
+    if (await query.validarLogin(username, senha)) {
+      const data = {
+        message: '/view/tela1-profissionais/index.html',
+        result: 1,
+      };
+      return res.json(data);
+    } else {
+      const data = {
+        message: 'Usuário ou senha incorreta',
+        result: 0,
+      };
+      return res.json(data);
     }
-    catch(error){
-      res.status(400);
-    }
-
+  } catch (error) {
+    res.status(400).json({ message: 'Erro ao processar a solicitação' });
+  }
 });
+
 
 // Iniciar o servidor
 app.listen(3000, () => {
