@@ -1,5 +1,5 @@
 -- Database: medicine
-
+--nadiana
 -- DROP DATABASE IF EXISTS medicine;
 
 -- CREATE DATABASE medicine
