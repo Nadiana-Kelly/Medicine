@@ -1,15 +1,26 @@
-{	
-	"nome": "Juliana Brasil",
-	"area_medica": "psquiatra",
-	"descricao": "Formada em medicina pela Universidade Federal do Ceara(UFC)Especialidades: Psicoterapia, Psquiatria da infancia e da adolescência",
-	"username": "JulianaB",
-	"senha": "123"
+link:http://localhost:3000/usuarios/criar-conta/
+tipo: POST
+
+{
+	"cargo": "0",
+	"nome_completo": "Nadiana Kelly Nogueira Mendes",
+	"data_nascimento":"30/03/2001",
+	"idade": "22",
+	"endereco_completo": "Rua da Paz, 266 Planal. Benj. Pacatuba CE",
+	"telefone": "85 984082931",
+  "email": "nadianakelly@alu.ufc.br",
+	"username": "Nadiana",
+	"senha": "1234"
 }
+
+link: http://localhost:3000/teste3/
+tipo: GET
 
 {
     "nome_medico": "Julina Brasil",
     "data_consulta": "12/08/2023",
-    "horario":"12:00",
+    "horario":"09:00:00",
     "convenio_medico":"Particular",
     "motivo_consulta":"Problemas de autrocontrole emocional"
 }
+
