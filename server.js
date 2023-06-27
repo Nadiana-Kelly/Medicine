@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const query      = require('./dbFuntions/db');
 const app = express();
 
 // PERMITE O NODE A FAZER O PARSER DO JSON ENVIADO PELO CLIENTE
@@ -28,6 +28,27 @@ usuarios = [
     senha: '123'
   }
 ]
+
+app.get('/teste2', async (req, res) => {
+  const { 
+    cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha } = req.body;
+
+  if( await query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha)) {
+      res.send('Sucesso');
+  } else {
+      res.send('Falha ao criar medico');
+  }
+});
+
+app.get('/teste', async (req, res) => {
+    const { nome, area_medica, descricao, username, senha } = req.body;
+
+    if( await query.criarMedico(nome, area_medica, descricao, username, senha)) {
+        res.send('Sucesso');
+    } else {
+        res.send('Falha ao criar medico');
+    }
+});
 
 // Rota para a página inicial
 app.get('view/tela1-profissionais/index.html', (req, res) => {
