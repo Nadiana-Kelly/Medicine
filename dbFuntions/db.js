@@ -22,10 +22,10 @@ const criarUsuario = async function(cargo, nome_completo, data_nascimento, idade
     }
 };
 
-const criarAgendamento = async function(nome_medico, data_consulta, horario, convencio_medico, motivo_consulta) {
+const criarAgendamento = async function(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta) {
     try {
         var client = await pool.connect();
-        await client.query(`INSERT INTO agendamento (nome_medico, data_consulta, horario, convencio_medico, motivo_consulta) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convencio_medico}', '${motivo_consulta}')`);
+        await client.query(`INSERT INTO agendamento (nome_medico, data_consulta, horario, convenio_medico, motivo_consulta) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convenio_medico}', '${motivo_consulta}')`);
         client.release();
         return 1;
     } catch(err) {
@@ -33,5 +33,5 @@ const criarAgendamento = async function(nome_medico, data_consulta, horario, con
     }
 };
 
-module.exports = {criarMedico, criarUsuario};
+module.exports = {criarMedico, criarUsuario, criarAgendamento};
 

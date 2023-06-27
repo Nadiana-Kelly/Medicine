@@ -29,6 +29,7 @@ usuarios = [
   }
 ]
 
+// rota para usuario
 app.get('/teste2', async (req, res) => {
   const { 
     cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha } = req.body;
@@ -36,18 +37,30 @@ app.get('/teste2', async (req, res) => {
   if( await query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha)) {
       res.send('Sucesso');
   } else {
-      res.send('Falha ao criar medico');
+      res.send('Falha ao criar usuario');
   }
 });
 
+// rota para criar medico
 app.get('/teste', async (req, res) => {
     const { nome, area_medica, descricao, username, senha } = req.body;
-
+    console.log(req.body);
     if( await query.criarMedico(nome, area_medica, descricao, username, senha)) {
         res.send('Sucesso');
     } else {
         res.send('Falha ao criar medico');
     }
+});
+
+// rota para criar agedamento
+app.get('/teste3', async (req, res) => {
+  const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta } = req.body;
+  console.log(req.body);
+  if( await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta )) {
+      res.send('Sucesso');
+  } else {
+      res.send('Falha ao criar agendamento');
+  }
 });
 
 // Rota para a página inicial
