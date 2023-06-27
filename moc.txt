@@ -1,0 +1,15 @@
+{	
+	"nome": "Juliana Brasil",
+	"area_medica": "psquiatra",
+	"descricao": "Formada em medicina pela Universidade Federal do Ceara(UFC)Especialidades: Psicoterapia, Psquiatria da infancia e da adolescência",
+	"username": "JulianaB",
+	"senha": "123"
+}
+
+{
+    "nome_medico": "Julina Brasil",
+    "data_consulta": "12/08/2023",
+    "horario":"12:00",
+    "convenio_medico":"Particular",
+    "motivo_consulta":"Problemas de autrocontrole emocional"
+}
