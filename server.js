@@ -75,45 +75,43 @@ app.get('/view/:folder/:file', (req, res) => {
 
 // Rota POST para criar uma conta de usuário
 app.post('/usuarios/criar-conta', (req, res) => {
-  const { nome, idade, endereco, email, telefone, username, senha } = req.body;
 
-  for(user of usuarios) {
-    if(user.username == username) {
-        return res.status(200).json({
-          message: 'Ja existe um usuario com esse username',
-          username
-        });
+  try{
+    const { cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha } = req.body;
+    if(query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha)){
+      res.send ("Conta criada com sucesso");
+    }else{
+      res.send("Erro ao criar conta");
     }
   }
-
-  usuarios.push({ nome, idade, endereco, email, telefone, username, senha });
-
-  res.status(200).json({
-    message: 'Usuario cadastrado com sucesso'
-  });
+  catch(error){
+    res.send("Algum erro ocorreu");
+  }
 });
 
 app.post('/login', (req, res) => {
     const { username, senha } = req.body;
 
-    for(user of usuarios){
-        console.log(user)
-        if(user.username == username && user.senha == senha) {
-            data = {
-                message: '/view/tela1-profissionais/index.html',
-                result: 1
-            }
-
+    try{
+      const { username, senha } = req.body;
+      if(query.validarLogin(username, senha)){
+          data = { 
+            message: '/view/tela1-profissionais/index.html', 
+            result: 1}
             return res.json(data);
-        }
+      }else{
+          data = {
+            message: 'Usuario ou senha incorreta',
+            result: 0
+          }
+    
+        res.status(200).json(data)
+      }
+    }
+    catch(error){
+      res.status(400);
     }
 
-    data = {
-      message: 'Usuario ou senha incorreta',
-      result: 0
-    }
-
-    res.status(200).json(data)
 });
 
 // Iniciar o servidor

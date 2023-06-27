@@ -33,5 +33,16 @@ const criarAgendamento = async function(nome_medico, data_consulta, horario, con
     }
 };
 
-module.exports = {criarMedico, criarUsuario, criarAgendamento};
+const validarLogin = async function(username, senha){
+    try {
+        var client = await pool.connect();
+        var resultado = await client.query(`SELECT username, senha FROM usuarios_registrados WHERE username = '${username}' and senha = '${senha}')`);
+        client.release();
+        return 1;
+    } catch(err) {
+        return 0;
+    }
+};
+
+module.exports = {criarMedico, criarUsuario, criarAgendamento, validarLogin};
 

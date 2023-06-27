@@ -91,17 +91,18 @@
         document.getElementById("btn1").addEventListener("click", function() {
             event.preventDefault(); // Impede o envio padrão do formulário
 
-            var nome     = document.getElementById("nome").value;
-            var idade    = document.getElementById("idade").value;
-            var endereco = document.getElementById("endereco").value;
-            var email    = document.getElementById("email").value;
-            var telefone = document.getElementById("telefone").value;
-            var username = document.getElementById("username").value;
-            var senha    = document.getElementById("senha").value;
+            var nome_completo     = document.getElementById("nome").value;
+            var data_nascimento   = document.getElementById("dataNascimento").value;
+            var idade             = document.getElementById("idade").value;
+            var endereco_completo = document.getElementById("endereco").value;
+            var email             = document.getElementById("email").value;
+            var telefone          = document.getElementById("telefone").value;
+            var username          = document.getElementById("username").value;
+            var senha             = document.getElementById("senha").value;
+            var cargo             = 0;
+            const url             = 'http://localhost:3000/usuarios/criar-conta'; // Substitua pelo URL do seu endpoint de destino
 
-            const url = 'http://localhost:3000/usuarios/criar-conta'; // Substitua pelo URL do seu endpoint de destino
-
-            data = { nome, idade, endereco, email, telefone, username, senha };
+            data = { nome_completo, data_nascimento, idade, endereco_completo, email, telefone, username, senha, cargo };
 
             fetch(url, {
                 method: 'POST',
