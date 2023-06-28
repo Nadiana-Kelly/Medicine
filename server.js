@@ -53,7 +53,7 @@ app.get('/teste', async (req, res) => {
 });
 
 // rota para criar agedamento
-app.get('/teste3', async (req, res) => {
+app.post('/agendamento', async (req, res) => {
   const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta } = req.body;
   console.log(req.body);
   if( await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta )) {
