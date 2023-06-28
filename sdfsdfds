@@ -116,13 +116,20 @@
                     <td onclick="selecionarHorario(this)">16:00</td>
                 </tr>
             </tbody>
-        </table>
-    </div>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <div class="links">
+                            <a href="#">&laquo;</a> 
+                            <a class="active" href="#">1</a> 
+                            <a href="#">2</a> 
+                            <a href="#">&raquo;</a>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
 
-    <div class="botao-agendamento">
-        <div class="div-botao">
-            <button class="botao">Marcar Consulta</button>
-        </div>
+        </table>
     </div>
     
     <script>

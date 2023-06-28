@@ -8,8 +8,8 @@
 }
 
 .disponivel{
-    color: blue !important;
-    background-color: white !important;
+    color: yellow !important;
+    background-color: blue !important;
     border: 1px solid  white !important;
 
 }
@@ -183,15 +183,15 @@ header ul li:nth-child(6) a {
 
 .indisponivel {
     color: #1C1C1C !important;
-    background-color: red !important;
-    border: 1px solid  red !important;
+    background-color: white !important;
+    border: 1px solid  white !important;
 }
 
 .tabela tbody td {
-    color: #005999;
+    color: yellow;
     font-size: 18px;
-    background-color: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    background-color: blue;
+    border: 1px solid yellow;
     border-radius: 5px;
     padding: 8px;
     font-weight: 600;
@@ -229,6 +229,27 @@ header ul li:nth-child(6) a {
     display: flex;
     width: 80%;
     justify-content: center;
+}
+
+.botao-agendamento {
+    display: flex;
+    justify-content: center;
+}
+
+.div-botao {
+    width: 80%;
+}
+
+.botao {
+    border: none;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    color:  black;
+    width: 250px;
+    height: 50px;
+    float:right; 
+    background: yellow;
+    border-radius: 30px;
 }
 
 /* Footer */
