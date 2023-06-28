@@ -124,46 +124,46 @@
 
         //salvando agendamento no banco de dados 
         document.getElementById("btnagendamento").addEventListener("click", function () {
-  const nome_medico = document.getElementById('nomeMedico').value;
-  const horario = document.getElementById('horarioSelecionado').value + ":00";
-  const convenio_medico = document.getElementById('convenioMedico').value;
-  const motivo_consulta = document.getElementById('motivoConsulta').value;
+        const nome_medico = document.getElementById('nomeMedico').value;
+        const horario = document.getElementById('horarioSelecionado').value + ":00";
+        const convenio_medico = document.getElementById('convenioMedico').value;
+        const motivo_consulta = document.getElementById('motivoConsulta').value;
 
-  // Obter a data atual
-  const dataAtual = new Date();
-  // Somar os dias à data atual
-  dataAtual.setDate(dataAtual.getDate() + diaSemana);
-  var opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
-  var data_consulta = dataAtual.toLocaleDateString('pt-BR', opcoes);
+        // Obter a data atual
+        const dataAtual = new Date();
+        // Somar os dias à data atual
+        dataAtual.setDate(dataAtual.getDate() + diaSemana);
+        var opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        var data_consulta = dataAtual.toLocaleDateString('pt-BR', opcoes);
 
-  // Construir o objeto com os dados a serem enviados
-    const dados = {
-        nome_medico: nome_medico,
-        horario: horario,
-        convenio_medico: convenio_medico,
-        motivo_consulta: motivo_consulta,
-        data_consulta: data_consulta
-    };
+        //Construir o objeto com os dados a serem enviados
+        const dados = {
+            nome_medico: nome_medico,
+            horario: horario,
+            convenio_medico: convenio_medico,
+            motivo_consulta: motivo_consulta,
+            data_consulta: data_consulta
+        };
 
-    // Configurar as opções da requisição POST
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dados)
-    };
+        // Configurar as opções da requisição POST
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        };
 
-    // Enviar a requisição POST para a URL desejada
-    fetch('http://localhost:3000/agendamento', requestOptions)
-        .then(response => response.json())
-        .then(data => {
-        // Tratar a resposta da API
-        console.log(data);
-        })
-        .catch(error => {
-        // Tratar erros
-        console.error('Erro:', error);
+        // Enviar a requisição POST para a URL desejada
+        fetch('http://localhost:3000/agendamento', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+            // Tratar a resposta da API
+            console.log(data);
+            })
+            .catch(error => {
+            // Tratar erros
+            console.error('Erro:', error);
+            });
         });
-    });
 
     </script>
     <script src="../HeaderFooter/scriptColor.js">

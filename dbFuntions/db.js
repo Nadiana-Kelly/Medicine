@@ -44,6 +44,18 @@ const validarLogin = async function (username, senha) {
       return false;
     }
   };
+
+  const listarConsultas = async function (id_paciente) {
+    try {
+      const client = await pool.connect();
+      const resultado = await client.query(`SELECT nome_medico, data_consulta, horario, motivo_consulta FROM agendamento WHERE id_paciente = $1`, [id_paciente]);
+      client.release();
+      return resultado.rows.length > 0; // Retorna true se houver uma correspondência, caso contrário, retorna false.
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  };
   
 
 module.exports = {criarMedico, criarUsuario, criarAgendamento, validarLogin};

@@ -1,5 +1,5 @@
 -- Database: medicine
---nadiana
+
 -- DROP DATABASE IF EXISTS medicine;
 
 -- CREATE DATABASE medicine
@@ -47,7 +47,9 @@
 --   senha VARCHAR(50)
 -- );
 
--- SELECT * FROM medicos
+-- ALTER TABLE agendamento ADD id_paciente INTEGER;
+
+-- SELECT * FROM agendamento
 
 
 
