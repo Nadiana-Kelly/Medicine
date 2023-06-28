@@ -11,7 +11,7 @@
 --     TABLESPACE = pg_default
 --     CONNECTION LIMIT = -1
 --     IS_TEMPLATE = False;
-	
+
 -- CREATE TABLE usuarios_registrados (
 -- 	  ID SERIAL PRIMARY KEY,
 -- 	  cargo INTEGER DEFAULT 0,

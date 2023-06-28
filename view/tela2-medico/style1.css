@@ -2,15 +2,15 @@
 
 .selecionado{
         color: #1C1C1C !important;
-        background-color: blueviolet !important;
-        border: 1px solid  blueviolet !important;
+        background-color: #FDD835 !important;
+        border: 1px solid  #FDD835 !important;
 
 }
 
 .disponivel{
-    color: yellow !important;
-    background-color: blue !important;
-    border: 1px solid  white !important;
+    color: #1C1C1C!important;
+    background-color: #DCDCDC!important;
+    border: 1px solid  #DCDCDC !important;
 
 }
 
@@ -182,16 +182,16 @@ header ul li:nth-child(6) a {
 }
 
 .indisponivel {
-    color: #1C1C1C !important;
-    background-color: white !important;
-    border: 1px solid  white !important;
+    color: white !important;
+    background-color: #363636 !important;
+    border: 1px solid  #363636 !important;
 }
 
 .tabela tbody td {
-    color: yellow;
+    color: #1C1C1C;
     font-size: 18px;
-    background-color: blue;
-    border: 1px solid yellow;
+    background-color: #DCDCDC;
+    border: 1px solid #DCDCDC;
     border-radius: 5px;
     padding: 8px;
     font-weight: 600;
