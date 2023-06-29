@@ -54,13 +54,28 @@ app.get('/teste', async (req, res) => {
 
 // rota para criar agedamento
 app.post('/agendamento', async (req, res) => {
-  const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta } = req.body;
+  const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente } = req.body;
   console.log(req.body);
-  if( await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta )) {
+  if( await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente )) {
       res.send('Sucesso');
   } else {
       res.send('Falha ao criar agendamento');
   }
+});
+
+// rota para listar agendamento
+app.get('/listarAgendamentos/:id', async (req, res) => {
+  var agendamentos = await query.listarAgendamentos(req.params.id)
+  res.send(agendamentos)
+});
+
+app.delete('/removerAgendamentos/:id', async (req, res) => {
+    try {
+        await query.removerAgendamentos(req.params.id)
+        res.send('Sucesso');
+    } catch(err) {
+      res.status(400);
+    }
 });
 
 // Rota para a página inicial
@@ -93,8 +108,11 @@ app.post('/login', async (req, res) => {
   const { username, senha } = req.body;
 
   try {
-    if (await query.validarLogin(username, senha)) {
+    const {id} = await query.validarLogin(username, senha)
+    if (id>0) {
       const data = {
+        
+        id,
         message: '/view/tela1-profissionais/index.html',
         result: 1,
       };

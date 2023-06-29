@@ -331,3 +331,23 @@ footer {
 #btnAumentarFonte:hover, #btnDiminuirFonte:hover {
     background-color: #375A7F;
 }
+
+/* .div-botao button:hover {
+    background-color: #333333;
+} */
+
+/* .botao {
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FDD835;
+    width: 250px;
+    height: 50px;
+    float:right; 
+    background: #000000;
+    border-radius: 30px;
+    border: 2px solid #FFFFFF
+} */

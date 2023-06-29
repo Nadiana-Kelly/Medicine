@@ -84,6 +84,7 @@
             .then(response => response.json())
             .then(data => {
                 if(data.result == 1) {
+                    localStorage.setItem("id_paciente", data.id)
                     location.replace(data.message)
                 } else {
                     alert(data.message)

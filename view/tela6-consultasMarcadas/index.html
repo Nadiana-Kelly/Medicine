@@ -26,9 +26,9 @@
         </nav>
     </header>
 
-    <div class="consultas">
+    <div class="consultas" id="consultas">
         <h1 class="texto-consultas">Suas consultas marcadas:</h1>
-        <div class="paciente-info">
+        <!-- <div class="paciente-info">
             <div>
                 <h1>Lúcia Soares</h1>
                 <p>Horário marcado: 14 horas do dia 17/06</p>
@@ -38,9 +38,9 @@
                 <button class="botao">Alterar Horário</button>
                 <button class="botao">Cancelar Consulta</button>
             </div>
-        </div>
+        </div> -->
     
-        <div class="paciente-info">
+        <!-- <div class="paciente-info">
             <div>
                 <h1>Lúcia Soares</h1>
                 <p>Horário marcado: 14 horas do dia 17/06</p>
@@ -50,7 +50,7 @@
                 <button class="botao">Alterar Horário</button>
                 <button class="botao">Cancelar Consulta</button>
             </div>
-        </div>
+        </div> -->
     </div>
     
 
@@ -110,6 +110,66 @@
         // Aplicar o tamanho de fonte armazenado no carregamento da página
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
+
+
+        //agendamento
+        const id_paciente = localStorage.getItem("id_paciente")
+        const url = "http://localhost:3000/listarAgendamentos/"+id_paciente; // substitua com a URL correta
+
+        fetch(url)
+        .then(response => {
+            if (response.ok) {
+            return response.json();
+            } else {
+            throw new Error("Falha na requisição. Código de status: " + response.status);
+            }
+            
+        })
+        .then(data => {
+            for(consulta of data) {
+                consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3)
+                consulta.data_consulta = consulta.data_consulta.substring(0,consulta.data_consulta.indexOf("T"))
+                var consultas = document.getElementById("consultas")
+                consultas.insertAdjacentHTML("beforeend", `<div class='paciente-info' data-id='${consulta.id}'>`+
+                    "<div>"+
+                        `<h1>${consulta.nome_medico}</h1>`+
+                    `<p>Horário marcado: ${consulta.horario} horas do dia ${consulta.data_consulta}</p>`+
+                        `<p>Motivo da consulta: ${consulta.motivo_consulta} </p>`+
+                    " </div>"+
+                    "<div class='botoes'>"+
+                        "<button class='botao'>Editar</button>"+
+                        `<button class='botao' id='cancelar${consulta.id}'>Cancelar Consulta</button>`+
+                    "</div>"+
+                    "</div>"
+                )
+                
+                document.getElementById('cancelar'+consulta.id).addEventListener('click', function(event) {
+                    const parent = event.target.parentNode.parentNode;
+                    const id = parent.dataset.id;
+                    const url = `http://localhost:3000/removerAgendamentos/${id}`;
+
+                    var header = {
+                        method: 'DELETE'
+                    }
+
+                    fetch(url, header)
+                    .then(res => {
+                        if(res.ok) {
+                            return res.text();
+                        } else {
+                            throw new Error("Falha na requisição. Código de status: " + response.status);
+                        }
+                    }).then(res => {
+                        parent.remove();
+                        console.log(res);
+                    });
+                });
+            }
+        })
+        .catch(error => {
+            console.log("Erro:", error.message);
+        });
+
 
     </script>
     <script src="../HeaderFooter/scriptColor.js">
