@@ -1,12 +1,10 @@
 <p align="center">
-  <img src="./view/HeaderFooter/logo.png" alt="Logo Medicine" width="300">
+  <img  src="./view/HeaderFooter/logo.png" align="center" alt="Logo Medicine" width="300">
 </p>
-
 
 <p align="justify">
   O sistema se propõe em auxiliar pacientes e médicos em agendamentos de consultas de forma online. O usuário pode fazer um cadastro no sistema, selecionar um médico  e marcar um agendamento no horário e dia que preferir sem precisar sair de casa.
 </p>
-<br>
 
 ### ⚙️ Funcionalidades :
 <p align="justify">
