@@ -8,13 +8,22 @@
 
 ### ⚙️ Funcionalidades :
 <p align="justify">
-  <strong>Login:</strong> O público poderá se cadastrar no sistema e fazer login no mesmo para conseguir fazer o agendamento de consultas com os médicos disponíveis. 
+  <strong>Login de usuários:</strong> O público poderá se cadastrar no sistema e fazer login. 
   <br>
   <br>
-  <strong>Criar um agendamento:</strong> Os usuários cadastrados podem cadastar um agendamento no sistema 
+  <strong>Criar um agendamento:</strong> Os pacientes cadastrados podem cadastar um agendamento  de consulta no sistema. 
   <br>
   <br>
-  <strong>Alterar ou excluir um agendamento:</strong> Após fazer um agendamento os usuários podem alterar o horário do agendamento ou excluir esse agendamento se preferir.
+  <strong>Excluir um agendamento:</strong> Após fazer um agendamento os usuários podem excluir esse agendamento se preferir.
+  <br>
+  <br>
+  <strong>Listar agendamentos:</strong> Os pacientes cadastrados conseguem visualizar em uma tela todas as suas consultas agendadas. 
+  <br>
+  <br>
+  <strong>Alterar horários:</strong> Os médicos conseguem marcar ou desmarcar seus horários disponíveis na agenda de horários para consultas. 
+  <br>
+  <br>
+  <strong>Listar consultas:</strong> Os médicos conseguem visualizar em uma tela todas as consultas agendadas para o mesmo. 
   <br>
 </p>
 
