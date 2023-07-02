@@ -285,3 +285,6 @@ footer {
     background-color: #375A7F;
 }
 
+.botaoconfirmar:hover {
+    background-color: #005a99;
+}

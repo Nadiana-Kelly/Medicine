@@ -8,9 +8,9 @@
 }
 
 .selecionado {
-    color: #1f11dd !important;
-    background-color: #940505 !important;
-    border: 1px solid  #E1E1E1 !important;
+    color: white !important;
+    background-color: #191970 !important;
+    border: 1px solid  #191970!important;
 }
 
 * {
@@ -331,6 +331,10 @@ footer {
     background-color: #375A7F;
 }
 
+#botaoMarcaHorario:hover {
+    background-color: #fbec5d;
+}
+
 /* .div-botao button:hover {
     background-color: #333333;
 } */
@@ -350,3 +354,4 @@ footer {
     border-radius: 30px;
     border: 2px solid #FFFFFF
 } */
+

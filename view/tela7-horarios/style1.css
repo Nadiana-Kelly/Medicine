@@ -288,3 +288,7 @@ footer {
 #btnAumentarFonte:hover, #btnDiminuirFonte:hover {
     background-color: #375A7F;
 }
+
+.botaoconfirmar:hover {
+    background-color:  #fbec5d;
+}
