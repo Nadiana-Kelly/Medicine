@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link id="cssFile" rel="stylesheet" type="text/css" href="style1.css">
+    <title>Medicine</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="logo.png" alt="logo">
+            <ul class="nav-list">
+                <button id="btnAumentarFonte">A+</button>
+                <button id="btnDiminuirFonte">A-</button>
+                <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
+                <li><a href="../tela7-horarios/index.html">HORARIOS</a></li>
+                <li><a href="../tela1-profissionais/index.html"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="../tela0-login/index.html">LOGOUT</a></li>
+                <li class="registro"><a href="../tela8-consultasMedico/index.html">CONSULTAS</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="information">
+        <div class="texto">
+            <h1>Selecione abaixo os horários disponíveis para atendimento.</h1>
+        </div>
+    </div>
+
+    <div class="agendamento">
+        <table class="tabela">
+            <thead class = "dias">
+                <tr>
+                    <th><p>Hoje</p><p class="data">07/05</p></th>
+                    <th><p>Amanhã</p><p class="data">08/05</p></th>
+                    <th><p>Ter</p><p class="data">09/05</p></th>
+                    <th><p>Qua</p><p class="data">10/05</p></th>
+                    <th><p>Qui</p><p class="data">11/05</p></th>
+                    <th><p>Sex</p><p class="data">12/05</p></th>
+                    <th><p>Sáb</p><p class="data">13/05</p></th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                <tr>
+                    <td class = "horario">08:00</td>
+                    <td class = "horario">08:00</td>
+                    <td class = "horario">08:00</td>
+                    <td class = "horario">08:00</td>
+                    <td class = "horario">08:00</td>
+                    <td class = "horario">08:00</td>
+                    <td class = "horario">08:00</td>
+                </tr>
+                <tr>
+                    <td class = "horario">09:00</td>
+                    <td class = "horario">09:00</td>
+                    <td class = "horario">09:00</td>
+                    <td class = "horario">09:00</td>
+                    <td class = "horario">09:00</td>
+                    <td class = "horario">09:00</td>
+                    <td class = "horario">09:00</td>
+                </tr>
+                <tr>
+                    <td class = "horario">10:00</td>
+                    <td class = "horario">10:00</td>
+                    <td class = "horario">10:00</td>
+                    <td class = "horario">10:00</td>
+                    <td class = "horario">10:00</td>
+                    <td class = "horario">10:00</td>
+                    <td class = "horario">10:00</td>
+                </tr>
+                <tr>
+                    <td class = "horario">11:00</td>
+                    <td class = "horario">11:00</td>
+                    <td class = "horario">11:00</td>
+                    <td class = "horario">11:00</td>
+                    <td class = "horario">11:00</td>
+                    <td class = "horario">11:00</td>
+                    <td class = "horario">11:00</td>
+                </tr>
+                <tr>
+                    <td class = "horario">14:00</td>
+                    <td class = "horario">14:00</td>
+                    <td class = "horario">14:00</td>
+                    <td class = "horario">14:00</td>
+                    <td class = "horario">14:00</td>
+                    <td class = "horario">14:00</td>
+                    <td class = "horario">14:00</td>
+                </tr>
+                <tr>
+                    <td class = "horario">15:00</td>
+                    <td class = "horario">15:00</td>
+                    <td class = "horario">15:00</td>
+                    <td class = "horario">15:00</td>
+                    <td class = "horario">15:00</td>
+                    <td class = "horario">15:00</td>
+                    <td class = "horario">15:00</td>
+                </tr>
+                <tr>
+                    <td class = "horario">16:00</td>
+                    <td class = "horario">16:00</td>
+                    <td class = "horario">16:00</td>
+                    <td class = "horario">16:00</td>
+                    <td class = "horario">16:00</td>
+                    <td class = "horario">16:00</td>
+                    <td class = "horario">16:00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="salvar">
+        <div class="div-botao">
+            <button class="botaoconfirmar" id="btnConfirmar">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="conteudo-footer">
+            <div>
+                <img class="logo" src="logo.png" alt="logo">
+            </div>
+            <div>
+                <ul class = "links-footer">
+                    <li><h2>Insitucional</h2></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Profissionais</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Redes Sociais</h2>
+                <div class = "icones">
+                    <img class = "facebook" src="face.svg" alt="facebook">
+                    <img  src="insta.svg" alt="instagram">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var horariosDB = Array(7).fill([]).map(function(e) {
+            return Array(7).fill({});
+        });
+
+        var celulasClicadas = Array(7).fill([]).map(function(e) {
+            return Array(7).fill(0);
+        });
+
+        const elementos = document.querySelectorAll('.horario');
+
+        const id_medico = localStorage.getItem('id_medico');
+
+        elementos.forEach(function(elemento) {
+            elemento.addEventListener('click', function(event) {
+                const diaSemana = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+                const horarios  = ['08:00:00', '09:00:00', '10:00:00', '11:00:00', '14:00:00', '15:00:00', '16:00:00'];
+
+                var yIndex = this.cellIndex;
+                var xIndex = this.parentNode.rowIndex-1;
+
+                alert(celulasClicadas[xIndex][yIndex])
+                if(celulasClicadas[xIndex][yIndex] == 0) {
+                    horariosDB[xIndex][yIndex] = { diaSemana: diaSemana[yIndex], horario: horarios[xIndex] }
+                    celulasClicadas[xIndex][yIndex] = 1;
+                    this.className = 'selecionado';
+                } else {
+                    celulasClicadas[xIndex][yIndex] = 0;
+                    horariosDB[xIndex][yIndex] = { }
+                    this.className = 'horario';
+                }
+
+                console.log(horariosDB);
+            });
+        });
+
+        document.getElementById('btnConfirmar').addEventListener('click', function(event) {
+            const url = 'http://localhost:3000/marcarHorario/';
+            const data = {
+                id_medico,
+                horario: horariosDB
+            };
+
+            options = {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            fetch(url, options)
+            .then(res => {
+                console.log(res);
+                if(res.ok) {
+                    return res.text();
+                } else {
+                    throw new Error("Falha na requisição. Código de status: " + res.status);
+                }
+            })
+            .then(res => {
+                alert(res);
+            }).catch(err => {
+                console.log(err);
+            })
+        });
+
+        const url = `http://localhost:3000/listarTodosHorarios/${id_medico}`;
+
+        fetch(url).then(res => {
+            if(res.ok) {
+                return res.json();
+            } else {
+                throw new Error("Falha na requisição. Código de status: " + res.status);
+            }
+        }).then(data => {
+            const semanaIndex = {
+                'domingo': 0,   'segunda': 1,
+                'terca':   2,   'quarta':  3,
+                'quinta':  4,   'sexta':   5,
+                'sabado':  6
+            };
+
+            const horaIndex = {
+                '08:00': 0,
+                '09:00': 1,
+                '10:00': 2,
+                '11:00': 3,
+                '14:00': 4,
+                '15:00': 5,
+                '16:00': 6,
+            };
+
+            for(horario of data) {
+                horario.horario = horario.horario.substr(0, horario.horario.length-3);
+            }
+
+            const table = document.getElementById('tabela');
+            const tabelaHorario = Array(7).fill([]).map(e => Array(7).fill({}))
+
+            var outerIndex = 0;
+            for(i of table.children) {
+                var innerIndex = 0;
+                for(i of i.children) {
+                    tabelaHorario[outerIndex][innerIndex] = i
+                    innerIndex++;
+                }
+                outerIndex++;
+            }
+
+            for(horario of data) {
+                celulasClicadas[horaIndex[horario.horario]][semanaIndex[horario.diasemana]] = 1;
+                tabelaHorario[horaIndex[horario.horario]][semanaIndex[horario.diasemana]].className = 'selecionado';
+                horariosDB[horaIndex[horario.horario]][semanaIndex[horario.diasemana]] = { diaSemana: horario.diasemana, horario: horario.horario }
+                console.log(celulasClicadas);
+            }
+        });
+
+        // Função para aumentar o tamanho da fonte
+        function aumentarFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        if (fontSize <= 30){
+            fontSize += 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Função para diminuir o tamanho da fonte
+        function diminuirFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+    
+        if (fontSize >= 16){
+            fontSize -= 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Event listeners para os botões de alteração de tamanho da fonte
+        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
+        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+
+        // Aplicar o tamanho de fonte armazenado no carregamento da página
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        document.documentElement.style.fontSize = fontSize + 'px';
+
+    </script>
+    <script src="../HeaderFooter/scriptColor.js">
+
+    </script>
+</body>
+
+</html>

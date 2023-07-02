@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
-.disponivel{
-    color: #1C1C1C!important;
-    background-color: #DCDCDC!important;
-    border: 1px solid  #DCDCDC !important;
-
-}
-
-.selecionado {
-    color: #1f11dd !important;
-    background-color: #940505 !important;
-    border: 1px solid  #E1E1E1 !important;
-}
 
 * {
     margin: 0;
@@ -21,13 +9,13 @@
 
 body{
     display: block;
-    background-color:  #1C1C1C;
+    background-color:   #FFFFFF;
     width:100%;
     font-family: 'Raleway', sans-serif;
 }
 
 a {
-    color: #FDD835;
+    color: #ffff;
     text-decoration: none;
 }
 
@@ -42,6 +30,8 @@ nav{
     height: 85px;
     left: 0px;
     top: 0px;
+
+background: #000000;
 }
 
 .nav-list{
@@ -58,23 +48,24 @@ nav{
     margin-left:32px;
 }
 
-header ul li:nth-child(8) a {
+header ul li:nth-child(9) a {
     padding: 9px;
     border-radius: 40px;
-    border: 2px solid  #FDD835;
+    border: 2px solid  #FFFFFF;
     top:38px;
     height: 21px;
 }
 
 header ul li:nth-child(6) a {
-    position: relative;
-    width: 42px;
+    position: absolute;
+    width: 22px;
     height: 0px;
-    right: 15%;
-    border: 1px solid #FDD835;
+    right: 24%;
+    bottom: 50%;
+    border: 1px solid #FFFFFF;
     transform: rotate(90deg); 
-
 }
+
 
 .logo{
     position: relative;
@@ -102,7 +93,6 @@ header ul li:nth-child(6) a {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #FDD835;
 }
 
 .texto p {
@@ -118,138 +108,48 @@ header ul li:nth-child(6) a {
     padding-top: 1%;
 }
 
-.price {
-    padding-left: 1%;
+/* Consultas */
+
+.consultas{
+    margin-top: 13%;
+}
+
+.texto-consultas{
+    width: 80%; /* Largura de 80% da tela */
+    margin: 0 auto; /* Centralizar horizontalmente */
+}
+
+.paciente-info {
+    display: flex;
+    width: 80%; /* Largura de 80% da tela */
+    margin: 0 auto; /* Centralizar horizontalmente */
+    margin-top: 30px;
+    padding: 20px; /* Espaçamento interno */
+    background-color: #ffffff; /* Cor de fundo branca */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombreamento preto leve */
     justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    margin-top: 7%;
-    height: 30px;
-    width: 37%;
-    background:#1C1C1C;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-    border:2px solid #FFFFFF;
 }
 
-.price-block{
-    color: #FFFFFF;
-    padding: 3.5px;
-    margin: 0;
-    background-color: #363636;
+.paciente-info h1 {
+    color: #000000; /* Cor do texto preta */
 }
 
-/* Tabela Marcar Consulta */
-
-.instrucoes {
-    display: flex;
-    justify-content: center;
-    color:#FDD835;
-}
-
-.instrucoes div{
-    padding-top: 5%;
-    padding-bottom: 1%;
-    width: 80%;
-}
-
-.quadrado{
-    width: 5px;
-    height: 5px;
-    background-color: #0082E0;
-}
-
-.agendamento {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-} 
-
-.tabela {
-    font-family: 'Raleway', sans-serif;
-    width: 80%;
-    text-align: center;
-    border-collapse: separate;
-    border-spacing: 15px;
-    table-layout: fixed;
-}
-
-.data {
-    font-size: 12px;
-}
-
-.indisponivel {
-    color: white !important;
-    background-color: #363636 !important;
-    border: 1px solid  #363636 !important;
-}
-
-.tabela tbody td {
-    color: #1C1C1C;
-    font-size: 18px;
-    background-color: #DCDCDC;
-    border: 1px solid #DCDCDC;
-    border-radius: 5px;
-    padding: 8px;
-    font-weight: 600;
-}
-
-
-.tabela thead th {
-    font-weight: bold;
-    color: #FDD835;
-    text-align: center;
-}
-
-.tabela tfoot {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.tabela tfoot td {
-    font-size: 14px;
-}
-
-.tabela tfoot .links {
-    text-align: right;
-}
-
-.tabela tfoot .links a{
-    display: inline-block;
-    background: #FDD835;
-    color: #1C1C1C;
-    padding: 4px 10px;
-    border-radius: 30px;
-}
-
-.descricao {
-    display: flex;
-    width: 80%;
-    justify-content: center;
-}
-
-.botao-agendamento {
-    display: flex;
-    justify-content: center;
-}
-
-.div-botao {
-    width: 80%;
+.paciente-info p {
+    color: #000000; /* Cor do texto preta */
 }
 
 .botao {
     border: none;
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
-    color:  black;
-    width: 250px;
-    height: 50px;
-    float:right; 
-    background: yellow;
+    color:  #FFFFFF;
+    width: 200px;
+    height: 50px; 
+    background: #0082E0;
     border-radius: 30px;
+    margin: 5px;
 }
+
 
 /* Footer */
 
@@ -259,7 +159,6 @@ footer {
     display: flex;
     background-color: #000;
     justify-content: center;
-    color:#FDD835;
 }
 
 .conteudo-footer{
@@ -267,23 +166,22 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #FDD835;
+    color: white;
 }
 
 .links-footer {
     list-style: none;
     align-items: center;
-
 }
 
 .links-footer a {
     padding-top: 10px;
-    color:#FDD835;
 }
 
 .facebook {
     padding: 5px 5px 5px 0;
 }
+
 
 .botaocss{
     position: relative;
@@ -331,22 +229,3 @@ footer {
     background-color: #375A7F;
 }
 
-/* .div-botao button:hover {
-    background-color: #333333;
-} */
-
-/* .botao {
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 18px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FDD835;
-    width: 250px;
-    height: 50px;
-    float:right; 
-    background: #000000;
-    border-radius: 30px;
-    border: 2px solid #FFFFFF
-} */

@@ -1,17 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
-.disponivel{
-    color: #1C1C1C!important;
-    background-color: #DCDCDC!important;
-    border: 1px solid  #DCDCDC !important;
-
-}
-
-.selecionado {
-    color: #1f11dd !important;
-    background-color: #940505 !important;
-    border: 1px solid  #E1E1E1 !important;
-}
+/*TELA 02*/
+/* amarelo pra letra grande: #B8860B*/
+/*amarelo pra letra pequena:  #FDD835*/
+/*preto pra fundo: #1C1C1C*/
+/*preto para inicio e footer: #000000 */
 
 * {
     margin: 0;
@@ -105,39 +98,25 @@ header ul li:nth-child(6) a {
     color: #FDD835;
 }
 
-.texto p {
-    font-weight: 700;
-}
-
-.texto h2 {
-    font-weight: 400;
-}
-
-.texto h5 {
-    font-weight: 400;
-    padding-top: 1%;
-}
-
-.price {
-    padding-left: 1%;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+.salvar {
     display: flex;
-    flex-direction: row;
-    margin-top: 7%;
-    height: 30px;
-    width: 37%;
-    background:#1C1C1C;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-    border:2px solid #FFFFFF;
+    justify-content: center;
 }
 
-.price-block{
-    color: #FFFFFF;
-    padding: 3.5px;
-    margin: 0;
-    background-color: #363636;
+.div-botao {
+    width: 80%;
+}
+
+.botaoconfirmar {
+    border: none;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    color:  black;
+    width: 250px;
+    height: 50px;
+    float:right; 
+    background: #FDD835;
+    border-radius: 30px;
 }
 
 /* Tabela Marcar Consulta */
@@ -180,17 +159,17 @@ header ul li:nth-child(6) a {
     font-size: 12px;
 }
 
-.indisponivel {
-    color: white !important;
-    background-color: #363636 !important;
-    border: 1px solid  #363636 !important;
+.selecionado {
+    color: #1f11dd !important;
+    background-color: #940505 !important;
+    border: 1px solid  #E1E1E1 !important;
 }
 
 .tabela tbody td {
-    color: #1C1C1C;
+    color: #005999;
     font-size: 18px;
-    background-color: #DCDCDC;
-    border: 1px solid #DCDCDC;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
     border-radius: 5px;
     padding: 8px;
     font-weight: 600;
@@ -213,7 +192,7 @@ header ul li:nth-child(6) a {
 }
 
 .tabela tfoot .links {
-    text-align: right;
+    text-align: left;
 }
 
 .tabela tfoot .links a{
@@ -228,27 +207,6 @@ header ul li:nth-child(6) a {
     display: flex;
     width: 80%;
     justify-content: center;
-}
-
-.botao-agendamento {
-    display: flex;
-    justify-content: center;
-}
-
-.div-botao {
-    width: 80%;
-}
-
-.botao {
-    border: none;
-    font-size: 18px;
-    font-family: 'Raleway', sans-serif;
-    color:  black;
-    width: 250px;
-    height: 50px;
-    float:right; 
-    background: yellow;
-    border-radius: 30px;
 }
 
 /* Footer */
@@ -330,23 +288,3 @@ footer {
 #btnAumentarFonte:hover, #btnDiminuirFonte:hover {
     background-color: #375A7F;
 }
-
-/* .div-botao button:hover {
-    background-color: #333333;
-} */
-
-/* .botao {
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 18px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FDD835;
-    width: 250px;
-    height: 50px;
-    float:right; 
-    background: #000000;
-    border-radius: 30px;
-    border: 2px solid #FFFFFF
-} */

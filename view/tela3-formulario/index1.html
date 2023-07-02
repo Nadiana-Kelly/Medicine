@@ -30,24 +30,24 @@
             <h1>Preencha algumas informações adicionais para realizar o agendamento:</h1>
 
             <div class="texto">
-                <h3>Nome do médico</h3>
-                <input type="text" placeholder="Digite o nome do médico">
+                <h3 >Nome do médico</h3>
+                <input type="text" id="nomeMedico" readonly>
             </div>
             
             <div class="texto">
                 <h3>Horário</h3>
-                <input type="time" placeholder="Selecione o horário">
+                <input type="time" id="horarioSelecionado" readonly>
             </div>
 
             <div class="texto">
                 <h3>Convênio médico</h3>
-                <input type="text" placeholder="Selecione seu convênio médico">
+                <input type="text" id="convenioMedico" placeholder="Selecione seu convênio médico">
             </div>
 
 
             <div class="info">
                 <h3>Resuma em poucas palavras o motivo da consulta e seus sintomas</h3>
-                <textarea style="width: 100%; height: 110px; resize: none;"" placeholder="Digite aqui qualquer informação que você gostaria de compartilhar antes da consulta..."></textarea>
+                <textarea style="width: 100%; height: 110px; resize: none;"" placeholder="Digite aqui qualquer informação que você gostaria de compartilhar antes da consulta..." id="motivoConsulta"></textarea>
             </div>
 
             <div class="botao" id="btnagendamento">
@@ -112,6 +112,63 @@
         // Aplicar o tamanho de fonte armazenado no carregamento da página
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
+
+        //concluir agendamento salvando os dados 
+        // localStorage.getItem('horario')
+        var urlParams = new URLSearchParams(window.location.search);
+        var inputElement = document.getElementById('horarioSelecionado');
+        inputElement.value = urlParams.get("horario");
+        inputElement = document.getElementById('nomeMedico');
+        inputElement.value = urlParams.get("nomeMedico");
+        var diaSemana = urlParams.get('diaSemana');
+
+        const diaSemanaFromIndex = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+
+        //salvando agendamento no banco de dados 
+        document.getElementById("btnagendamento").addEventListener("click", function () {
+            const nome_medico = document.getElementById('nomeMedico').value;
+            const horario = document.getElementById('horarioSelecionado').value + ":00";
+            const convenio_medico = document.getElementById('convenioMedico').value;
+            const motivo_consulta = document.getElementById('motivoConsulta').value;
+
+            // Obter a data atual
+            const dataAtual = new Date();
+            // Somar os dias à data atual
+            dataAtual.setDate(dataAtual.getDate() + Number(diaSemana));
+            var opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            var data_consulta = dataAtual.toLocaleDateString('pt-BR', opcoes);
+
+            //Construir o objeto com os dados a serem enviados
+            const dados = {
+                nome_medico: nome_medico,
+                horario: horario,
+                convenio_medico: convenio_medico,
+                motivo_consulta: motivo_consulta,
+                data_consulta: data_consulta,
+                diasemana: diaSemanaFromIndex[diaSemana],
+                id_paciente: localStorage.getItem("id_paciente"),
+                id_medico: localStorage.getItem("id_medico")
+            };
+
+            // Configurar as opções da requisição POST
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            };
+
+            // Enviar a requisição POST para a URL desejada
+            fetch('http://localhost:3000/agendamento', requestOptions)
+            .then(response => response.text())
+            .then(data => {
+            // Tratar a resposta da API
+                console.log(data);
+            })
+            .catch(error => {
+            // Tratar erros
+            console.error('Erro:', error);
+            });
+        });
 
     </script>
     <script src="../HeaderFooter/scriptColor.js">

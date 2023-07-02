@@ -37,50 +37,6 @@
 
     <div id="medicos">
         <div id="informacoes">
-            <div class="retangulo-medico">
-                <div class="informacoes-medico">
-                    <img src="image1.png" alt="Dra Juliana">
-                    <div>
-                        <h1>Dra.Juliana Brasil | Psquiatra</h1>
-                        <p>Formada em medicina pela Universidade Federal do Ceará (UFC)<br>
-                           Especialidades: Psicoterapia, Psquiatria da infância e da adolescência
-                        </p>
-                    </div>
-                </div>
-                <div class="div-botao">
-                    <button class = "botao"><a href="../tela2-medico/index.html" >HORÁRIOS DISPONÍVEIS</a></button>
-                </div>
-            </div>
-        
-            <div class="retangulo-medico">
-                <div class="informacoes-medico">
-                    <img src="image2.png" alt="Dra Juliana">
-                    <div>
-                        <h1>Dr. Flávio Ferreira | Fisioterapeuta</h1>
-                        <p>Formado em Fisioterapia pela Universidade Estadual do Ceará (UECE)
-                            Especialidades: Fisioterapia Esportiva
-                        </p>
-                    </div>
-                </div>
-                <div class="div-botao">
-                    <button class="botao" >HORÁRIOS DISPONÍVEIS</button>
-                </div>
-            </div>
-
-            <div class="retangulo-medico">
-                <div class="informacoes-medico">
-                    <img src="image1.png" alt="Dra Juliana">
-                    <div>
-                        <h1>Dra.Juliana Brasil | Psquiatra</h1>
-                        <p>Formada em medicina pela Universidade Federal do Ceará (UFC)<br>
-                           Especialidades: Psicoterapia, Psquiatria da infância e da adolescência
-                        </p>
-                    </div>
-                </div>
-                <div class="div-botao">
-                    <button class = "botao"><a href="../tela2-medico/index.html" >HORÁRIOS DISPONÍVEIS</a></button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -110,35 +66,85 @@
 
     <script>
         // Função para aumentar o tamanho da fonte
-        function aumentarFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        if (fontSize <= 30){
-            fontSize += 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
-        }
+            function aumentarFonte() {
+                var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+                if (fontSize <= 30){
+                    fontSize += 2;
+                }
+                console.log(fontSize);
+                document.documentElement.style.fontSize = fontSize + 'px';
+                localStorage.setItem('fontSize', fontSize);
+            }
 
-        // Função para diminuir o tamanho da fonte
-        function diminuirFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    
-        if (fontSize >= 16){
-            fontSize -= 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
-        }
+            // Função para diminuir o tamanho da fonte
+            function diminuirFonte() {
+                var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        
+                if (fontSize >= 16){
+                    fontSize -= 2;
+                }
+                console.log(fontSize);
+                document.documentElement.style.fontSize = fontSize + 'px';
+                localStorage.setItem('fontSize', fontSize);
+            }
 
-        // Event listeners para os botões de alteração de tamanho da fonte
-        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
-        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+            // Event listeners para os botões de alteração de tamanho da fonte
+            document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
+            document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
 
-        // Aplicar o tamanho de fonte armazenado no carregamento da página
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        document.documentElement.style.fontSize = fontSize + 'px';
+            // Aplicar o tamanho de fonte armazenado no carregamento da página
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+            document.documentElement.style.fontSize = fontSize + 'px';
+            
+            // CARREGAR OS MEDICOS
+
+            var divPrincipal = document.getElementById('informacoes');
+
+            const url = 'http://localhost:3000/listarMedicos/';
+
+            fetch(url)
+            .then(res => {
+                if(res.ok) {
+                    return res.json();
+                } else {
+                    throw new Error("Falha na requisição. Código de status: " + response.status);
+                }
+            })
+            .then(res => {
+                for(medico of res) {
+                    divPrincipal.insertAdjacentHTML('beforeend', 
+                        `<div class="retangulo-medico" id='${medico.id}'>` +
+                            '<div class="informacoes-medico">' +
+                                `<img src="image1.png" alt=${medico.nome}>` +
+                                '<div>'+
+                                    `<h1>${medico.nome} | ${medico.area_medica}</h1>`+
+                                    `<p>${medico.descricao}</p>`+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="div-botao">'+
+                                `<button class="botao" id='botao${medico.id}'>`+
+                                    'HORÁRIOS DISPONÍVEIS'+
+                                '</button>'+
+                            '</div>'+
+                        '</div>'
+                    );
+
+                    document.getElementById('botao'+medico.id).addEventListener('click', function(event) {
+                        const target = event.target;
+                        const h1_info = target.parentNode.parentNode.children[0].children[1];
+                        const h1Text = h1_info.children[0].textContent;
+                        const descricao  = h1_info.children[1].textContent;
+                        const nome       = h1Text.substring(0, h1Text.indexOf('|')-1);
+                        const id_medico  = target.parentNode.parentNode.id;
+
+                        localStorage.setItem('nomeMedico', nome);
+                        localStorage.setItem('descricaoMedico', descricao);
+                        localStorage.setItem('id_medico', id_medico);
+
+                        location.href = '../tela2-medico/index.html';
+                    });
+                }
+            });
 
     </script>
 

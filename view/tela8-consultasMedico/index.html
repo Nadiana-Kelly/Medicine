@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link id="cssFile" rel="stylesheet" type="text/css" href="style1.css">
+    <title>Medicine</title>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="../HeaderFooter/logo.png" alt="logo">
+            <ul class="nav-list">
+                <button id="btnAumentarFonte">A+</button>
+                <button id="btnDiminuirFonte">A-</button>
+                <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
+                <li><a href="../tela7-horarios/index.html">HORARIOS</a></li>
+                <li><a href="../tela1-profissionais/index.html"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="../tela0-login/index.html">LOGOUT</a></li>
+                <li class="registro"><a href="../tela8-consultasMedico/index.html">CONSULTAS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="consultas" id="consultas">
+        <h1 class="texto-consultas">Suas consultas agendadas:</h1>
+        <!-- <div class="paciente-info">
+            <div>
+                <h1>Lúcia Soares</h1>
+                <p>Horário marcado: 14 horas do dia 17/06</p>
+                <p>Motivo da consulta: Pequena descrição do motivo da consulta aqui.</p>
+            </div>
+        </div> -->
+    
+        <!-- <div class="paciente-info">
+            <div>
+                <h1>Lúcia Soares</h1>
+                <p>Horário marcado: 14 horas do dia 17/06</p>
+                <p>Motivo da consulta: Pequena descrição do motivo da consulta aqui.</p>
+            </div>
+            <div class="botoes">
+                <button class="botao">Alterar Horário</button>
+                <button class="botao">Cancelar Consulta</button>
+            </div>
+        </div> -->
+    </div>
+
+    <footer>
+        <div class="conteudo-footer">
+            <div>
+                <img class="logo" src="logo.png" alt="logo">
+            </div>
+            <div>
+                <ul class = "links-footer">
+                    <li><h2>Insitucional</h2></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Profissionais</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Redes Sociais</h2>
+                <div class = "icones">
+                    <img class = "facebook" src="face.svg" alt="facebook">
+                    <img  src="insta.svg" alt="instagram">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para aumentar o tamanho da fonte
+        function aumentarFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        if (fontSize <= 20){
+            fontSize += 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Função para diminuir o tamanho da fonte
+        function diminuirFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+    
+        if (fontSize >= 16){
+            fontSize -= 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Event listeners para os botões de alteração de tamanho da fonte
+        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
+        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+
+        // Aplicar o tamanho de fonte armazenado no carregamento da página
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        document.documentElement.style.fontSize = fontSize + 'px';
+
+
+        //agendamento
+        const id_medico = localStorage.getItem("id_medico")
+        const url = "http://localhost:3000/listarAgendamentosMedico/"+id_medico; // substitua com a URL correta
+
+        fetch(url)
+        .then(response => {
+            if (response.ok) {
+            return response.json();
+            } else {
+            throw new Error("Falha na requisição. Código de status: " + response.status);
+            }
+            
+        })
+        .then(data => {
+            console.log(data);
+            for(consulta of data) {
+                consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3)
+                consulta.data_consulta = consulta.data_consulta.substring(0,consulta.data_consulta.indexOf("T"))
+                var consultas = document.getElementById("consultas")
+                consultas.insertAdjacentHTML("beforeend", `<div class='paciente-info' data-id='${consulta.id}'>`+
+                    "<div>"+
+                        `<h1>${consulta.nome_completo}</h1>`+
+                    `<p>Horário marcado: ${consulta.horario} horas do dia ${consulta.data_consulta}</p>`+
+                        `<p>Motivo da consulta: ${consulta.motivo_consulta} </p>`+
+                    " </div>"+
+                    "</div>"
+                )
+            }
+        })
+        .catch(error => {
+            console.log("Erro:", error.message);
+        });
+
+
+    </script>
+    <script src="../HeaderFooter/scriptColor.js">
+    </script>
+</body>
+
+</html>

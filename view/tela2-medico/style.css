@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
-.selecionado{
-    color: white !important;
-    background-color: green !important;
-    border: 1px solid  green !important;
-
-}
-
 .disponivel{
 color: #0082E0 !important;
 background-color: #DEEFFB !important;
@@ -183,6 +176,12 @@ header ul li:nth-child(6) a {
 .indisponivel {
     color: #606060 !important;
     background-color: #E1E1E1 !important;
+    border: 1px solid  #E1E1E1 !important;
+}
+
+.selecionado {
+    color: #1f11dd !important;
+    background-color: #940505 !important;
     border: 1px solid  #E1E1E1 !important;
 }
 

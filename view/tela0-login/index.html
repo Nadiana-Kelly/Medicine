@@ -73,7 +73,7 @@
             
             const url = 'http://localhost:3000/login';
     
-            data = { username, senha };
+            var data = { username, senha };
     
             fetch(url, {
                 method: 'POST',
@@ -84,9 +84,14 @@
             .then(response => response.json())
             .then(data => {
                 if(data.result == 1) {
-                    location.replace(data.message)
+                    if(data.type == 0) {
+                        localStorage.setItem("id_paciente", data.id);
+                    } else {
+                        localStorage.setItem("id_medico", data.id);
+                    }
+                    location.replace(data.message);
                 } else {
-                    alert(data.message)
+                    alert(data.message);
                 }
             })
         });
