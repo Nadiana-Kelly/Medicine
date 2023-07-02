@@ -1,5 +1,5 @@
 -- Database: medicine
-
+--nadiana
 -- DROP DATABASE IF EXISTS medicine;
 
 -- CREATE DATABASE medicine
@@ -11,7 +11,7 @@
 --     TABLESPACE = pg_default
 --     CONNECTION LIMIT = -1
 --     IS_TEMPLATE = False;
-
+	
 -- CREATE TABLE usuarios_registrados (
 -- 	  ID SERIAL PRIMARY KEY,
 -- 	  cargo INTEGER DEFAULT 0,
@@ -47,9 +47,7 @@
 --   senha VARCHAR(50)
 -- );
 
--- ALTER TABLE agendamento ADD id_paciente INTEGER;
-
--- SELECT * FROM agendamento
+-- SELECT * FROM medicos
 
 
 

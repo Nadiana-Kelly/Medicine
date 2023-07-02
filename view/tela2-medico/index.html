@@ -3,167 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <link id="cssFile" rel="stylesheet" type="text/css" href="style1.css">
-    <title>Medicine</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../HeaderFooter/style.css">
+    <title>Tela de Login</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <img class="logo" src="logo.png" alt="logo">
+            <img class="logo" src="../HeaderFooter/logo.png" alt="logo">
             <ul class="nav-list">
-                <button id="btnAumentarFonte">A+</button>
-                <button id="btnDiminuirFonte">A-</button>
-                <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
-                <li><a href="../tela0-login/index.html">INÍCIO</a></li>
-                <li><a href="../tela1-profissionais/index.html">PROFISSIONAIS</a></li>
+                <button id='btnColor' class="botaocss">Alternar cores</button>
+                <li><a href="../tela1-profissionais/index.html">INÍCIO</a></li>
                 <li><a href="#"></a></li>
-                <li><a href="../tela0-login/index.html">LOGIN</a></li>
+                <li><a href="#"></a></li>
                 <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
             </ul>
         </nav>
     </header>
-    <div class="information">
-        <div class="texto">
-            <h1 id="nomeMedico">Dra. Juliana Brasil</h1>
-            <h2>Formada em medicina pela Universidade Federal do Ceará (UFC). Especialidades: Psicoterapia, Psiquiatria
-                da Infância e da adolescência</h2>
-            <div class="price">
-                <p>VALOR CONSULTA</p>
-                <p class="price-block">200R$</p>
-            </div>
-            <h5>*Valor referente a consulta sem convênio médico.</h5>
-        </div>
-        <div class="foto">
-            <img class="perfil-doc" src="juliana.png" alt="juliana">
-        </div>
-    </div>
-
-    <div class = "instrucoes">
-        <div>
-            <p>> Clique em um horário disponível para prosseguir com o agendamento da colsulta.</p> 
-        </div>
-    </div>
-
-
-    <div class="agendamento">
-        <table class="tabela">
-            <thead class = "dias">
-                <tr>
-                    <th><p>Seg</p><p class="data">03/07</p></th>
-                    <th><p>Ter</p><p class="data">04/07</p></th>
-                    <th><p>Qua</p><p class="data">05/07</p></th>
-                    <th><p>Qui</p><p class="data">06/07</p></th>
-                    <th><p>Sex</p><p class="data">07/07</p></th>
-                    <th><p>Sáb</p><p class="data">08/07</p></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class = "indisponivel">08:00</td>
-                    <td onclick="selecionarHorario(event)">08:00</td>
-                    <td onclick="selecionarHorario(event)">08:00</td>
-                    <td class = "indisponivel">08:00</td>
-                    <td class = "indisponivel">08:00</td>
-                    <td class = "indisponivel">08:00</td>
-                </tr>
-                <tr>
-                    <td onclick="selecionarHorario(event)">09:00</td>
-                    <td onclick="selecionarHorario(event)">09:00</td>
-                    <td onclick="selecionarHorario(event)">09:00</td>
-                    <td onclick="selecionarHorario(event)">09:00</td>
-                    <td onclick="selecionarHorario(event)">09:00</td>
-                    <td onclick="selecionarHorario(event)">09:00</td>
-                </tr>
-                <tr>
-                    <td onclick="selecionarHorario(event)">10:00</td>
-                    <td onclick="selecionarHorario(event)">10:00</td>
-                    <td class = "indisponivel">10:00</td>
-                    <td onclick="selecionarHorario(event)">10:00</td>
-                    <td class = "indisponivel">10:00</td>
-                    <td class = "indisponivel">10:00</td>
-                </tr>
-                <tr>
-                    <td onclick="selecionarHorario(event)">11:00</td>
-                    <td onclick="selecionarHorario(event)">11:00</td>
-                    <td onclick="selecionarHorario(event)">11:00</td>
-                    <td onclick="selecionarHorario(event)">11:00</td>
-                    <td class = "indisponivel">11:00</td>
-                    <td class = "indisponivel">11:00</td>
-                </tr>
-                <tr>
-                    <td onclick="selecionarHorario(event)">14:00</td>
-                    <td onclick="selecionarHorario(event)">14:00</td>
-                    <td class = "indisponivel">14:00</td>
-                    <td onclick="selecionarHorario(event)">14:00</td>
-                    <td onclick="selecionarHorario(event)">14:00</td>
-                    <td onclick="selecionarHorario(event)">14:00</td>
-                </tr>
-                <tr>
-                    <td class = "indisponivel">15:00</td>
-                    <td class = "indisponivel">15:00</td>
-                    <td class = "indisponivel">15:00</td>
-                    <td class = "indisponivel">15:00</td>
-                    <td class = "indisponivel">15:00</td>
-                    <td class = "indisponivel">15:00</td>
-                </tr>
-                <tr>
-                    <td onclick="selecionarHorario(event)">16:00</td>>
-                    <td onclick="selecionarHorario(event)">16:00</td>
-                    <td onclick="selecionarHorario(event)">16:00</td>
-                    <td onclick="selecionarHorario(event)">16:00</td>
-                    <td onclick="selecionarHorario(event)">16:00</td>
-                    <td onclick="selecionarHorario(event)">16:00</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="botao-agendamento">
-        <div class="div-botao">
-            <button class="botao" id="botaoMarcaHorario">Marcar Consulta</button>
-        </div>
-    </div>
     
-    <script>
-        var horario = undefined;
-        var horarioMarcado = '';
-        var diaSemana = '';
-        function selecionarHorario(event) {
-            var elemento = event.target;
-            alert("Horário Selecionado!");
-            // Verificar se o horário está disponível
-            if (!elemento.classList.contains('indisponivel')) {
-                if(horario != undefined){
-                    horario.classList.add('disponivel');
-                }
-                // Lógica para selecionar o horário e armazenar em um banco de dados
-                // Por exemplo, você pode adicionar uma classe ao horário selecionado
-                elemento.classList.add('selecionado');
-                if(horario==elemento){
-                    horarioMarcado='';
-                }else{
-                    horarioMarcado = elemento.textContent;
-                    var cell = event.target;
-                    // var rowIndex = cell.parentNode.rowIndex; // Índice da linha
-                    console.log(event)
-                    var cellIndex = cell.cellIndex; // Índice da célula na linha
-                    alert(cellIndex)
-                    diaSemana = cellIndex;
-                }
-                console.log(horario);
-                // Exemplo de como obter o valor do horário selecionado
+    <main class="main">
+        <div class="formulario">
+            <h1>Login</h1>
+            <form>
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" placeholder="Digite seu usuário"> <br><br>
+                
+                <label for="password">Senha:</label>
+                <input type="password" id="password" placeholder="Digite sua senha">
+                
+                <input type="submit" value="Entrar" id="btn2">
+            </form>
+        </div>
+    </main>
 
-                horario=elemento;
-                // Agora você pode usar o horarioSelecionado para salvar no banco de dados ou fazer o que desejar com ele
-            }
-        }
-    </script>
-
-    <footer>
+    <footer class="footer">
         <div class="conteudo-footer">
             <div>
-                <img class="logo" src="logo.png" alt="logo">
+                <img class="logo" src="../HeaderFooter/logo.png" alt="logo">
             </div>
             <div>
                 <ul class = "links-footer">
@@ -176,59 +53,38 @@
             <div>
                 <h2>Redes Sociais</h2>
                 <div class = "icones">
-                    <img class = "facebook" src="face.svg" alt="facebook">
-                    <img  src="insta.svg" alt="instagram">
+                    <img class = "facebook" src="../HeaderFooter/face.svg" alt="facebook">
+                    <img  src="../HeaderFooter/insta.svg" alt="instagram">
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Função para aumentar o tamanho da fonte
-        function aumentarFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        if (fontSize <= 30){
-            fontSize += 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
-        }
+        document.getElementById("btn2").addEventListener("click", function() {
+            event.preventDefault(); // Impede o envio padrão do formulário
 
-        // Função para diminuir o tamanho da fonte
-        function diminuirFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    
-        if (fontSize >= 16){
-            fontSize -= 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
-        }
+            var username = document.getElementById("username").value;
+            var senha    = document.getElementById("password").value;
+            
+            const url = 'http://localhost:3000/login';
 
-        // Event listeners para os botões de alteração de tamanho da fonte
-        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
-        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+            data = { username, senha };
 
-        // Aplicar o tamanho de fonte armazenado no carregamento da página
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        document.documentElement.style.fontSize = fontSize + 'px';
-
-        //Aplica ação de prosseguir com o agendamento casdo o usuário tenha marcado o horário
-        document.getElementById("botaoMarcaHorario").addEventListener("click",function(event){
-            if(horarioMarcado==''){
-                alert("É necessário marcar um hoário para prosseguir.");
-            }else{
-                const h1Element = document.getElementById('nomeMedico');
-                const nomeMedico = h1Element.textContent;
-                
-                location.href = "http://127.0.0.1:3000/view/tela3-formulario/index1.html?horario="+horarioMarcado+"&nomeMedico="+nomeMedico+"&diaSemana"+diaSemana;
-            }
-        })
-    </script>
-    <script src="../HeaderFooter/scriptColor.js">
-
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.result == 1) {
+                    location.replace(data.message)
+                } else {
+                    alert(data.message)
+                }
+            })
+        });
     </script>
 </body>
 

@@ -22,10 +22,10 @@ const criarUsuario = async function(cargo, nome_completo, data_nascimento, idade
     }
 };
 
-const criarAgendamento = async function(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente) {
+const criarAgendamento = async function(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta) {
     try {
         var client = await pool.connect();
-        await client.query(`INSERT INTO agendamento (nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}')`);
+        await client.query(`INSERT INTO agendamento (nome_medico, data_consulta, horario, convenio_medico, motivo_consulta) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convenio_medico}', '${motivo_consulta}')`);
         client.release();
         return 1;
     } catch(err) {
@@ -36,36 +36,9 @@ const criarAgendamento = async function(nome_medico, data_consulta, horario, con
 const validarLogin = async function (username, senha) {
     try {
       const client = await pool.connect();
-      const resultado = await client.query(`SELECT username, senha, id FROM usuarios_registrados WHERE username = $1 AND senha = $2`, [username, senha]);
+      const resultado = await client.query(`SELECT username, senha FROM usuarios_registrados WHERE username = $1 AND senha = $2`, [username, senha]);
       client.release();
-      // console.log(resultado.rows)
-      return resultado.rows[0]; // Retorna true se houver uma correspondência, caso contrário, retorna false.
-    
-    } catch (err) {
-      console.error(err);
-      return false;
-    }
-  };
-
-  const listarAgendamentos = async function (id_paciente) {
-    try {
-      console.log(id_paciente)
-      const client = await pool.connect();
-      const resultado = await client.query(`SELECT * FROM agendamento WHERE id_paciente = $1`, [id_paciente]);
-      client.release();
-      return resultado.rows; // Retorna true se houver uma correspondência, caso contrário, retorna false.
-    } catch (err) {
-      console.error(err);
-      return false;
-    }
-  };
-
-  const removerAgendamentos = async function (id) {
-    try {
-      const client = await pool.connect();
-      await client.query(`DELETE FROM agendamento WHERE id = $1`, [id]);
-      client.release();
-      return true;
+      return resultado.rows.length > 0; // Retorna true se houver uma correspondência, caso contrário, retorna false.
     } catch (err) {
       console.error(err);
       return false;
@@ -73,5 +46,5 @@ const validarLogin = async function (username, senha) {
   };
   
 
-module.exports = {criarMedico, criarUsuario, criarAgendamento, validarLogin, listarAgendamentos, removerAgendamentos};
+module.exports = {criarMedico, criarUsuario, criarAgendamento, validarLogin};
 
