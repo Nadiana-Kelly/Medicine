@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Projeto-final-de-web-2023
-=======
 <p align="center">
   <img  src="./view/HeaderFooter/logo.png" align="center" alt="Logo Medicine" width="300">
 </p>
@@ -38,5 +35,3 @@
 - Express
 
 ### ▶️ Executando a aplicação
-
->>>>>>> da40f09e98d5e2d2f4eb0e5d13719cf12e5f3523
