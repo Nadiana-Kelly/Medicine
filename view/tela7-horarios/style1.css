@@ -160,9 +160,9 @@ header ul li:nth-child(6) a {
 }
 
 .selecionado {
-    color: #1f11dd !important;
-    background-color: #940505 !important;
-    border: 1px solid  #E1E1E1 !important;
+    color: white !important;
+    background-color: #191970 !important;
+    border: 1px solid  #191970!important;
 }
 
 .tabela tbody td {

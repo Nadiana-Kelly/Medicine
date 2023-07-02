@@ -24,3 +24,22 @@ tipo: GET
     "motivo_consulta":"Problemas de autrocontrole emocional"
 }
 
+http://localhost:3000/criarMedico/
+tipo: POST
+{
+	"nome": "Juliana Brasil",
+	"area_medica": "Psquiatria",
+	"descricao" : "Formada pela Universidade Federal do Ceará. Especialidades: Psiquiatria infantil e familiar",
+	"username": "Juliana",
+	"senha": "123",
+	"foto": "./view/tela1-profissionais/image1.png"
+}
+
+{
+	"nome": "Alex Karev",
+	"area_medica": "Cardiologista",
+	"descricao" : "Formado pela Universidade Federal do Ceará. Especialidades: Disfunções ligadas ao sistema cardiovascular",
+	"username": "Alex",
+	"senha": "123",
+	"foto": "./view/tela1-profissionais/image2.png"
+}

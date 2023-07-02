@@ -3,7 +3,7 @@ const pool = require('../conn/postgresql');
 const criarMedico = async function(nome, area_medica, descricao, username, senha, foto) {
     try {
         var client = await pool.connect();
-        const result = await client.query('SELECT EXISTS (SELECT 1 FROM usuarios_cadastrados WHERE username = $1)', [username]);
+        const result = await client.query('SELECT EXISTS (SELECT 1 FROM usuarios_registrados WHERE username = $1)', [username]);
 
         if(!result.rows[0].exists) {
             await client.query('INSERT INTO medicos (nome, area_medica, descricao, username, senha, foto) VALUES ($1, $2, $3, $4, $5, $6)', [nome, area_medica, descricao, username, senha, foto]);
@@ -61,6 +61,7 @@ const marcarHorario = async function(id_medico, diaSemana, horario) {
     try {
         var client = await pool.connect();
         await client.query(`INSERT INTO horarios (id_medico, diaSemana, horario) VALUES ($1, $2, $3)`, [id_medico, diaSemana, horario]);
+        console.log('marcado');
         client.release();
         return 1;
     } catch(err) {
@@ -173,7 +174,7 @@ async function atualizarAgendas(id_medico) {
       for(data of res.rows) {
           const res2 = await client.query(`SELECT EXISTS (SELECT * FROM horarios WHERE diasemana = $1 AND horario = $2 AND id_medico = $3)`, [data.diasemana, data.hora, data.id_medico]);
           if(!res2.rows[0].exists) {
-              await client.query(`DELETE from agendamento WHERE id = $1`, [data.id]);
+              await client.query(`DELETE from agendamento WHERE id = $1 AND diasemana = $2 AND horario = $3`, [data.id, data.diasemana, data.horario]);
           }
       }
   } catch(err) {

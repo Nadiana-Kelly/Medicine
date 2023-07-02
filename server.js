@@ -33,6 +33,7 @@ app.get('/teste2', async (req, res) => {
 app.post('/criarMedico', async (req, res) => {
   try {
       const { nome, area_medica, descricao, username, senha, foto } = req.body;
+      console.log(req.body);
       if( await query.criarMedico(nome, area_medica, descricao, username, senha, foto)) {
           res.send('Sucesso');
       } else {
