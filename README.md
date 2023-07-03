@@ -45,9 +45,13 @@
 ### 💻👨‍⚕️ Medicine:
 
 ![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/879b1119-8a64-4655-9821-985290e92aa2) <br>
+
 ![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/a5eb3e41-3530-45e0-a80b-25de449b7b22) <br>
+
 ![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/012650d7-3845-4af4-9ce9-ebd2193dc4a9) <br>
+
 ![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/e3a133c2-e00e-41c4-b210-2e06c78728bb) <br>
+
 ![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/683ca704-00e8-466d-aafb-2af36d2a3be0) <br>
 
 
