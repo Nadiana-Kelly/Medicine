@@ -8,10 +8,12 @@
 }
 
 body{
-    display: block;
+    display: flex;
     background-color:   #FFFFFF;
     width:100%;
     font-family: 'Raleway', sans-serif;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 a {
@@ -60,7 +62,7 @@ header ul li:nth-child(6) a {
     position: absolute;
     width: 22px;
     height: 0px;
-    right: 24%;
+    right: 25%;
     bottom: 50%;
     border: 1px solid #FFFFFF;
     transform: rotate(90deg); 
@@ -112,6 +114,7 @@ header ul li:nth-child(6) a {
 
 .consultas{
     margin-top: 13%;
+    min-height: 50vh;
 }
 
 .texto-consultas{
@@ -157,6 +160,7 @@ footer {
     padding: 3% 0 3% 0;
     margin-top: 5%;
     display: flex;
+    width: 100%;
     background-color: #000;
     justify-content: center;
 }
