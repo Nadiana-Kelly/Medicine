@@ -180,9 +180,9 @@ header ul li:nth-child(6) a {
 }
 
 .selecionado {
-    color: #006400 !important;
-    background-color: #E1E1E1 !important;
-    border: 1px solid  #E1E1E1 !important;
+    color: white !important;
+    background-color: #0082E0 !important;
+    border: 1px solid  #0082E0 !important;
 }
 
 .tabela tbody td {
@@ -339,4 +339,8 @@ footer {
 
 #botaoMarcaHorario:hover {
     background-color: #005a99;
+}
+
+.perfil-doc {
+    border-radius: 50%;
 }

@@ -16,10 +16,10 @@
                 <button id="btnAumentarFonte">A+</button>
                 <button id="btnDiminuirFonte">A-</button>
                 <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
-                <li><a href="../tela0-login/index.html">LOGIN</a></li>
+                <li><a id="login" href="../tela0-login/index.html">LOGIN</a></li>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
-                <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
+                <li class="registro"><a id="registrar" href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
             </ul>
         </nav>
     </header>
@@ -39,7 +39,6 @@
         <div id="informacoes">
         </div>
     </div>
-
 
     <footer class="footer">
         <div class="conteudo-footer">
@@ -65,6 +64,15 @@
     </footer>
 
     <script>
+        if(localStorage.getItem('id_paciente')) {
+            const btnLogin = document.getElementById('login')
+            btnLogin.textContent = 'LOGOUT'
+
+            const btnRegister = document.getElementById('registrar')
+            btnRegister.setAttribute('href', '../tela6-consultasMarcadas/index.html')
+            btnRegister.textContent = 'Consultas';
+        }
+
         // Função para aumentar o tamanho da fonte
             function aumentarFonte() {
                 var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
@@ -112,10 +120,11 @@
             })
             .then(res => {
                 for(medico of res) {
+                    console.log(medico.foto);
                     divPrincipal.insertAdjacentHTML('beforeend', 
                         `<div class="retangulo-medico" id='${medico.id}'>` +
                             '<div class="informacoes-medico">' +
-                                `<img src="image1.png" alt=${medico.nome}>` +
+                                `<img src='${medico.foto}' alt=${medico.nome} width='160' height='160'>` +
                                 '<div>'+
                                     `<h1>${medico.nome} | ${medico.area_medica}</h1>`+
                                     `<p>${medico.descricao}</p>`+
@@ -136,10 +145,12 @@
                         const descricao  = h1_info.children[1].textContent;
                         const nome       = h1Text.substring(0, h1Text.indexOf('|')-1);
                         const id_medico  = target.parentNode.parentNode.id;
+                        const medicoFoto  = target.parentNode.previousElementSibling.children[0].src
 
                         localStorage.setItem('nomeMedico', nome);
                         localStorage.setItem('descricaoMedico', descricao);
                         localStorage.setItem('id_medico', id_medico);
+                        localStorage.setItem('medicoFoto', medicoFoto);
 
                         location.href = '../tela2-medico/index.html';
                     });

@@ -13,33 +13,34 @@ tipo: POST
 	"senha": "1234"
 }
 
-link: http://localhost:3000/teste3/
-tipo: GET
 
-{
-    "nome_medico": "Julina Brasil",
-    "data_consulta": "12/08/2023",
-    "horario":"09:00:00",
-    "convenio_medico":"Particular",
-    "motivo_consulta":"Problemas de autrocontrole emocional"
-}
 
 http://localhost:3000/criarMedico/
 tipo: POST
+
 {
-	"nome": "Juliana Brasil",
-	"area_medica": "Psquiatria",
-	"descricao" : "Formada pela Universidade Federal do Ceará. Especialidades: Psiquiatria infantil e familiar",
-	"username": "Juliana",
+	"nome": "Meredith Grey",
+	"area_medica": "Cirúrgião Geral",
+	"descricao" : "Chefe de Cirurgia Geral no Grey Sloan Memorial Hospital, 45 anos",
+	"username": "grey",
 	"senha": "123",
-	"foto": "./view/tela1-profissionais/image1.png"
+	"foto": "../fotos/grey.jpg"
+}
+
+{
+	"nome": "Cristina Yang",
+	"area_medica": "Cirúrgiã Cardiovascular",
+	"descricao" : "Chefe de Cirurgia Cardiotorácica",
+	"username": "Yang",
+	"senha": "123",
+	"foto": "../fotos/grey.jpg"
 }
 
 {
 	"nome": "Alex Karev",
-	"area_medica": "Cardiologista",
-	"descricao" : "Formado pela Universidade Federal do Ceará. Especialidades: Disfunções ligadas ao sistema cardiovascular",
+	"area_medica": "Cirúrgião Geral Pediátrico",
+	"descricao" : "Chefe de Cirurgia Pediátrica",
 	"username": "Alex",
 	"senha": "123",
-	"foto": "./view/tela1-profissionais/image2.png"
+	"foto": "../fotos/grey.jpg"
 }

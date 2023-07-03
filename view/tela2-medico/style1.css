@@ -335,6 +335,10 @@ footer {
     background-color: #fbec5d;
 }
 
+.perfil-doc {
+    border-radius: 50%;
+}
+
 /* .div-botao button:hover {
     background-color: #333333;
 } */

@@ -59,23 +59,35 @@ app.get('/listarMedicos', async (req, res) => {
 
 // rota para criar agedamento
 app.post('/agendamento', async (req, res) => {
-  const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana } = req.body;
-  if( await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana)) {
-      res.send('Sucesso');
-  } else {
-      res.send('Falha ao criar agendamento');
-  }
+    try {
+        const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana } = req.body;
+        if (await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana)) {
+            res.send('Sucesso');
+        } else {
+            res.send('Falha ao criar agendamento');
+        }
+    } catch(err) {
+        res.status(400).send('Algo errado ocorreu');
+    }
 });
 
 // rota para listar agendamento
-app.get('/listarAgendamentos/:id', async (req, res) => {
-    var agendamentos = await query.listarAgendamentos(req.params.id);
-    res.send(agendamentos);
+app.get('/listarAgendamentos/:id', async (req, res) => { 
+    try {
+        var agendamentos = await query.listarAgendamentos(req.params.id);
+        res.send(agendamentos);
+    } catch(err) {
+        res.send(err);
+    }
 });
 
 app.get('/listarAgendamentosMedico/:id', async (req, res) => {
-    var agendamentos = await query.listarAgendamentosMedico(req.params.id);
-    res.send(agendamentos);
+    try {
+        var agendamentos = await query.listarAgendamentosMedico(req.params.id);
+        res.send(agendamentos);
+    } catch(err) {
+        res.send(err);
+    }
 });
 
 app.delete('/removerAgendamentos/:id', async (req, res) => {
@@ -99,7 +111,7 @@ app.get('/view/:folder/:file', (req, res) => {
 
 // Rota POST para criar uma conta de usuário
 app.post('/usuarios/criar-conta', async (req, res) => {
-    try{
+    try {
         const { cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha } = req.body;
         if(await query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha)){
             res.send ("Conta criada com sucesso");

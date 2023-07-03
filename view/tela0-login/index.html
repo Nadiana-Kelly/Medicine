@@ -130,6 +130,9 @@
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
 
+        while(localStorage.length) {
+            localStorage.removeItem(localStorage.key(0))
+        }
     </script>
     <script src="../HeaderFooter/scriptColor.js">
     </script>

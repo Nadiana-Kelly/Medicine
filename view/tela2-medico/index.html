@@ -15,11 +15,11 @@
                 <button id="btnAumentarFonte">A+</button>
                 <button id="btnDiminuirFonte">A-</button>
                 <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
-                <li><a href="../tela0-login/index.html">INÍCIO</a></li>
+                <li><a id="inicio" href="../tela0-login/index.html">INÍCIO</a></li>
                 <li><a href="../tela1-profissionais/index.html">PROFISSIONAIS</a></li>
                 <li><a href="#"></a></li>
-                <li><a href="../tela0-login/index.html">LOGIN</a></li>
-                <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
+                <li><a id="login" href="../tela0-login/index.html">LOGIN</a></li>
+                <li class="registro"><a id="registrar" href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
             </ul>
         </nav>
     </header>
@@ -34,14 +34,14 @@
             </div>
             <h5>*Valor referente a consulta sem convênio médico.</h5>
         </div>
-        <div class="foto">
-            <img class="perfil-doc" src="juliana.png" alt="juliana">
+        <div id="medicoFoto" class="foto">
+            <!-- <img class="perfil-doc" src="image1.png" alt="juliana"> -->
         </div>
     </div>
 
     <div class = "instrucoes">
         <div>
-            <p>> Clique em um horário disponível para prosseguir com o agendamento da colsulta.</p> 
+            <p Clique em um horário disponível para prosseguir com o agendamento da colsulta.</p> 
         </div>
     </div>
 
@@ -115,8 +115,8 @@
                     <td class = "indisponivel">15:00</td>
                 </tr>
                 <tr>
-                    <td class="indisponivel">16:00</td>>
-                    <td class="indisponivel">16:00</td>>
+                    <td class="indisponivel">16:00</td>
+                    <td class="indisponivel">16:00</td>
                     <td class="indisponivel">16:00</td>
                     <td class="indisponivel">16:00</td>
                     <td class="indisponivel">16:00</td>
@@ -128,8 +128,8 @@
     </div>
 
     <div class="botao-agendamento">
-        <div class="div-botao">
-            <button class="botao" id="botaoMarcaHorario">Marcar Consulta</button>
+        <div class="div-botao" id="btnPrincipal">
+            <!-- <button class="botao" id="botaoMarcaHorario">Marcar Consulta</button> -->
         </div>
     </div>
 
@@ -157,6 +157,16 @@
     </footer>
 
     <script>
+        if(localStorage.getItem('id_paciente')) {
+            const btn = document.getElementById('btnPrincipal');
+            btn.innerHTML = '<button class="botao" id="botaoMarcaHorario">Marcar Consulta</button>';
+
+            document.getElementById('inicio').textContent    = '';
+            document.getElementById('registrar').remove()
+            document.getElementById('login').textContent = 'LOGOUT';
+        }
+
+
         var horario = undefined;
         var horarioMarcado = '';
         var diaSemana = '';
@@ -236,11 +246,11 @@
 
             for(horario of data) {
                 tabelaHorario[horaIndex[horario.horario]][semanaIndex[horario.diasemana]].className = 'disponivel';
-                // function selecionarHorario(event)
                 tabelaHorario[horaIndex[horario.horario]][semanaIndex[horario.diasemana]].addEventListener('click', selecionarHorario);
             }
 
-            console.log(data);
+            document.getElementById('medicoFoto').innerHTML = `<img class="perfil-doc" src='${localStorage.getItem('medicoFoto')}' alt="juliana" width='300' height='300'>`;
+            console.log(document.getElementById('medicoFoto').children[0].getAttribute('src'))
         });
 
         const nome      = localStorage.getItem("nomeMedico");
@@ -280,17 +290,20 @@
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
 
-        //Aplica ação de prosseguir com o agendamento casdo o usuário tenha marcado o horário
-        document.getElementById("botaoMarcaHorario").addEventListener("click",function(event){
-            if(horarioMarcado==''){
-                alert("É necessário marcar um hoário para prosseguir.");
-            }else{
-                const h1Element = document.getElementById('nomeMedico');
-                const nomeMedico = h1Element.textContent;
-                
-                location.href = "http://127.0.0.1:3000/view/tela3-formulario/index1.html?horario="+horarioMarcado+"&nomeMedico="+nomeMedico+"&diaSemana="+diaSemana;
-            }
-        })
+        if(document.getElementById('botaoMarcaHorario')) {
+            //Aplica ação de prosseguir com o agendamento casdo o usuário tenha marcado o horário
+            document.getElementById("botaoMarcaHorario").addEventListener("click", function(event){
+                if(horarioMarcado==''){
+                    alert("É necessário marcar um hoário para prosseguir.");
+                }else{
+                    const h1Element = document.getElementById('nomeMedico');
+                    const nomeMedico = h1Element.textContent;
+                    
+                    location.href = "http://127.0.0.1:3000/view/tela3-formulario/index1.html?horario="+horarioMarcado+"&nomeMedico="+nomeMedico+"&diaSemana="+diaSemana;
+                }
+            })
+        }
+
     </script>
     <script src="../HeaderFooter/scriptColor.js">
 
