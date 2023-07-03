@@ -44,7 +44,7 @@
 
 ### 💻👨‍⚕️ Medicine:
 
-- [Silvio Soares] Desenvolvimento das telas que faltantes (Telas 05, 06, 07 e 08)
+- [Silvio Soares] Desenvolvimento das telas faltantes (Telas 05, 06, 07 e 08)
 - [Nadiana Kelly] Botões A+ e A- de acessibilidade (RELEASE 2)
 - [Nadiana Kelly] A carga de conteúdo deve contemplar tanto requisições HTTP síncronas como assíncronas (RELEASE 2)
 - [Silvio Soares] Implementação definitiva do controle de acesso proposto para a aplicação, considerando os
