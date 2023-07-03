@@ -3,7 +3,7 @@
 </p>
 
 <p align="justify">
-  O sistema se propõe em auxiliar pacientes e médicos em agendamentos de consultas de forma online. O usuário pode fazer um cadastro no sistema, selecionar um médico  e marcar um agendamento no horário e dia que preferir sem precisar sair de casa.
+  O sistema se propõe em auxiliar pacientes e médicos em agendamentos de consultas de forma online. O usuário pode fazer um cadastro no sistema, selecionar um médico  e marcar um agendamento no horário e dia que preferir sem precisar sair de casa. O médico pode fazer um gerenciamento de seus horários.
 </p>
 
 ### ⚙️ Funcionalidades :
