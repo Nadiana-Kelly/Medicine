@@ -44,15 +44,14 @@
 
 ### 💻👨‍⚕️ Medicine:
 
-![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/879b1119-8a64-4655-9821-985290e92aa2) <br>
-
-![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/a5eb3e41-3530-45e0-a80b-25de449b7b22) <br>
-
-![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/012650d7-3845-4af4-9ce9-ebd2193dc4a9) <br>
-
-![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/e3a133c2-e00e-41c4-b210-2e06c78728bb) <br>
-
-![image](https://github.com/Nadiana-Kelly/Projeto-final-de-web-2023/assets/82840116/683ca704-00e8-466d-aafb-2af36d2a3be0) <br>
+- [Silvio Soares] Desenvolvimento das telas que faltantes (Telas 05, 06, 07 e 08)
+- [Nadiana Kelly] Botões A+ e A- de acessibilidade (RELEASE 2)
+- [Nadiana Kelly] A carga de conteúdo deve contemplar tanto requisições HTTP síncronas como assíncronas (RELEASE 2)
+- [Silvio Soares] Implementação definitiva do controle de acesso proposto para a aplicação, considerando os
+diferentes tipos de perfil de usuário (RELEASE 3)
+- [Silvio Soares] Gerar HTML dinâmicamente e implementação do controle de acesso (RELEASE 3)
+- [Nadiana Kelly] Implementação da gestão de conteúdo (RELEASE 3)
+- [Equipe] Conclusão das funcionalidades fundamentais propostas pelo grupo para a aplicação web (RELEASE 3)
 
 
 
