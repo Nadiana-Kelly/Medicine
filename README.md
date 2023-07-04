@@ -42,18 +42,6 @@
 <br><br>
 ``Comando: node server.js``
 
-### 💻👨‍⚕️ Medicine:
-
-- [Silvio Soares] Desenvolvimento das telas faltantes (Telas 05, 06, 07 e 08)
-- [Nadiana Kelly] Botões A+ e A- de acessibilidade (RELEASE 2)
-- [Nadiana Kelly] A carga de conteúdo deve contemplar tanto requisições HTTP síncronas como assíncronas (RELEASE 2)
-- [Silvio Soares] Implementação definitiva do controle de acesso proposto para a aplicação, considerando os
-diferentes tipos de perfil de usuário (RELEASE 3)
-- [Silvio Soares] Gerar HTML dinâmicamente e implementação do controle de acesso (RELEASE 3)
-- [Nadiana Kelly] Desenvolvimento dos serviços da 3º camada usando a semântica definida para o conjunto de
-métodos e de respostas do HTTP. (RELEASE 3)
-- [Nadiana Kelly] Implementação da gestão de conteúdo (RELEASE 3)
-- [Equipe] Conclusão das funcionalidades fundamentais propostas pelo grupo para a aplicação web (RELEASE 3)
 
 
 
