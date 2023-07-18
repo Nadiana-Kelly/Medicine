@@ -26,6 +26,11 @@
   <br>
   <strong>Listar consultas:</strong> Os médicos conseguem visualizar em uma tela todas as consultas agendadas para o mesmo. 
   <br>
+  <br>
+  <strong>Duas opções de tema:</strong> Todos os usuários podem escolher a opção de paleta de cores do sistema (Black ou White) 
+  <br>
+  <br>
+  <strong>Duas opções de tema:</strong> Todos os usuários podem diminuir ou aumentar o tamanho da fonte de texto do sistema. 
 </p>
 
 ### 🛠 Tecnologias :
@@ -40,10 +45,34 @@
 ``npm install express``
 <br>
 ``npm install pg``
-<br><br>
-``Comando: node server.js``
+<br>
+``node server.js``
 
 ### Sistema Medicine 👨‍⚕️
+
+<p align="center">
+  <img src="./Medicine/FireShot Capture 002 - Medicine - localhost.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/FireShot Capture 013 - Medicine - 127.0.0.1.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/FireShot Capture 014 - Medicine - 127.0.0.1.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/FireShot Capture 015 - Medicine - 127.0.0.1.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/FireShot Capture 016 - Medicine - 127.0.0.1.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/FireShot Capture 017 - Medicine - 127.0.0.1.png" align="center" >
+</p>
 
 
 
