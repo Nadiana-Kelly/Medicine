@@ -12,7 +12,7 @@
   <strong>Login de usuários:</strong> O público poderá se cadastrar no sistema e fazer login. 
   <br>
   <br>
-  <strong>Criar um agendamento:</strong> Os pacientes cadastrados podem cadastar um agendamento  de consulta no sistema. 
+  <strong>Criar um agendamento:</strong> Os pacientes cadastrados podem cadastrar um agendamento  de consulta no sistema. 
   <br>
   <br>
   <strong>Excluir um agendamento:</strong> Após fazer um agendamento os usuários podem excluir esse agendamento se preferir.
