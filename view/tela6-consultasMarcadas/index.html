@@ -136,9 +136,10 @@
                         `<p>Motivo da consulta: ${consulta.motivo_consulta} </p>`+
                     " </div>"+
                     "<div class='botoes'>"+
+                        `<button class='botao' id='alterar${consulta.id}'>Alterar Consulta</button>`+
                         `<button class='botao' id='cancelar${consulta.id}'>Cancelar Consulta</button>`+
-                    "</div>"+
                     "</div>"
+                    
                 )
                 
                 document.getElementById('cancelar'+consulta.id).addEventListener('click', function(event) {
