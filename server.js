@@ -100,6 +100,9 @@ app.delete('/removerAgendamentos/:id', async (req, res) => {
 });
 
 // Rota para a página inicial
+app.get('/', (req, res) => {
+    res.redirect('view/tela1-profissionais/index.html');
+});
 app.get('view/tela1-profissionais/index.html', (req, res) => {
     res.sendFile(__dirname + 'view/tela1-profissionais/index.html');
 });
