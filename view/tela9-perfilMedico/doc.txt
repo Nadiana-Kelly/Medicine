@@ -1,0 +1,12 @@
+mt = margin top
+mb = margin bottom
+ms = margin start
+me = margin end
+
+
+pt = padding top
+pb = padding bottom
+ps = padding start
+pe = padding end
+
+mt-2
