@@ -111,6 +111,23 @@ const criarAgendamento = async function(nome_medico, data_consulta, horario, con
     }
 };
 
+const alterarAgendamentos = async function(id_consulta, nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) {
+  try {
+
+      var client = await pool.connect();
+
+      //var dados_consulta = await client.query(`SELECT * FROM agendamento WHERE id = ${id_consulta}`);      
+
+      await client.query(`UPDATE agendamento SET data_consulta = '${data_consulta}', horario = '${horario}', convenio_medico = '${convenio_medico}', motivo_consulta = '${motivo_consulta}', diasemana = '${diasemana}' WHERE agendamento.id = '${id_consulta}'`);
+
+      client.release();
+      return 1;
+  } catch(err) {
+      console.log('Error:', err);
+      return 0;
+  }
+};
+
 const validarLogin = async function (username, senha) {
     try {
       const client = await pool.connect();
@@ -187,7 +204,8 @@ module.exports = {
     criarAgendamento, 
     validarLogin, 
     listarAgendamentos, 
-    removerAgendamentos, 
+    removerAgendamentos,
+    alterarAgendamentos, 
     listarMedicos, 
     validarMedico,
     marcarHorario,

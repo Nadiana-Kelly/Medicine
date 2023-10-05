@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link id="cssFile" rel="stylesheet" type="text/css" href="style.css">
+    <title>Medicine</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img class="logo" src="logo.png" alt="logo">
+            <ul class="nav-list">
+                <button id="btnAumentarFonte">A+</button>
+                <button id="btnDiminuirFonte">A-</button>
+                <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
+                <li><a href="../tela0-login/index.html">INÍCIO</a></li>
+                <li><a href="../tela1-profissionais/index.html">PROFISSIONAIS</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="../tela0-login/index.html">LOGIN</a></li>
+                <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="formulario">
+        <div class="campos">
+            <h1>Preencha algumas informações adicionais para realizar o agendamento:</h1>
+
+            <div class="texto">
+                <h3 >Nome do médico</h3>
+                <input type="text" id="nomeMedico" readonly>
+            </div>
+            
+            <div class="texto">
+                <h3>Horário</h3>
+                <input type="time" id="horarioSelecionado">
+            </div>
+
+            <div class="texto">
+                <h3>Convênio médico</h3>
+                <input type="text" id="convenioMedico" placeholder="Selecione seu convênio médico">
+            </div>
+
+
+            <div class="info">
+                <h3>Resuma em poucas palavras o motivo da consulta e seus sintomas</h3>
+                <textarea style="width: 100%; height: 110px; resize: none;"" placeholder="Digite aqui qualquer informação que você gostaria de compartilhar antes da consulta..." id="motivoConsulta"></textarea>
+            </div>
+
+            <div class="botao" id="btnagendamento">
+                <button>CONFIRMAR AGENDAMENTO</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="conteudo-footer">
+            <div>
+                <img class="logo" src="logo.png" alt="logo">
+            </div>
+            <div>
+                <ul class="links-footer">
+                    <li><h2>Institucional</h2></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Profissionais</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Redes Sociais</h2>
+                <div class="icones">
+                    <img class="facebook" src="face.svg" alt="facebook">
+                    <img src="insta.svg" alt="instagram">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para aumentar o tamanho da fonte
+        function aumentarFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        if (fontSize <= 30){
+            fontSize += 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Função para diminuir o tamanho da fonte
+        function diminuirFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+    
+        if (fontSize >= 16){
+            fontSize -= 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Event listeners para os botões de alteração de tamanho da fonte
+        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
+        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+
+        // Aplicar o tamanho de fonte armazenado no carregamento da página
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        document.documentElement.style.fontSize = fontSize + 'px';
+
+        //concluir agendamento salvando os dados 
+        // localStorage.getItem('horario')
+        var urlParams = new URLSearchParams(window.location.search);
+        
+        var inputElement = document.getElementById('horarioSelecionado');
+        inputElement.value = urlParams.get("horario");
+        
+        inputElement = document.getElementById('nomeMedico');
+        inputElement.value = urlParams.get("nomeMedico");
+
+        inputElement = document.getElementById('convenioMedico');
+        inputElement.value = urlParams.get("convenio_medico");
+
+        inputElement = document.getElementById('motivoConsulta');
+        inputElement.value = urlParams.get("motivo_consulta");
+        
+        var diaSemana = urlParams.get('diaSemana');
+
+        const diaSemanaFromIndex = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+
+        //salvando agendamento no banco de dados 
+        document.getElementById("btnagendamento").addEventListener("click", function () {
+            const nome_medico = document.getElementById('nomeMedico').value;
+            const horario = document.getElementById('horarioSelecionado').value + ":00";
+            const convenio_medico = document.getElementById('convenioMedico').value;
+            const motivo_consulta = document.getElementById('motivoConsulta').value;
+
+            // Obter a data atual
+            const dataAtual = new Date();
+            // Somar os dias à data atual
+            dataAtual.setDate(dataAtual.getDate() + Number(diaSemana));
+            var opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            var data_consulta = dataAtual.toLocaleDateString('pt-BR', opcoes);
+
+            //Construir o objeto com os dados a serem enviados
+            const dados = {
+                nome_medico: nome_medico,
+                horario: horario,
+                convenio_medico: convenio_medico,
+                motivo_consulta: motivo_consulta,
+                data_consulta: data_consulta,
+                diasemana: diaSemanaFromIndex[diaSemana],
+                id_paciente: localStorage.getItem("id_paciente"),
+                id_medico: localStorage.getItem("id_medico")
+            };
+
+            // Configurar as opções da requisição POST
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            };
+
+            var urlParams = new URLSearchParams(window.location.search);
+            //inputElement.value = urlParams.get("nomeMedico");
+            var id_consulta = urlParams.get('id_consulta');
+
+            // Enviar a requisição POST para a URL desejada
+            fetch(`http://localhost:3000/alterarAgendamentos/${id_consulta}`, requestOptions)
+            .then(response => response.text())
+            .then(data => {
+                // Tratar a resposta da API
+                location.href = '../tela6-consultasMarcadas/index.html';
+            })
+            .catch(error => {
+            // Tratar erros
+            console.error('Erro:', error);
+            });
+        });
+
+    </script>
+    <script src="../HeaderFooter/scriptColor.js">
+    </script>
+</body>
+
+</html>

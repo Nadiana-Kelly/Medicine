@@ -1,12 +1,13 @@
-FROM ubuntu
+FROM node
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY . /app
+COPY package*.json ./
 
-RUN apt update && apt install -y nodejs npm
-RUN npm install express && npm install pg
+RUN npm install
+
+COPY . .
 
 EXPOSE 3000
 
-CMD node server.js
+CMD [ "node", "server.js" ]

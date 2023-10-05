@@ -95,7 +95,18 @@ app.delete('/removerAgendamentos/:id', async (req, res) => {
         await query.removerAgendamentos(req.params.id)
         res.send('Sucesso');
     } catch(err) {
-      res.status(400).send();
+        res.status(400).send();
+    }
+});
+
+app.post('/alterarAgendamentos/:id', async (req, res) => {
+    try {
+        const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana } = req.body;
+        await query.alterarAgendamentos(req.params.id, nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana);
+        res.send('Sucesso');
+    } catch(err) {
+        console.log(err);
+        res.status(400).send();
     }
 });
 

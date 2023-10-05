@@ -129,6 +129,7 @@
                 consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3)
                 consulta.data_consulta = consulta.data_consulta.substring(0,consulta.data_consulta.indexOf("T"))
                 var consultas = document.getElementById("consultas")
+
                 consultas.insertAdjacentHTML("beforeend", `<div class='paciente-info' data-id='${consulta.id}'>`+
                     "<div>"+
                         `<h1>${consulta.nome_medico}</h1>`+
@@ -136,11 +137,18 @@
                         `<p>Motivo da consulta: ${consulta.motivo_consulta} </p>`+
                     " </div>"+
                     "<div class='botoes'>"+
+                        `<button class='botao' id='alterar${consulta.id}'>Alterar Consulta</button>`+
                         `<button class='botao' id='cancelar${consulta.id}'>Cancelar Consulta</button>`+
-                    "</div>"+
                     "</div>"
+                    
                 )
                 
+                document.getElementById(`alterar${consulta.id}`).addEventListener("click", function(event){
+
+                    location.href = "http://127.0.0.1:3000/view/tela3-formulario-edicao/index1.html?id_consulta="+consulta.id+"&nomeMedico="+consulta.nome_medico+"&horario="+consulta.horario+"&convenio_medico="+consulta.convenio_medico+"&motivo_consulta="+consulta.motivo_consulta;
+                
+                })
+
                 document.getElementById('cancelar'+consulta.id).addEventListener('click', function(event) {
                     const parent = event.target.parentNode.parentNode;
                     const id = parent.dataset.id;
