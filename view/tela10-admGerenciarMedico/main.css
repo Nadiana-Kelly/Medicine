@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
+
+.content-distance {
+    margin-top: 100px;
+}
+
+.font{
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px !important;
+}
+
+.btnadic{
+    position: relative;
+    left: -290px;
+}
+
+.btn-adicprof {
+    position: relative;
+    /* bottom: 75px; */
+    width: 300px;
+    height: 52px;
+}
+
+.buscar{
+    height: 62px;
+    width: 450px;
+    background-color: #D9D9D9;
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px !important;
+    color: #606060;
+    padding-left: 79px;
+}
+
+.lupa{
+    position: relative;
+    left: 69px;
+    top: 2px;
+}
+
+.btn-remover{
+    position: relative;
+    /* bottom: 75px; */
+    width: 230px;
+    height: 52px;
+    margin-right: 50px;
+}
+
+.caixa-medico{
+    position: relative;
+    height: 187px;
+}
