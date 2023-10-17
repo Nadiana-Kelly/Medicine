@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Medicine</title>
+      
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link  rel="stylesheet" type="text/css" href="header.css">
+      <link  rel="stylesheet" type="text/css" href="main.css">
+      <link  rel="stylesheet" type="text/css" href="footer.css">
+
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header-height bg-black d-flex align-items-center">
+        <div class="logo-deslocamento">
+            <img src="logo.png" width="254px" height="54px">
+        </div>
+        <div class="w-100 d-flex flex-row-reverse align-items-center margin-header-direita ">
+            <a class="ms-4 a-logout font-header">REGISTRAR-SE</a>
+            <a class="text-white ms-2 mb-0 font-header">LOGIN</a>
+            <a class="linha-verical ms-3"></a>
+            <a class="text-white ms-4 mb-0 font-header">PROFISSIONAIS</a>
+            <a class="text-white ms-4 mb-0 font-header">INÍCIO</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- corpo -->
+    <main class="d-flex justify-content-center texto">
+        <div>
+            <div class="col-12 textox">
+                <h2 class="w-auto">Preencha os dados para efetuar o cadastro</h2>
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Nome completo</label>
+                <input type="text" class="input-form form-control rounded-3" placeholder="Insira o seu nome completo">
+            </div>
+            <div class="d-flex">
+                <div class="col-6  me-2">
+                    <label class="form-label fs-5 fw-bold mt-2">Data de nascimento</label>
+                    <input type="date" class="input-form form-control rounded-3" placeholder="dd/mm/aaaa">
+                </div>
+                <div class="w-100">
+                    <label class="form-label fs-5 fw-bold mt-2">Idade</label>
+                    <input type="number" class="input-form form-control rounded-3">
+                </div>
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Endereço completo</label>
+                <input type="text" class="input-form form-control rounded-3" placeholder="Insira o seu endereço completo (cidade, rua, número...)">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Telefone</label>
+                <input type="text" class="input-form form-control rounded-3" placeholder="Insira o seu número de telefone">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Email</label>
+                <input type="text" class="input-form form-control rounded-3" placeholder="Insira o seu endereço de e-mail">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Username</label>
+                <input type="text" class="input-form form-control rounded-3" placeholder="Insira o seu nome de usuário (ex: gustavo.pinheiro)">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Senha</label>
+                <input type="password" class="input-form form-control rounded-3" placeholder="Insira a sua senha">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Confirmar senha</label>
+                <input type="password" class="input-form form-control rounded-3" placeholder="Insira a sua senha">
+            </div>
+            <div class="col-12 d-flex flex-row-reverse mt-3 ">
+                <button class="btn btn-primary rounded-5 button-cadastrar-p fw-medium">REALIZAR CADASTRO</button>
+            </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="footer-height bg-black d-flex align-items-center footer-mt">
+        <div class="logo">
+            <img src="logo.png" width="254px" height="54px">
+        </div>
+
+        <div class="d-flex flex-row-reverse w-100">
+            <div class="d-flex flex-row-reverse conteudo-footer-info">
+                <div class="d-flex flex-column">
+                    <h2 class="text-white">Redes Sociais</h2>
+                    <div class="">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.5039 9.375C14.8462 9.375 9.375 14.8389 9.375 21.5039V38.4961C9.375 45.1538 14.8389 50.625 21.5039 50.625H38.4961C45.1538 50.625 50.625 45.1611 50.625 38.4961V21.5039C50.625 14.8462 45.1611 9.375 38.4961 9.375H21.5039ZM21.5039 13.125H38.4961C43.1323 13.125 46.875 16.8677 46.875 21.5039V38.4961C46.875 43.1323 43.1323 46.875 38.4961 46.875H21.5039C16.8677 46.875 13.125 43.1323 13.125 38.4961V21.5039C13.125 16.8677 16.8677 13.125 21.5039 13.125ZM41.0742 17.2266C40.1294 17.2266 39.375 17.981 39.375 18.9258C39.375 19.8706 40.1294 20.625 41.0742 20.625C42.0191 20.625 42.7734 19.8706 42.7734 18.9258C42.7734 17.981 42.0191 17.2266 41.0742 17.2266ZM30 18.75C23.811 18.75 18.75 23.811 18.75 30C18.75 36.189 23.811 41.25 30 41.25C36.189 41.25 41.25 36.189 41.25 30C41.25 23.811 36.189 18.75 30 18.75ZM30 22.5C34.1675 22.5 37.5 25.8325 37.5 30C37.5 34.1675 34.1675 37.5 30 37.5C25.8325 37.5 22.5 34.1675 22.5 30C22.5 25.8325 25.8325 22.5 30 22.5Z" fill="white"/>
+                        </svg>
+    
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 4.16675C13.4937 4.16675 4.16666 13.4938 4.16666 25.0001C4.16666 35.4438 11.8604 44.0688 21.8854 45.5751V30.5209H16.7312V25.0438H21.8854V21.4001C21.8854 15.3668 24.825 12.7188 29.8396 12.7188C32.2417 12.7188 33.5104 12.8959 34.1125 12.9772V17.7563H30.6917C28.5625 17.7563 27.8187 19.7751 27.8187 22.0501V25.0438H34.0583L33.2125 30.5209H27.8208V45.6188C37.9896 44.2418 45.8333 35.5459 45.8333 25.0001C45.8333 13.4938 36.5063 4.16675 25 4.16675Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex flex-row-reverse conteudo-footer-info2">
+                <div class="d-flex flex-column">
+                    <h2 class="text-white">Institucional</h2>
+                    <a class="m-0 text-white fs-5" href="#">Sobre</a>
+                    <a class="m-0 text-white fs-5" href="#">Profissionais</a>
+                    <a class="m-0 text-white fs-5" href="#">Contato</a>
+                </div>
+            </div>  
+        </div>
+    </div>
+  </body>
+</html>
+

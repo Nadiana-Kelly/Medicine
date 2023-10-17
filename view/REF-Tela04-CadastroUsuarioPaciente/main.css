@@ -1,0 +1,25 @@
+.texto{
+    margin-top: 50px;
+}
+
+.textox{
+    margin-top: 40px;
+}
+
+
+.input-form {
+    height: 45px;
+    background-color:#D9D9D9 !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px !important;
+}
+
+.button-cadastrar-p{
+    height: 45px !important;
+    width: 280px;
+    height: 40px;
+    font-size: 16px !important;
+    line-height: 24px;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+}
