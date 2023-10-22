@@ -82,9 +82,11 @@ img [src="cruz 1.png"]{
 
 /* Formulário */
 .formulario {
+    margin: auto;
     padding-top: 10%;
     display: flex;
     justify-content: center;
+    width: 50%;
 }
 
 .campos h3{
@@ -210,4 +212,66 @@ footer {
 
 .botao button:hover {
     background-color:  #005a99;
+}
+
+.agendamento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} 
+
+.data {
+    font-size: 12px;
+}
+
+.indisponivel {
+    color: #606060 !important;
+    background-color: #E1E1E1 !important;
+    border: 1px solid  #E1E1E1 !important;
+}
+
+.selecionado {
+    color: white !important;
+    background-color: #0082E0 !important;
+    border: 1px solid  #0082E0 !important;
+}
+
+.tabela {
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 15px;
+    table-layout: fixed;
+}
+
+.tabela tbody td {
+    color: #0082E0;
+    font-size: 18px;
+    background-color: #DEEFFB;
+    border: 1px solid #DEEFFB;
+    border-radius: 5px;
+    padding: 8px;
+    font-weight: 500;
+}
+
+
+.tabela thead th {
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+}
+
+.tabela tfoot {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tabela tfoot td {
+    font-size: 14px;
+}
+
+.tabela tfoot .links {
+    text-align: right;
 }

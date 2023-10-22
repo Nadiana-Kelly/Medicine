@@ -82,7 +82,7 @@ const limparHorarios = async function(id_medico) {
 const listarHorarios = async function(id_medico) {
     try {
         var client = await pool.connect();
-        const horarios = await client.query(`SELECT * FROM horarios WHERE (horarios.horario, horarios.diasemana) NOT IN (SELECT agendamento.horario, agendamento.diasemana FROM agendamento WHERE id_medico = $1) AND id_medico = $1`, [id_medico]);
+        const horarios = await client.query(`SELECT * FROM horarios WHERE (horarios.horario, horarios.diaSemana) NOT IN (SELECT agendamento.horario, agendamento.diasemana FROM agendamento WHERE id_medico = $1) AND id_medico = $1`, [id_medico]);
         return horarios.rows;
     } catch(err) {
         return false;
@@ -102,7 +102,7 @@ const listarTodosHorarios = async function(id_medico) {
 const criarAgendamento = async function(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) {
     try {
         var client = await pool.connect();
-        await client.query(`INSERT INTO agendamento (nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}', '${id_medico}', '${diasemana}')`);
+        await client.query(`SET datestyle = "ISO, DMY"; INSERT INTO agendamento (nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}', '${id_medico}', '${diasemana}')`);
         client.release();
         return 1;
     } catch(err) {
@@ -118,7 +118,7 @@ const alterarAgendamentos = async function(id_consulta, nome_medico, data_consul
 
       //var dados_consulta = await client.query(`SELECT * FROM agendamento WHERE id = ${id_consulta}`);      
 
-      await client.query(`UPDATE agendamento SET data_consulta = '${data_consulta}', horario = '${horario}', convenio_medico = '${convenio_medico}', motivo_consulta = '${motivo_consulta}', diasemana = '${diasemana}' WHERE agendamento.id = '${id_consulta}'`);
+      await client.query(`SET datestyle = "ISO, DMY"; UPDATE agendamento SET data_consulta = '${data_consulta}', horario = '${horario}', convenio_medico = '${convenio_medico}', motivo_consulta = '${motivo_consulta}', diasemana = '${diasemana}' WHERE agendamento.id = '${id_consulta}'`);
 
       client.release();
       return 1;
