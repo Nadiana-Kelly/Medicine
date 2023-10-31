@@ -102,17 +102,24 @@
             var cargo             = 0;
             const url             = 'http://localhost:3000/usuarios/criar-conta'; // Substitua pelo URL do seu endpoint de destino
 
-            data = { nome_completo, data_nascimento, idade, endereco_completo, email, telefone, username, senha, cargo };
+            var dados = { nome_completo: nome_completo,
+                            data_nascimento: data_nascimento,
+                            idade: idade,
+                            endereco_completo: endereco_completo,
+                            email: email,
+                            telefone: telefone,
+                            username: username,
+                            senha: senha,
+                            cargo: cargo };
 
-            fetch(url, {
+            const requestOptions = {
                 method: 'POST',
-                body: JSON.stringify(data),
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message)
-            })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados)
+            };
+
+            fetch(url, requestOptions)
+            .then( async (response) => alert( await response.text()))
         });
     </script>
 

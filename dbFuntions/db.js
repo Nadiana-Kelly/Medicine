@@ -29,6 +29,30 @@ const listarMedicos = async function () {
   }
 };
 
+const editarMedico = async function (id, nome, descricao, foto) {
+  try {
+    const client = await pool.connect();
+    const resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, foto = $3 WHERE id = $4', [nome, descricao, foto, id]);
+    client.release();
+    return resultado.rows; // Retorna true se houver uma correspondência, caso contrário, retorna false.
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};
+
+const perfilMedico = async function (id_medico) {
+  try {
+    const client = await pool.connect();
+    const resultado = await client.query('SELECT * FROM medicos WHERE ID = $1', [id_medico]);
+    client.release();
+    return resultado.rows; // Retorna true se houver uma correspondência, caso contrário, retorna false.
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};
+
 const validarMedico = async function(username, senha) {
     try {
         var client = await pool.connect();
@@ -111,7 +135,7 @@ const criarAgendamento = async function(nome_medico, data_consulta, horario, con
     }
 };
 
-const alterarAgendamentos = async function(id_consulta, nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) {
+const alterarAgendamentos = async function(id_consulta, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) {
   try {
 
       var client = await pool.connect();
@@ -213,6 +237,8 @@ module.exports = {
     listarHorarios,
     listarAgendamentosMedico,
     atualizarAgendas,
-    listarTodosHorarios
+    listarTodosHorarios,
+    perfilMedico,
+    editarMedico
 };
 

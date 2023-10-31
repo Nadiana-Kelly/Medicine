@@ -1,13 +1,17 @@
 const express = require('express');
 const cors = require('cors');
+const multer = require("multer");
+const fs = require("fs");
 const bodyParser = require('body-parser');
 const query      = require('./dbFuntions/db');
 const app = express();
 
+app.use(express.json());
 // PERMITE O NODE A FAZER O PARSER DO JSON ENVIADO PELO CLIENTE
 // BODY -> JSON
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 
 // ME PERMITE GUARDAR ASSETS NUMA PASTA ESPECÍFICA
 app.use(express.static('view'));
@@ -54,6 +58,35 @@ app.get('/listarMedicos', async (req, res) => {
         }
     } catch(err) {
       res.send('Algum erro correu');
+    }
+})
+
+app.get('/perfilMedico/:id', async (req, res) => {
+    try {
+        const result = await query.perfilMedico(req.params.id);
+        if(result) {
+            res.send(result);
+        } else {
+            res.send({});
+        }
+    } catch(err) {
+      res.send('Algum erro correu');
+      console.log(err);
+    }
+})
+
+app.post('/editarMedico', async (req, res) => {
+    try {
+        const {id, nome, descricao, foto} = req.body;
+        const result = await query.editarMedico(id, nome, descricao, foto);
+        if(result) {
+            res.send(result);
+        } else {
+            res.send({});
+        }
+    } catch(err) {
+      res.send('Algum erro correu');
+      console.log(err);
     }
 })
 
@@ -127,13 +160,14 @@ app.get('/view/:folder/:file', (req, res) => {
 app.post('/usuarios/criar-conta', async (req, res) => {
     try {
         const { cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha } = req.body;
-        if(await query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha)){
-            res.send ("Conta criada com sucesso");
+        if (await query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha) == 1){
+            res.status(200).send("Conta criada com sucesso!");
+            res.send ();
         }else{
-            res.send("Erro ao criar conta");
+            res.status(500).send("Erro ao criar conta! Usuário já existe");
         }
     } catch(error) {
-        res.send("Algum erro ocorreu");
+        res.status(500).send("Erro interno ao criar conta!");
     }
 });
 
@@ -216,6 +250,28 @@ app.post('/login', async (req, res) => {
   }
 });
 
+var upload = multer({ dest: './tmp/'});
+
+// File input field name is simply 'file'
+app.post('/upload', upload.single('foto'), function(req, res) {
+
+  const { nome } = req.body;
+
+  var file =  '../fotos/' + nome;
+
+  console.log(`File: ${req.file}`)
+  fs.rename(req.file.src, file, function(err) {
+    if (err) {
+      console.log(err);
+      res.send(500);
+    } else {
+      res.json({
+        message: 'File uploaded successfully',
+        filename: req.file.src
+      });
+    }
+  });
+});
 
 // Iniciar o servidor
 app.listen(3000, () => {
