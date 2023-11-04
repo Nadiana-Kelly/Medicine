@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
-body {
-    background-color:#1C1C1C;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +18,6 @@ a {
     text-decoration: none;
 }
 
-/* NavBar */
 nav{
     display:flex;
     justify-content: space-around;
@@ -33,45 +28,7 @@ nav{
     height: 85px;
     left: 0px;
     top: 0px;
-}
-
-.nav-list{
-    list-style: none;
-    display:flex;
-    font-family: 'Raleway', sans-serif;
-    left: 50%;
-    top:38px;
-    height: 21px;
-}
-
-.nav-list li{
-    letter-spacing: 3px;
-    margin-left:32px;
-}
-
-header ul li:nth-child(7) a {
-    padding: 9px;
-    border-radius: 40px;
-    border: 2px solid  #FDD835;
-    top:38px;
-    height: 21px;
-}
-
-header ul li:nth-child(5) a {
-    position: relative;
-    width: 42px;
-    height: 0px;
-    right: 15%;
-    border: 1px solid #FDD835;
-    transform: rotate(90deg); 
-
-}
-
-.logo{
-    position: relative;
-    width: 254px;
-    height: 54px;
-    left: 10px;
+    background: #000000;
 }
 
 /*imagem dos médicos */
@@ -257,4 +214,48 @@ footer {
 
 .div-botao button:hover {
     background-color: #333333;
+}
+
+.font-header {
+    font-family: 'Raleway', sans-serif;
+}
+
+.outline-marker {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 7px;
+    border-radius: 40px;
+    border: 2px solid  white;
+    top:38px;
+    height: 40px;
+    color: white;
+}
+
+
+.linha-verical {
+    width: 38px;
+    height: 0px;
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg); 
+}
+
+.acessib-cor{
+    color: white;
+    outline: #FFFFFF;
+}
+
+.acessib-cor:focus, .acessib-cor:hover {
+    color: white;
+}
+
+.item1:hover {
+    background-color: #0082E0;
+}
+
+.item2:hover {
+    background-color: #0082E0;
+}
+
+.item3:hover {
+    background-color: #0082E0;
 }

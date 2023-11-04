@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link id="cssFile" rel="stylesheet" type="text/css" href="style.css">
     <!-- <link id="cssFile" rel="stylesheet" type="text/css" href="style1.css"> -->
     <title>Medicine</title>
@@ -10,18 +11,33 @@
 
 <body>
     <header>
-        <nav>
-            <img class="logo" src="logo.png" alt="logo">
-            <ul class="nav-list">
-                <button id="btnAumentarFonte">A+</button>
-                <button id="btnDiminuirFonte">A-</button>
-                <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
-                <li><a id="inicio" href="../tela0-login/index.html">INÍCIO</a></li>
-                <li><a href="../tela1-profissionais/index.html">PROFISSIONAIS</a></li>
+        <nav class="d-flex align-items-center">
+            <div>
+                <img src="../HeaderFooter/logo.png" width="254px" height="54px" alt="logo">
+            </div>
+            <div class="nav-list d-flex align-items-center justify-content-center">
+                <div class="dropdown">
+                    <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        ACESSIBILIDADE
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="m-0"><a class="dropdown-item item1" href="#" onclick="aumentarFonte(event)">A+</a></li>
+                        <li class="m-0"><a class="dropdown-item item2" href="#" onclick="diminuirFonte(event)">A-</a></li>
+                        <li class="m-0"><a class="dropdown-item item3" href="#" id="btnColor">ALTERAR TEMA</a></li>
+                    </ul>
+                </div>
+
+                <a id="inicio" href="#" class="text-white ms-4 mb-0 font-header">INICIO</a>
+                <a href="../tela1-profissionais/index.html" class="text-white ms-4 mb-0 font-header">PROFISSIONAIS</a>
+                <a class="linha-verical ms-3"></a>
+                <a id="login" href="../tela0-login/index.html" class="text-white ms-4 mb-0 font-header">LOGIN</a>
+                <a id="registrar" href="../tela4-cadastroUsuario/index.html" class="text-white ms-4 mb-0 font-header outline-marker">REGISTRAR-SE</a>
+
+                <!-- <li><a href="../tela1-profissionais/index.html">INÍCIO</a></li>
                 <li><a href="#"></a></li>
-                <li><a id="login" href="../tela0-login/index.html">LOGIN</a></li>
-                <li class="registro"><a id="registrar" href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
-            </ul>
+                <li><a href="#"></a></li>
+                <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li> -->
+            </div>
         </nav>
     </header>
     <div class="information">
@@ -134,35 +150,14 @@
         </div>
     </div>
 
-    <footer>
-        <div class="conteudo-footer">
-            <div>
-                <img class="logo" src="logo.png" alt="logo">
-            </div>
-            <div>
-                <ul class = "links-footer">
-                    <li><h2>Insitucional</h2></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Profissionais</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-            <div>
-                <h2>Redes Sociais</h2>
-                <div class = "icones">
-                    <img class = "facebook" src="face.svg" alt="facebook">
-                    <img  src="insta.svg" alt="instagram">
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
         if(localStorage.getItem('id_paciente')) {
             const btn = document.getElementById('btnPrincipal');
             btn.innerHTML = '<button class="botao" id="botaoMarcaHorario">Marcar Consulta</button>';
 
-            document.getElementById('inicio').textContent    = '';
+            // document.getElementById('inicio').textContent    = '';
             document.getElementById('registrar').remove()
             document.getElementById('login').textContent = 'LOGOUT';
         }
@@ -307,9 +302,6 @@
         }
 
         // Event listeners para os botões de alteração de tamanho da fonte
-        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
-        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
-
         // Aplicar o tamanho de fonte armazenado no carregamento da página
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
