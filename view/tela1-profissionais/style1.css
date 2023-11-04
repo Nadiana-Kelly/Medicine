@@ -1,22 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
-    display: block;
-    background-color:  #1C1C1C;
+    background-color:   #FFFFFF;
     width:100%;
     font-family: 'Raleway', sans-serif;
 }
 
-a {
-    color: #FDD835;
-    text-decoration: none;
-}
+/*//////////////////////////////////////////////////////////////*/
 
 nav{
     display:flex;
@@ -52,19 +42,19 @@ nav{
     position: absolute;
     width: 60%;
     align-self: center;
+    color:#000;
 }
 
 .texto1 h1 {
     font-size: 85px;
     font-weight: 800;
-    color: #B8860B; 
 }
 
 .texto1 h2 {
     padding: 1% 10% 0 0;
-    /* font-size: 25px; */
-    font-weight: 800;
-    color: #B8860B;
+    /* font-size: 20px; */
+    font-weight: 400;
+    color:#000;
 }
 
 /* Informação Médicos */
@@ -83,20 +73,14 @@ nav{
     z-index: 1;
 }
 
-.texto-medico ,p{
-    color:#FDD835;
-}
-
-.texto-medico ,h1{
-    color:#FDD835;
-}
 .retangulo-medico{
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    padding: 35px;
+    box-shadow: 0px 4px 25px rgba(255, 255, 255, 255);
     margin-bottom: 4%;
-    border: 2px solid #FFFFFF;
-    background-color: #1C1C1C;
+    background-color: #fff;
+    border: 2px solid black;
 }
 
 .informacoes-medico {
@@ -113,107 +97,25 @@ nav{
     width: 250px;
 }
 
-.botao {
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 18px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: #ffff;
+    text-decoration: none;
+}
+
+body {
+    width:100%;
     font-family: 'Raleway', sans-serif;
-    color:  #FDD835;
-    width: 250px;
-    height: 50px;
-    float:right; 
-    background: #000000;
-    border-radius: 30px;
-    border: 2px solid #FFFFFF
 }
 
-/*rodapé*/
-
-
-footer {
-    padding: 3% 0 3% 0;
-    margin-top: 2%;
-    display: flex;
-    background-color: #000;
-    justify-content: center;
-}
-
-.conteudo-footer{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #FDD835;
-}
-
-.links-footer {
-    list-style: none;
-    align-items: center;
-}
-
-.links-footer a {
-    padding-top: 10px;
-}
-
-.facebook {
-    padding: 5px 5px 5px 0;
-}
-
-.botaocss{
+img [src="cruz 1.png"]{
     position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 150px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.botaocss:hover {
-    background-color: #375A7F;
-}
-
-/* botões de A+ e A- */
-#btnAumentarFonte,#btnDiminuirFonte {
-    border-radius: 30px;    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 80px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
-    background-color: #375A7F;
-}
-
-
-.botaocss:hover {
-    background-color: #375A7F;
-}
-
-.div-botao button:hover {
-    background-color: #333333;
+    left: 20%;
 }
 
 .font-header {
@@ -230,7 +132,6 @@ footer {
     height: 40px;
     color: white;
 }
-
 
 .linha-verical {
     width: 38px;
@@ -258,4 +159,96 @@ footer {
 
 .item3:hover {
     background-color: #0082E0;
+}
+
+footer {
+    padding: 3% 0 3% 0;
+    margin-top: 2%;
+    display: flex;
+    background-color: #000;
+    justify-content: center;
+}
+
+.conteudo-footer{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.links-footer {
+    list-style: none;
+    align-items: center;
+}
+
+.facebook {
+    padding: 5px 5px 5px 0;
+}
+
+.botaocss{
+    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-13px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 150px;
+    height: 44px; 
+    padding:9px;
+    background: #002244;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.botaocss:hover{
+    background-color: #131184;
+}
+/* botões de A+ e A- */
+#btnAumentarFonte,#btnDiminuirFonte {
+    border-radius: 30px;    position: relative;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-13px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 80px;
+    height: 44px; 
+    padding:9px;
+    background: #002244;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
+    background-color: #375A7F;
+}
+
+
+.botao {
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 250px;
+    height: 50px;
+    float:right; 
+    background: #00F;
+    border-radius: 30px;
+
+}
+
+.div-botao button:hover {
+    background-color: #131184;
 }
