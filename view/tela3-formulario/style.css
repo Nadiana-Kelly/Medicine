@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+h1,h3{
+    color:#000;
+}
+
 body{
     display: block;
     background-color:   #FFFFFF;
@@ -43,6 +47,7 @@ background: #000000;
 
 .campos h3{
     padding-top: 2%;
+    color:#000;
 }
 
 .campos input{

@@ -133,6 +133,7 @@ img [src="cruz 1.png"]{
 
 .botao {
     margin-top: 2%;
+    width: 1200px;
 }
 /* Footer */
 
@@ -274,4 +275,12 @@ footer {
 
 .tabela tfoot .links {
     text-align: right;
+}
+
+.texto > h3 {
+    margin-bottom: 10px;
+}
+
+.info > h3 {
+    margin-bottom: 10px;
 }

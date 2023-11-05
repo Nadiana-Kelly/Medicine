@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
 
-body {
-    background-color:#1C1C1C;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +9,7 @@ body {
 
 body{
     display: flex;
-    background-color:  #1C1C1C;
+    background-color:   #FFFFFF;
     width:100%;
     font-family: 'Raleway', sans-serif;
     min-height: 100vh;
@@ -21,7 +17,7 @@ body{
 }
 
 a {
-    color: #FDD835;
+    color: #ffff;
     text-decoration: none;
 }
 
@@ -36,6 +32,8 @@ nav{
     height: 85px;
     left: 0px;
     top: 0px;
+
+background: #000000;
 }
 
 /* Informações Médicos */
@@ -57,7 +55,6 @@ nav{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #FDD835;
 }
 
 .texto p {
@@ -73,7 +70,6 @@ nav{
     padding-top: 1%;
 }
 
-
 /* Consultas */
 
 .consultas{
@@ -82,7 +78,6 @@ nav{
 }
 
 .texto-consultas{
-    color: #FDD835;
     width: 80%; /* Largura de 80% da tela */
     margin: 0 auto; /* Centralizar horizontalmente */
 }
@@ -93,31 +88,32 @@ nav{
     margin: 0 auto; /* Centralizar horizontalmente */
     margin-top: 30px;
     padding: 20px; /* Espaçamento interno */
-    background-color: #1C1C1C; /* Cor de fundo branca */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombreamento preto leve */
-    border: 2px solid #FFFFFF;
+    background-color: #ffffff; /* Cor de fundo branca */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.70); /* Sombreamento preto leve */
+    border: 2px solid #000;
     justify-content: space-between;
 }
 
 .paciente-info h1 {
-    color: #FDD835; 
+    color: #000000; /* Cor do texto preta */
 }
 
 .paciente-info p {
-    color: #FDD835; 
+    color: #000000; /* Cor do texto preta */
 }
 
 .botao {
     border: none;
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
-    color:  black;
+    color:  #FFFFFF;
     width: 200px;
     height: 50px; 
-    background: #FDD835;
+    background: #0082E0;
     border-radius: 30px;
     margin: 5px;
 }
+
 
 /* Footer */
 
@@ -128,7 +124,6 @@ footer {
     width: 100%;
     background-color: #000;
     justify-content: center;
-    color:#FDD835;
 }
 
 .conteudo-footer{
@@ -136,23 +131,22 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #FDD835;
+    color: white;
 }
 
 .links-footer {
     list-style: none;
     align-items: center;
-
 }
 
 .links-footer a {
     padding-top: 10px;
-    color:#FDD835;
 }
 
 .facebook {
     padding: 5px 5px 5px 0;
 }
+
 
 .botaocss{
     position: relative;
