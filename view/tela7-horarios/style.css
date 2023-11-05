@@ -94,6 +94,45 @@ header ul li:nth-child(6) a {
     justify-content: center;
     flex-direction: column;
 }
+.texto {
+    padding-right: 3%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.texto p {
+    font-weight: 700;
+}
+
+.texto h2 {
+    font-weight: 400;
+}
+
+.texto h5 {
+    font-weight: 400;
+    padding-top: 1%;
+}
+.price {
+    padding-left: 1%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 7%;
+    height: 30px;
+    width: 37%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.price-block{
+    color: white;
+    padding: 5px;
+    margin: 0;
+    background-color: #363636;
+}
 
 .salvar {
     display: flex;
@@ -102,6 +141,23 @@ header ul li:nth-child(6) a {
 
 .div-botao {
     width: 80%;
+}
+
+.div-botao-edicao {
+    display:contents;
+    width: 80%;
+}
+
+.botaoedicao {
+    border: none;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    color:  #FFFFFF;
+    width: 250px;
+    height: 50px;
+    float:right; 
+    background: #0082E0;
+    border-radius: 30px;
 }
 
 .botaoconfirmar {
@@ -208,6 +264,8 @@ header ul li:nth-child(6) a {
     justify-content: center;
 }
 
+
+
 /* Footer */
 
 footer {
@@ -283,6 +341,10 @@ footer {
 
 #btnAumentarFonte:hover, #btnDiminuirFonte:hover {
     background-color: #375A7F;
+}
+
+.botaoedicao:hover {
+    background-color: #005a99;
 }
 
 .botaoconfirmar:hover {
