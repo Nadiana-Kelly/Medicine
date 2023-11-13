@@ -10,6 +10,7 @@ const criarMedico = async function(nome, area_medica, descricao, username, senha
             client.release();
             return 1;
         } else {
+          client.release();
           return 0;
         }
     } catch(err) {
@@ -74,6 +75,7 @@ const criarUsuario = async function(cargo, nome_completo, data_nascimento, idade
           client.release();
           return 1;
         } else {
+          client.release();
           return 0;
         }
     } catch(err) {
@@ -81,10 +83,10 @@ const criarUsuario = async function(cargo, nome_completo, data_nascimento, idade
     }
 };
 
-const marcarHorario = async function(id_medico, diaSemana, horario) {
+const marcarHorario = async function(id_medico, data, horario) {
     try {
         var client = await pool.connect();
-        await client.query(`INSERT INTO horarios (id_medico, diaSemana, horario) VALUES ($1, $2, $3)`, [id_medico, diaSemana, horario]);
+        await client.query(`INSERT INTO horarios (id_medico, data, horario) VALUES ($1, $2, $3)`, [id_medico, data, horario]);
         client.release();
         return 1;
     } catch(err) {
@@ -106,27 +108,31 @@ const limparHorarios = async function(id_medico) {
 const listarHorarios = async function(id_medico) {
     try {
         var client = await pool.connect();
-        const horarios = await client.query(`SELECT * FROM horarios WHERE (horarios.horario, horarios.diaSemana) NOT IN (SELECT agendamento.horario, agendamento.diasemana FROM agendamento WHERE id_medico = $1) AND id_medico = $1`, [id_medico]);
+        const horarios = await client.query(`SELECT * FROM horarios WHERE (horarios.horario, horarios.data) NOT IN (SELECT agendamento.horario, agendamento.data FROM agendamento WHERE id_medico = $1) AND id_medico = $1`, [id_medico]);
+        client.release();
         return horarios.rows;
     } catch(err) {
-        return false;
+        return [];
     }
 }
 
 const listarTodosHorarios = async function(id_medico) {
   try {
       var client = await pool.connect();
+      console.log('iniciou2');
       const horarios = await client.query(`SELECT * FROM horarios WHERE id_medico = $1`, [id_medico]);
+      console.log('terminou2');
+      client.release();
       return horarios.rows;
   } catch(err) {
       return false;
   }
 }
 
-const criarAgendamento = async function(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) {
+const criarAgendamento = async function(nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data) {
     try {
         var client = await pool.connect();
-        await client.query(`SET datestyle = "ISO, DMY"; INSERT INTO agendamento (nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) VALUES ('${nome_medico}', '${data_consulta}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}', '${id_medico}', '${diasemana}')`);
+        await client.query(`SET datestyle = "ISO, DMY"; INSERT INTO agendamento (nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data) VALUES ('${nome_medico}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}', '${id_medico}', '${data}')`);
         client.release();
         return 1;
     } catch(err) {
@@ -135,14 +141,14 @@ const criarAgendamento = async function(nome_medico, data_consulta, horario, con
     }
 };
 
-const alterarAgendamentos = async function(id_consulta, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana) {
+const alterarAgendamentos = async function(id_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data) {
   try {
 
       var client = await pool.connect();
 
       //var dados_consulta = await client.query(`SELECT * FROM agendamento WHERE id = ${id_consulta}`);      
 
-      await client.query(`SET datestyle = "ISO, DMY"; UPDATE agendamento SET data_consulta = '${data_consulta}', horario = '${horario}', convenio_medico = '${convenio_medico}', motivo_consulta = '${motivo_consulta}', diasemana = '${diasemana}' WHERE agendamento.id = '${id_consulta}'`);
+      await client.query(`SET datestyle = "ISO, DMY"; UPDATE agendamento SET horario = '${horario}', convenio_medico = '${convenio_medico}', motivo_consulta = '${motivo_consulta}', data = '${data}' WHERE agendamento.id = '${id_consulta}'`);
 
       client.release();
       return 1;
@@ -159,12 +165,11 @@ const validarLogin = async function (username, senha) {
       client.release();
       // console.log(resultado.rows)
       return resultado.rows[0]; // Retorna true se houver uma correspondência, caso contrário, retorna false.
-    
     } catch (err) {
       console.error(err);
       return false;
     }
-  };
+};
 
 const listarAgendamentos = async function (id_paciente) {
     try {
@@ -181,7 +186,7 @@ const listarAgendamentos = async function (id_paciente) {
 const listarAgendamentosMedico = async function (id_medico) {
   try {
     const client = await pool.connect();
-    const resultado = await client.query(`SELECT horario, data_consulta, motivo_consulta, nome_completo
+    const resultado = await client.query(`SELECT horario, motivo_consulta, nome_completo
     FROM (SELECT * FROM agendamento JOIN usuarios_registrados ON usuarios_registrados.id = agendamento.id_paciente) AS subquery
     WHERE id_medico = $1;`, [id_medico]);
     // console.log(resultado.rows)
@@ -212,11 +217,13 @@ async function atualizarAgendas(id_medico) {
       const res = await client.query(`SELECT * FROM agendamento WHERE id_medico = $1`, [id_medico]);
 
       for(data of res.rows) {
-          const res2 = await client.query(`SELECT EXISTS (SELECT * FROM horarios WHERE diasemana = $1 AND horario = $2 AND id_medico = $3)`, [data.diasemana, data.horario, data.id_medico]);
+          const res2 = await client.query(`SELECT EXISTS (SELECT * FROM horarios WHERE data = $1 AND horario = $2 AND id_medico = $3)`, [data.data, data.horario, data.id_medico]);
           if(!res2.rows[0].exists) {
-              await client.query(`DELETE from agendamento WHERE id = $1 AND diasemana = $2 AND horario = $3`, [data.id, data.diasemana, data.horario]);
+              await client.query(`DELETE from agendamento WHERE id = $1 AND data = $2 AND horario = $3`, [data.id, data.data, data.horario]);
           }
       }
+
+      client.release();
   } catch(err) {
       console.log('error: ', err);
   }

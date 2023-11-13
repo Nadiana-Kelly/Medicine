@@ -4,24 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link id="cssFile" rel="stylesheet" type="text/css" href="style.css">
     <title>Medicine</title>
 </head>
 
 <body>
     <header>
-        <nav>
-            <img class="logo" src="logo.png" alt="logo">
-            <ul class="nav-list">
-                <button id="btnAumentarFonte">A+</button>
-                <button id="btnDiminuirFonte">A-</button>
-                <button id='btnColor' class="botaocss">ALTERAR TEMA</button>
-                <li><a href="../tela0-login/index.html">INÍCIO</a></li>
-                <li><a href="../tela1-profissionais/index.html">PROFISSIONAIS</a></li>
+        <nav class="d-flex align-items-center">
+            <div>
+                <img src="../HeaderFooter/logo.png" width="254px" height="54px" alt="logo">
+            </div>
+            <div class="nav-list d-flex align-items-center justify-content-center">
+                <div class="dropdown">
+                    <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        ACESSIBILIDADE
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="m-0"><a class="dropdown-item item1" href="#" onclick="aumentarFonte(event)">A+</a></li>
+                        <li class="m-0"><a class="dropdown-item item2" href="#" onclick="diminuirFonte(event)">A-</a></li>
+                        <li class="m-0"><a class="dropdown-item item3" href="#" id="btnColor">ALTERAR TEMA</a></li>
+                    </ul>
+                </div>
+
+                <a id="inicio" href="#" class="text-white ms-4 mb-0 font-header">INICIO</a>
+                <a href="../tela1-profissionais/index.html" class="text-white ms-4 mb-0 font-header">PROFISSIONAIS</a>
+                <a class="linha-verical ms-3"></a>
+                <a id="login" href="../tela0-login/index.html" class="text-white ms-4 mb-0 font-header">LOGIN</a>
+                <a id="registrar" href="../tela4-cadastroUsuario/index.html" class="text-white ms-4 mb-0 font-header outline-marker">REGISTRAR-SE</a>
+
+                <!-- <li><a href="../tela1-profissionais/index.html">INÍCIO</a></li>
                 <li><a href="#"></a></li>
-                <li><a href="../tela0-login/index.html">LOGIN</a></li>
-                <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li>
-            </ul>
+                <li><a href="#"></a></li>
+                <li class="registro"><a href="../tela4-cadastroUsuario/index.html">REGISTRAR-SE</a></li> -->
+            </div>
         </nav>
     </header>
     
@@ -137,37 +153,17 @@
         </div>
     </div>
 
-
-
-    <footer>
-        <div class="conteudo-footer">
-            <div>
-                <img class="logo" src="logo.png" alt="logo">
-            </div>
-            <div>
-                <ul class="links-footer">
-                    <li><h2>Institucional</h2></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Profissionais</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-            <div>
-                <h2>Redes Sociais</h2>
-                <div class="icones">
-                    <img class="facebook" src="face.svg" alt="facebook">
-                    <img src="insta.svg" alt="instagram">
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../HeaderFooter/scriptColor.js"> </script>
 
     <script>
-        
+        const consulta = JSON.parse(localStorage.getItem('consulta_usuario'));
+
         // Horários
         var horario = undefined;
         var horarioMarcado = '';
-        var diaSemana = '';
+        var data = '';
+
         function selecionarHorario(event) {
             // Verificar se o horário está disponível
             if (!this.classList.contains('indisponivel')) {
@@ -176,11 +172,7 @@
                 }
 
                 this.className = 'selecionado';
-                this.id = 'horarioSelecionado'
 
-                // Lógica para selecionar o horário e armazenar em um banco de dados
-                // Por exemplo, você pode adicionar uma classe ao horário selecionado
-                console.log(this);
                 if(horario==this) {
                     this.className = 'disponivel'
                     horarioMarcado='';
@@ -190,19 +182,43 @@
                     var cell = event.target;
                     // var rowIndex = cell.parentNode.rowIndex; // Índice da linha
                     var cellIndex = cell.cellIndex; // Índice da célula na linha
-                    diaSemana = cellIndex;
+                    data = document.getElementById('cabecalho_dias').children[cellIndex].children[1].textContent;
                     horario=this;
                 }
             }
         }
 
-        var urlParams = new URLSearchParams(window.location.search);
-            //inputElement.value = urlParams.get("nomeMedico");
-        var id_medico = urlParams.get('idMedico');
+        function getDateInfo(date) {
+            const weekIndex = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+            const today  = date ?? new Date();
+
+            return {
+                day: today.getDate(),
+                week: {
+                    name: weekIndex[today.getDay()],
+                    number: today.getDay()
+                },
+                month: today.getMonth()+1
+            }
+        }
+
+        function getWeekDateInfo() {
+            const weekIndex = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            const date = new Date();
+
+            const getDateIncreased = (days) => {
+                return new Date(date.setDate(date.getDate() + days));
+            }
+
+            return Array(7).fill(0).map((v, i) => getDateInfo(getDateIncreased(!!i)));
+        }
 
         // carregar os horários do médico
 
-        const url = `http://localhost:3000/listarHorarios/${id_medico}`;
+        const weekInfo = getWeekDateInfo();
+
+        const url = `/listarHorarios/${consulta.id_medico}`;
 
         fetch(url).then(res => {
             if(res.ok) {
@@ -210,96 +226,81 @@
             } else {
                 throw new Error("Falha na requisição. Código de status: " + res.status);
             }
-        }).then(data => {
-            const semanaIndex = {
-                'domingo': 0,   'segunda': 1,
-                'terça':   2,   'quarta':  3,
-                'quinta':  4,   'sexta':   5,
-                'sábado':  6
-            };
+        }).then(res => {
+            const semanaIndex = {};
+
+            weekInfo.forEach((v, index) => {
+                semanaIndex[v.day + '/' + v.month] = index;
+            });
 
             const horaIndex = {
-                '08:00': 0,
-                '09:00': 1,
-                '10:00': 2,
-                '11:00': 3,
-                '14:00': 4,
-                '15:00': 5,
-                '16:00': 6,
+                '08:00:00': 0,
+                '09:00:00': 1,
+                '10:00:00': 2,
+                '11:00:00': 3,
+                '14:00:00': 4,
+                '15:00:00': 5,
+                '16:00:00': 6,
             };
 
-            const semana = [
-                'Dom', 'Seg',
-                'Ter', 'Qua',
-                'Qui', 'Sex',
-                'Sáb'
-            ];
-
-            const cabecalho_dias = document.getElementById('cabecalho_dias');
-            
-            var data_atual = new Date();
-            var data_i = new Date(data_atual.setDate(data_atual.getDate() - 1));
-
-            for (i of cabecalho_dias.children) {
-                data_i = new Date(data_i.setDate(data_i.getDate() + 1));
-                var dia_mes = `${data_i.getUTCDate()}/${data_i.getUTCMonth() + 1}`;
-                var dia_da_semana = semana[data_i.getDay()];
-                i.innerHTML = `<p>${dia_da_semana}</p><p class="data">${dia_mes}</p>`
-            }
-
             const table = document.getElementById('tabela2');
-            const tabelaHorario = Array(7).fill([]).map(e => Array(7).fill({}))
+            const tabelaHorario = Array(7).fill([]).map(e => Array(7).fill({}));
 
-            var dia_da_semana = data_atual.getDay();
             var outerIndex = 0;
-            for(i of table.children) {
-                var innerIndex = dia_da_semana + 1;
-                for(j of i.children) {
-                    if (innerIndex == 7)
-                        innerIndex = 0;
+            for(let i of table.children) {
+                var innerIndex = 0;
+                for(let j of i.children) {
                     tabelaHorario[outerIndex][innerIndex] = j
                     innerIndex++;
                 }
                 outerIndex++;
             }
 
-            var shift = (6 - data_atual.getDay());
-            for(horario of data) {
-                var week_day = semanaIndex[horario.diasemana];
-                var week_index = (week_day + shift) <= 6 ? (week_day + shift) : 7 - (week_day + shift); 
-                var hour_index = horaIndex[horario.horario.substr(0, horario.horario.length-3)];
-                
-                //console.log(`${horario.diasemana} (${week_index}) | ${horario.horario} (${hour_index})`);
-                tabelaHorario[hour_index][week_index].className = 'disponivel';
-                tabelaHorario[hour_index][week_index].addEventListener('click', selecionarHorario);
+            for(let horario of res) {
+                if(semanaIndex[horario.data] != undefined) {
+                    tabelaHorario[horaIndex[horario.horario]][semanaIndex[horario.data]].className = 'disponivel';
+                    tabelaHorario[horaIndex[horario.horario]][semanaIndex[horario.data]].addEventListener('click', selecionarHorario);
+                }
+            }
+
+            // Mostrando o horário que foi inicialmente selecionado
+
+            if(semanaIndex[consulta.data] != undefined) {
+                tabelaHorario[horaIndex[consulta.horario + ':00']][semanaIndex[consulta.data]].className = 'selecionado';
+                tabelaHorario[horaIndex[consulta.horario + ':00']][semanaIndex[consulta.data]].addEventListener('click', selecionarHorario);
+                horarioMarcado  = consulta.horario + ':00';
+                horario         = tabelaHorario[horaIndex[consulta.horario + ':00']][semanaIndex[consulta.data]];
+                data            = consulta.data;
+            }
+
+            const children = document.getElementById('cabecalho_dias').children;
+
+            for(let i = 0; i < 7; i++) {
+                children[i].innerHTML = `<p>${weekInfo[i].week.name}</p><p class="data">${weekInfo[i].day + '/' + weekInfo[i].month}</p>`
             }
         });
         // Função para aumentar o tamanho da fonte
         function aumentarFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        if (fontSize <= 30){
-            fontSize += 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+            if (fontSize <= 30){
+                fontSize += 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
         }
 
         // Função para diminuir o tamanho da fonte
         function diminuirFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    
-        if (fontSize >= 16){
-            fontSize -= 2;
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        
+            if (fontSize >= 16){
+                fontSize -= 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
         }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
-        }
-
-        // Event listeners para os botões de alteração de tamanho da fonte
-        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
-        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
 
         // Aplicar o tamanho de fonte armazenado no carregamento da página
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
@@ -307,46 +308,35 @@
 
         //concluir agendamento salvando os dados 
         // localStorage.getItem('horario')
-        var urlParams = new URLSearchParams(window.location.search);
         
         var inputElement = document.getElementById('nomeMedico');
-        inputElement.value = urlParams.get("nomeMedico");
+        inputElement.value = consulta.nome_medico;
 
         inputElement = document.getElementById('convenioMedico');
-        inputElement.value = urlParams.get("convenio_medico");
+        inputElement.value = consulta.convenio_medico;
 
         inputElement = document.getElementById('motivoConsulta');
-        inputElement.value = urlParams.get("motivo_consulta");
+        inputElement.value = consulta.motivo_consulta;
         
-        var diaSemana = urlParams.get('diaSemana');
-
-        const diaSemanaFromIndex = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
+        var diaSemana = consulta.data;
 
         //salvando agendamento no banco de dados 
         document.getElementById("btnagendamento").addEventListener("click", function () {
-            const nome_medico = document.getElementById('nomeMedico').value;
-            const horario = document.getElementById('horarioSelecionado').innerHTML;
+            const horario       = horarioMarcado;
             const convenio_medico = document.getElementById('convenioMedico').value;
             const motivo_consulta = document.getElementById('motivoConsulta').value;
 
-            // Obter a data atual
-            const dataAtual = new Date();
-            // Somar os dias à data atual
-            dataAtual.setDate(dataAtual.getDate() + Number(diaSemana));
-            var opcoes = { day: '2-digit', month: '2-digit', year: 'numeric' };
-            var data_consulta = dataAtual.toLocaleDateString('pt-BR', opcoes);
-
             //Construir o objeto com os dados a serem enviados
             const dados = {
-                nome_medico: nome_medico,
                 horario: horario,
                 convenio_medico: convenio_medico,
                 motivo_consulta: motivo_consulta,
-                data_consulta: data_consulta,
-                diasemana: diaSemanaFromIndex[diaSemana],
-                id_paciente: localStorage.getItem("id_paciente"),
-                id_medico: localStorage.getItem("id_medico")
+                data,
+                id_paciente: consulta.id_paciente,
+                id_medico: consulta.id_medico
             };
+
+            console.log(dados);
 
             // Configurar as opções da requisição POST
             const requestOptions = {
@@ -355,25 +345,19 @@
                 body: JSON.stringify(dados)
             };
 
-            var urlParams = new URLSearchParams(window.location.search);
-            //inputElement.value = urlParams.get("nomeMedico");
-            var id_consulta = urlParams.get('id_consulta');
-
             // Enviar a requisição POST para a URL desejada
-            fetch(`http://localhost:3000/alterarAgendamentos/${id_consulta}`, requestOptions)
+            fetch(`/alterarAgendamentos/${consulta.id}`, requestOptions)
             .then(response => response.text())
             .then(data => {
                 // Tratar a resposta da API
                 location.href = '../tela6-consultasMarcadas/index.html';
             })
             .catch(error => {
-            // Tratar erros
-            console.error('Erro:', error);
+                // Tratar erros
+                alert('Algum erro ocorreu');
             });
         });
 
-    </script>
-    <script src="../HeaderFooter/scriptColor.js">
     </script>
 </body>
 

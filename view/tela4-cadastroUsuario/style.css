@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
+
+:root {
+    /* #002244 */
+    --btn-color: #0500FF; 
+    /* #375A7F */
+    --btn-hover-color: #131184;
+    
+    /* #0082E0 */
+    --hour-table-selected-state: #0500FF;
+    /* #DEEFFB */
+    --btn-hour-table-available-state: #131184;
+    /* 0082E0 */
+    --text-hour-table-available-state: white;
+
+    /* none; */
+    --border: 2px solid black;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -31,6 +50,30 @@ nav{
 background: #000000;
 }
 
+.nav-list{
+    list-style: none;
+    display:flex;
+    font-family: 'Raleway', sans-serif;
+    left: 50%;
+    top:38px;
+    height: 21px;
+}
+
+.nav-list li{
+    letter-spacing: 3px;
+    margin-left:32px;
+}
+
+header ul li:nth-child(5) a {
+    position: relative;
+    width: 42px;
+    height: 0px;
+    right: 15%;
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg); 
+
+}
+
 .logo{
     position: relative;
     width: 254px;
@@ -61,27 +104,42 @@ input[type="number"],
 input[type="tel"],
 input[type="email"],
 input[type="password"] {
+    margin-bottom: 15px;
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    font-size: 16px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    background: #D9D9D9;
     box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #606060;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: var(--btn-color);
     color: #fff;
     border: none;
     padding: 10px 20px;
+    margin-top: 20px;
     cursor: pointer;
-    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 20px;
+    width: 100%;
+    height: 40px;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: var(--btn-hover-color);
 }
-
 
 .formulario {
     display: flex;
@@ -89,13 +147,81 @@ input[type="submit"]:hover {
     flex-direction: row;
     align-items: center;
     height: 800px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
+.formulario h1 {
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #000;
+    font-family: Raleway;
+    font-size: 30px;
+    font-style: normal;
+    line-height: normal
+}
+
+
+.formulario label {
+    font-family: 'Raleway', sans-serif;
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.font-header {
+    font-family: 'Raleway', sans-serif;
+}
+
+.outline-marker {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 7px;
+    border-radius: 40px;
+    border: 2px solid  white;
+    top:38px;
+    height: 40px;
+    color: white;
+}
+
+.linha-verical {
+    width: 38px;
+    height: 0px;
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg); 
+}
+
+.acessib-cor{
+    color: white;
+    outline: #FFFFFF;
+}
+
+.acessib-cor:focus, .acessib-cor:hover {
+    color: white;
+}
+
+.item1:hover {
+    background-color: #0082E0;
+}
+
+.item2:hover {
+    background-color: #0082E0;
+}
+
+.item3:hover {
+    background-color: #0082E0;
 }
 
 /* Footer */
 
 footer {
     padding: 3% 0 3% 0;
-    margin-top: 5%;
+    margin-top: 10%;
     display: flex;
     background-color: #000;
     justify-content: center;
@@ -120,50 +246,4 @@ footer {
 
 .facebook {
     padding: 5px 5px 5px 0;
-}
-
-.botaocss{
-    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 150px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.botaocss:hover {
-    background-color: #375A7F;
-}
-
-/* botões de A+ e A- */
-#btnAumentarFonte,#btnDiminuirFonte {
-    border-radius: 30px;    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 80px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
-    background-color: #375A7F;
 }

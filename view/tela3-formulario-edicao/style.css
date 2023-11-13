@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
+:root {
+    /* #002244 */
+    --btn-color: #0500FF; 
+    /* #375A7F */
+    --btn-hover-color: #131184;
+    
+    /* #0082E0 */
+    --hour-table-selected-state: #0500FF;
+    /* #DEEFFB */
+    --btn-hour-table-available-state: #131184;
+    /* 0082E0 */
+    --text-hour-table-available-state: white;
+
+    /* none; */
+    --border: 2px solid black;
+}
 
 * {
     margin: 0;
@@ -31,41 +47,7 @@ nav{
     left: 0px;
     top: 0px;
 
-background: #000000;
-}
-
-.nav-list{
-    list-style: none;
-    display:flex;
-    font-family: 'Raleway', sans-serif;
-    left: 50%;
-    top:38px;
-    height: 21px;
-    font-style: SemiBold;
-}
-
-.nav-list li{
-    letter-spacing: 3px;
-    margin-left:32px;
-}
-
-header ul li:nth-child(8) a {
-    padding: 9px;
-    background-color: none;
-    border-radius: 40px;
-    border: 2px solid  #FFFFFF;
-    top:38px;
-    height: 21px;
-}
-
-header ul li:nth-child(6) a {
-    position: relative;
-    width: 42px;
-    height: 0px;
-    right: 15%;
-    border: 1px solid #FFFFFF;
-    transform: rotate(90deg); 
-
+    background: #000000;
 }
 
 img [src="cruz 1.png"]{
@@ -127,91 +109,17 @@ img [src="cruz 1.png"]{
     width: 25%;
     height: 50px;
     float:right; 
-    background: #0082E0;
+    /* background: #0082E0; */
+    background-color: var(--btn-color);
     border-radius: 30px;
 }
 
 .botao {
     margin-top: 2%;
 }
-/* Footer */
-
-footer {
-    padding: 3% 0 3% 0;
-    margin-top: 5%;
-    display: flex;
-    background-color: #000;
-    justify-content: center;
-}
-
-.conteudo-footer{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-.links-footer {
-    list-style: none;
-    align-items: center;
-}
-
-.links-footer a {
-    padding-top: 10px;
-}
-
-.facebook {
-    padding: 5px 5px 5px 0;
-}
-.botaocss{
-    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 150px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.botaocss:hover {
-    background-color: #375A7F;
-}
-
-/* botões de A+ e A- */
-#btnAumentarFonte,#btnDiminuirFonte {
-    border-radius: 30px;    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 80px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
-    background-color: #375A7F;
-}
 
 .botao button:hover {
-    background-color:  #005a99;
+    background-color:  var(--btn-hover-color);
 }
 
 .agendamento {
@@ -231,9 +139,15 @@ footer {
     border: 1px solid  #E1E1E1 !important;
 }
 
+.disponivel{
+    color: var(--text-hour-table-available-state) !important;
+    background-color: var(--btn-hour-table-available-state) !important;
+    border: 1px solid  white !important;
+}
+
 .selecionado {
     color: white !important;
-    background-color: #0082E0 !important;
+    background-color: var(--hour-table-selected-state) !important;
     border: 1px solid  #0082E0 !important;
 }
 
@@ -247,7 +161,7 @@ footer {
 }
 
 .tabela tbody td {
-    color: #0082E0;
+    color: var(--text-hour-table-available-state);
     font-size: 18px;
     background-color: #DEEFFB;
     border: 1px solid #DEEFFB;
@@ -255,7 +169,6 @@ footer {
     padding: 8px;
     font-weight: 500;
 }
-
 
 .tabela thead th {
     font-weight: bold;
@@ -274,4 +187,43 @@ footer {
 
 .tabela tfoot .links {
     text-align: right;
+}
+
+.outline-marker {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 7px;
+    border-radius: 40px;
+    border: 2px solid  white;
+    top:38px;
+    height: 40px;
+    color: white;
+}
+
+.linha-verical {
+    width: 38px;
+    height: 0px;
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg); 
+}
+
+.acessib-cor{
+    color: white;
+    outline: #FFFFFF;
+}
+
+.acessib-cor:focus, .acessib-cor:hover {
+    color: white;
+}
+
+.item1:hover {
+    background-color: #0082E0;
+}
+
+.item2:hover {
+    background-color: #0082E0;
+}
+
+.item3:hover {
+    background-color: #0082E0;
 }

@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
+:root {
+    /* #002244 */
+    --btn-color: #0500FF; 
+    /* #375A7F */
+    --btn-hover-color: #131184;
+    
+    /* #0082E0 */
+    --hour-table-selected-state: #0500FF;
+    /* #DEEFFB */
+    --btn-hour-table-available-state: #131184;
+    /* 0082E0 */
+    --text-hour-table-available-state: white;
+
+    /* none; */
+    --border: 2px solid black;
+}
 
 * {
     margin: 0;
@@ -89,7 +105,8 @@ background: #000000;
     margin-top: 30px;
     padding: 20px; /* Espaçamento interno */
     background-color: #ffffff; /* Cor de fundo branca */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombreamento preto leve */
+    border: var(--border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     justify-content: space-between;
 }
 
@@ -108,89 +125,13 @@ background: #000000;
     color:  #FFFFFF;
     width: 200px;
     height: 50px; 
-    background: #0082E0;
+    background-color: var(--btn-color);
     border-radius: 30px;
     margin: 5px;
 }
 
-
-/* Footer */
-
-footer {
-    padding: 3% 0 3% 0;
-    margin-top: 5%;
-    display: flex;
-    width: 100%;
-    background-color: #000;
-    justify-content: center;
-}
-
-.conteudo-footer{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-.links-footer {
-    list-style: none;
-    align-items: center;
-}
-
-.links-footer a {
-    padding-top: 10px;
-}
-
-.facebook {
-    padding: 5px 5px 5px 0;
-}
-
-
-.botaocss{
-    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 150px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-.botaocss:hover {
-    background-color: #375A7F;
-}
-
-/* botões de A+ e A- */
-#btnAumentarFonte,#btnDiminuirFonte {
-    border-radius: 30px;    position: relative;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top:-13px;
-    font-size: 17px;
-    font-family: 'Raleway', sans-serif;
-    color:  #FFFFFF;
-    width: 80px;
-    height: 44px; 
-    padding:9px;
-    background: #002244;
-    border-radius: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-#btnAumentarFonte:hover, #btnDiminuirFonte:hover {
-    background-color: #375A7F;
+.botao:hover {
+    background-color: var(--btn-hover-color);
 }
 
 .outline-marker {

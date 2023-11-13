@@ -18,6 +18,11 @@ app.use(express.static('view'));
 
 app.use(cors());
 
+app.use(function(req, res, next) {
+    console.log(req.path);
+    next();
+});
+
 // Configurar o EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
 
@@ -93,8 +98,8 @@ app.post('/editarMedico', async (req, res) => {
 // rota para criar agedamento
 app.post('/agendamento', async (req, res) => {
     try {
-        const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana } = req.body;
-        if (await query.criarAgendamento(nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana)) {
+        const { nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data } = req.body;
+        if (await query.criarAgendamento(nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data)) {
             res.send('Sucesso');
         } else {
             res.send('Falha ao criar agendamento');
@@ -105,9 +110,10 @@ app.post('/agendamento', async (req, res) => {
 });
 
 // rota para listar agendamento
-app.get('/listarAgendamentos/:id', async (req, res) => { 
+app.get('/listarAgendamentos/:id', async (req, res) => {
     try {
         var agendamentos = await query.listarAgendamentos(req.params.id);
+        console.log(agendamentos);
         res.send(agendamentos);
     } catch(err) {
         res.send(err);
@@ -125,7 +131,7 @@ app.get('/listarAgendamentosMedico/:id', async (req, res) => {
 
 app.delete('/removerAgendamentos/:id', async (req, res) => {
     try {
-        await query.removerAgendamentos(req.params.id)
+        await query.removerAgendamentos(req.params.id);
         res.send('Sucesso');
     } catch(err) {
         res.status(400).send();
@@ -134,8 +140,9 @@ app.delete('/removerAgendamentos/:id', async (req, res) => {
 
 app.post('/alterarAgendamentos/:id', async (req, res) => {
     try {
-        const { nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana } = req.body;
-        await query.alterarAgendamentos(req.params.id, nome_medico, data_consulta, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, diasemana);
+        const { horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data } = req.body;
+        console.log(req.body);
+        await query.alterarAgendamentos(req.params.id, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data);
         res.send('Sucesso');
     } catch(err) {
         console.log(err);
@@ -177,12 +184,10 @@ app.post('/marcarHorario', async (req, res) => {
 
         await query.limparHorarios(id_medico);
 
+        console.log(horario);
+
         for(dia of horario) {
-            for(hora of dia) {
-                if('diaSemana' in hora) {
-                    await query.marcarHorario(id_medico, hora.diaSemana, hora.horario);
-                }
-            }
+            await query.marcarHorario(id_medico, dia.data, dia.horario);
         }
 
         await query.atualizarAgendas(id_medico);
@@ -197,6 +202,7 @@ app.get('/listarHorarios/:id', async (req, res) => {
     try {
       const id_medico = req.params.id;
       const horarios = await query.listarHorarios(id_medico);
+      console.log(horarios);
       return res.send(horarios);
     } catch(err) {
         return res.status(400).send("Algum erro ocorreu");
@@ -206,7 +212,9 @@ app.get('/listarHorarios/:id', async (req, res) => {
 app.get('/listarTodosHorarios/:id', async (req, res) => {
     try {
       const id_medico = req.params.id;
+      console.log('iniciou');
       const horarios = await query.listarTodosHorarios(id_medico);
+      console.log('terminou');
       return res.send(horarios);
     } catch(err) {
         return res.status(400).send("Algum erro ocorreu");
@@ -214,40 +222,39 @@ app.get('/listarTodosHorarios/:id', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-  const { username, senha } = req.body;
+    try {
+        const { username, senha } = req.body;
+        const usuario = await query.validarLogin(username, senha);
+        if (usuario) {
+            const data = {
+            type: 0,
+            ...usuario,
+            message: '/view/tela1-profissionais/index.html',
+            result: 1,
+            };
+            return res.json(data);
+        }
 
-  try {
-    const usuario = await query.validarLogin(username, senha);
-    if (usuario) {
-        const data = {
-          type: 0,
-          ...usuario,
-          message: '/view/tela1-profissionais/index.html',
-          result: 1,
-        };
-        return res.json(data);
+        const medico = await query.validarMedico(username, senha);
+
+        if(medico) {
+            const data = {
+            type: 1,
+            ...medico,
+            message: '/view/tela7-horarios/index.html',
+            result: 1,
+            };
+            return res.json(data);
+        } else {
+            const data = {
+            message: 'Usuário ou senha incorreta',
+            result: 0,
+            };
+            return res.json(data);
+        }
+    } catch (error) {
+        res.status(400).json({ message: 'Erro ao processar a solicitação' });
     }
-
-    const medico = await query.validarMedico(username, senha);
-
-    if(medico) {
-        const data = {
-          type: 1,
-          ...medico,
-          message: '/view/tela7-horarios/index.html',
-          result: 1,
-        };
-        return res.json(data);
-    } else {
-        const data = {
-          message: 'Usuário ou senha incorreta',
-          result: 0,
-        };
-        return res.json(data);
-    }
-  } catch (error) {
-    res.status(400).json({ message: 'Erro ao processar a solicitação' });
-  }
 });
 
 var upload = multer({ dest: './tmp/'});
@@ -274,6 +281,6 @@ app.post('/upload', upload.single('foto'), function(req, res) {
 });
 
 // Iniciar o servidor
-app.listen(3000, () => {
-  console.log('Servidor iniciado na porta 3000');
+app.listen(3011, () => {
+    console.log('Servidor iniciado na porta 3011');
 });

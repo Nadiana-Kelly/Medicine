@@ -71,7 +71,7 @@
 
         //agendamento
         const id_medico = localStorage.getItem("id_medico")
-        const url = "http://localhost:3000/listarAgendamentosMedico/"+id_medico; // substitua com a URL correta
+        const url = "/listarAgendamentosMedico/"+id_medico; // substitua com a URL correta
 
         fetch(url)
         .then(response => {

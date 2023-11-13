@@ -40,62 +40,45 @@
 
     <div class="formulario">
         <div>
-            <h1>Formulário do Paciente</h1> <br><br>
-            <form id="myForm" action="http://localhost:3000/usuarios/criar-conta">
-                <label for="nome">Nome completo do paciente</label>
-                <input type="text" id="nome" name="nome" required>
+            <h1>Preencha os dados para efetuar o cadastro</h1> <br><br>
+            <form id="myForm" action="/usuarios/criar-conta">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" required placeholder="Insira seu nome completo">
                 
-                <label for="dataNascimento"> Data de nascimento</label>
-                <input type="date" id="dataNascimento" name="dataNascimento" required>
-                
-                <label for="idade">Idade do paciente</label>
-                <input type="number" id="idade" name="idade" readonly>
+
+                <div class="d-flex">
+                    <div class="col-6  me-2">
+                        <label for="dataNascimento">Data de nascimento</label>
+                        <input type="date" id="dataNascimento" name="dataNascimento" required >
+                    </div>
+                    <div class="w-100">
+                        <label for="idade">Idade do paciente</label>
+                        <input type="number" id="idade" readonly >
+                    </div>
+                </div>
                 
                 <label for="endereco">Endereço completo</label>
-                <input type="text" id="endereco" name="endereco" required>
+                <input type="text" id="endereco" name="endereco" required placeholder="Insira seu endereço completo (cidade,rua, número...)">
                 
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" required>
+                <input type="tel" id="telefone" name="telefone" required placeholder="Insira seu número de telefone">
                 
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="Insira seu endereço de email"> 
                 
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" required placeholder="Insira seu nome de usuário">
                 
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" required>
+                <input type="password" id="senha" name="senha" required placeholder="Insira sua senha">
                 
-                <input id='btn1' type="submit" value="Enviar">
+                <input id='btn1' type="submit" value="Realizar cadastro">
             </form>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="conteudo-footer">
-            <div>
-                <img class="logo" src="../HeaderFooter/logo.png" alt="logo">
-            </div>
-            <div>
-                <ul class = "links-footer">
-                    <li><h2>Insitucional</h2></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Profissionais</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-            <div>
-                <h2>Redes Sociais</h2>
-                <div class = "icones">
-                    <img class = "facebook" src="../HeaderFooter/face.svg" alt="facebook">
-                    <img  src="../HeaderFooter/insta.svg" alt="instagram">
-                </div>
-            </div>
-        </div>
-    </footer>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+    <script src="../HeaderFooter/scriptColor.js"> </script>
     <!-- HTTP assíncrono -->
     <script>
         // Cálculo da idade do paciente
@@ -118,7 +101,7 @@
             var username          = document.getElementById("username").value;
             var senha             = document.getElementById("senha").value;
             var cargo             = 0;
-            const url             = 'http://localhost:3000/usuarios/criar-conta'; // Substitua pelo URL do seu endpoint de destino
+            const url             = '/usuarios/criar-conta'; // Substitua pelo URL do seu endpoint de destino
 
             var dados = { nome_completo: nome_completo,
                             data_nascimento: data_nascimento,
@@ -141,42 +124,38 @@
         });
     </script>
 
-<script>
-    // Função para aumentar o tamanho da fonte
-    function aumentarFonte() {
-    var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    if (fontSize <= 20){
-        fontSize += 2;
-    }
-    console.log(fontSize);
-    document.documentElement.style.fontSize = fontSize + 'px';
-    localStorage.setItem('fontSize', fontSize);
-    }
+    <script>
+        // Função para aumentar o tamanho da fonte
+        function aumentarFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        if (fontSize <= 20){
+            fontSize += 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
 
-    // Função para diminuir o tamanho da fonte
-    function diminuirFonte() {
-    var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        // Função para diminuir o tamanho da fonte
+        function diminuirFonte() {
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
 
-    if (fontSize >= 16){
-        fontSize -= 2;
-    }
-    console.log(fontSize);
-    document.documentElement.style.fontSize = fontSize + 'px';
-    localStorage.setItem('fontSize', fontSize);
-    }
+        if (fontSize >= 16){
+            fontSize -= 2;
+        }
+        console.log(fontSize);
+        document.documentElement.style.fontSize = fontSize + 'px';
+        localStorage.setItem('fontSize', fontSize);
+        }
 
-    // Event listeners para os botões de alteração de tamanho da fonte
-    document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
-    document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
+        // Event listeners para os botões de alteração de tamanho da fonte
+        document.getElementById('btnAumentarFonte').addEventListener('click', aumentarFonte);
+        document.getElementById('btnDiminuirFonte').addEventListener('click', diminuirFonte);
 
-    // Aplicar o tamanho de fonte armazenado no carregamento da página
-    var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    document.documentElement.style.fontSize = fontSize + 'px';
+        // Aplicar o tamanho de fonte armazenado no carregamento da página
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        document.documentElement.style.fontSize = fontSize + 'px';
 
-</script>
-
-    <script src="../HeaderFooter/scriptColor.js">
     </script>
 </body>
-
 </html>

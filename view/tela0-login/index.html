@@ -46,15 +46,15 @@
     
     <main class="main">
         <div class="formulario">
-            <h1>Login</h1>
+            <h1>Faça seu login no Medicine</h1>
             <form>
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" placeholder="Digite seu usuário"> <br><br>
+                <label for="username">Usuário</label>
+                <input type="text" id="username" placeholder="Insira seu nome de usuário"> <br><br>
                 
-                <label for="password">Senha:</label>
-                <input type="password" id="password" placeholder="Digite sua senha">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Insira sua senha">
                 
-                <input type="submit" value="Entrar" id="btn2">
+                <input type="submit" value="FAZER LOGIN" id="btn2">
             </form>
         </div>
     </main>
@@ -83,8 +83,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../HeaderFooter/scriptColor.js"> </script>
 
-    <!-- HTTP síncrono -->
     <script>
         document.getElementById("btn2").addEventListener("click", function() {
             event.preventDefault(); // Impede o envio padrão do formulário
@@ -92,7 +92,7 @@
             var username = document.getElementById("username").value;
             var senha    = document.getElementById("password").value;
             
-            const url = 'http://localhost:3000/login';
+            const url = '/login';
     
             var data = { username, senha };
     
@@ -122,39 +122,40 @@
     <script>
         // Função para aumentar o tamanho da fonte
         function aumentarFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        if (fontSize <= 30){
-            fontSize += 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+            if (fontSize <= 30){
+                fontSize += 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
         }
 
         // Função para diminuir o tamanho da fonte
         function diminuirFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    
-        if (fontSize >= 16){
-            fontSize -= 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        
+            if (fontSize >= 16){
+                fontSize -= 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
         }
 
-        // Aplicar o tamanho de fonte armazenado no carregamento da página
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
 
-        while(localStorage.length) {
-            localStorage.removeItem(localStorage.key(0))
+        const skipItems = ['theme'];
+
+        for(let i = 0; localStorage.length > skipItems.length;) {
+            if(skipItems.indexOf(localStorage.key(i)) == -1) {
+                localStorage.removeItem(localStorage.key(i));
+            } else {
+                i++;
+            }
         }
     </script>
-    <script src="../HeaderFooter/scriptColor.js">
-    </script>
-
-
 </body>
 
 </html>

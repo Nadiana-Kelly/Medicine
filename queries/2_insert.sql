@@ -1,11 +1,11 @@
-INSERT INTO medicos (id,nome,area_medica,username,senha,foto,descricao) 
+INSERT INTO medicos (id,nome,area_medica,username,senha,foto,descricao)
 VALUES (3,'Meredith Grey','Cirurgiã Geral','grey','123','../fotos/grey.jpg','Especialização em cirurgia geral, habilidade especial em cirurgia neurológica, lida com condições complexas relacionadas ao sistema nervoso.'),
 (4,'Cristina Yang','Cirurgiã Cardiovascular','yang','123','../fotos/yang.jpg','Especializada em cirurgia cardíaca, habilidade inata para lidar com procedimentos complexos e emergências médicas.'),
 (5,'Alex Karev','Cirurgião Geral Pediátrico','alex','123','../fotos/alex.jpg','Cirurgião pediátrico dedicado ao cuidado de crianças e adolescentes, lidando com uma variedade de casos e procedimentos específicos para essa faixa etária'),
 (6,'Jackson Avery','Cirurgião Plástico','avery','123','../fotos/jackson.jpg','Especializado em cirurgia plástica reconstrutiva, habilidade em os  reconstruir partes do corpo afetadas por lesões, traumas ou condições congênitas.');
 
 insert INTO horarios(id,id_medico,diasemana,horario)
-values 
+values
 (358, 5, 'domingo', '08:00:00'),
 (359, 5, 'segunda', '08:00:00'),
 (360, 5, 'quinta', '08:00:00'),

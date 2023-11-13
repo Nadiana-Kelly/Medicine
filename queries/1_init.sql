@@ -24,19 +24,18 @@ CREATE TABLE IF NOT EXISTS usuarios_registrados (
 CREATE TABLE IF NOT EXISTS agendamento (
    ID SERIAL PRIMARY KEY,
    nome_medico VARCHAR(100),
-   data_consulta DATE,
    horario TIME,
    convenio_medico VARCHAR(100),
    motivo_consulta VARCHAR(300),
    id_paciente INTEGER,
    id_medico INTEGER,
-   diasemana VARCHAR(20)
+   data VARCHAR(20)
 );
 
 CREATE TABLE IF NOT EXISTS horarios(
 	ID SERIAL PRIMARY KEY,
 	id_medico INTEGER,
-	diaSemana VARCHAR(20),
+	data VARCHAR(20),
 	horario TIME
 );
 
