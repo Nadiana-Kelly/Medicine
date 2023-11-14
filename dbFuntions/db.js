@@ -71,7 +71,7 @@ const criarUsuario = async function(cargo, nome_completo, data_nascimento, idade
         const result = await client.query('SELECT EXISTS (SELECT 1 FROM medicos WHERE username = $1)', [username]);
 
         if(!result.rows[0].exists) {
-          const result = await client.query(`INSERT INTO usuarios_registrados (cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha) VALUES ('${cargo}', '${nome_completo}', '${data_nascimento}', '${idade}', '${endereco_completo}', '${telefone}', '${email}', '${username}', '${senha}')`);
+          await client.query(`INSERT INTO usuarios_registrados (cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha) VALUES ('${cargo}', '${nome_completo}', '${data_nascimento}', '${idade}', '${endereco_completo}', '${telefone}', '${email}', '${username}', '${senha}')`);
           client.release();
           return 1;
         } else {
@@ -119,9 +119,7 @@ const listarHorarios = async function(id_medico) {
 const listarTodosHorarios = async function(id_medico) {
   try {
       var client = await pool.connect();
-      console.log('iniciou2');
       const horarios = await client.query(`SELECT * FROM horarios WHERE id_medico = $1`, [id_medico]);
-      console.log('terminou2');
       client.release();
       return horarios.rows;
   } catch(err) {
@@ -132,9 +130,14 @@ const listarTodosHorarios = async function(id_medico) {
 const criarAgendamento = async function(nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data) {
     try {
         var client = await pool.connect();
-        await client.query(`SET datestyle = "ISO, DMY"; INSERT INTO agendamento (nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data) VALUES ('${nome_medico}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}', '${id_medico}', '${data}')`);
-        client.release();
-        return 1;
+        const res = await client.query(`SELECT * FROM agendamento WHERE horario = $1 AND id_medico = $2 AND data = $3`, [horario, id_medico, data]);
+        if(res.rowCount == 0) {
+            await client.query(`SET datestyle = "ISO, DMY"; INSERT INTO agendamento (nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data) VALUES ('${nome_medico}', '${horario}', '${convenio_medico}', '${motivo_consulta}', '${id_paciente}', '${id_medico}', '${data}')`);
+            client.release();
+            return 1;
+        }
+
+        return 0;
     } catch(err) {
         console.log('Error:', err);
         return 0;

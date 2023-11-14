@@ -102,7 +102,7 @@ app.post('/agendamento', async (req, res) => {
         if (await query.criarAgendamento(nome_medico, horario, convenio_medico, motivo_consulta, id_paciente, id_medico, data)) {
             res.send('Sucesso');
         } else {
-            res.send('Falha ao criar agendamento');
+            res.status(400).send('Falha ao criar agendamento');
         }
     } catch(err) {
         res.status(400).send('Algo errado ocorreu');

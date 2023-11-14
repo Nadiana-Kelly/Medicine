@@ -134,14 +134,20 @@
 
             // Enviar a requisição POST para a URL desejada
             fetch('/agendamento', requestOptions)
-            .then(response => response.text())
+            .then(response => {
+                if(response.ok) {
+                    response.text();
+                } else {
+                    alert('Algum erro ocorreu ou o horário já se encontra ocupado.');
+                }
+            })
             .then(data => {
                 // Tratar a resposta da API
                 location.href = '../tela2-medico/index.html';
             })
             .catch(error => {
-            // Tratar erros
-            console.error('Erro:', error);
+                // Tratar erros
+                alert(error);
             });
         });
 
