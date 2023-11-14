@@ -142,6 +142,30 @@ nav{
     height: 700px;
 }
 
+footer {
+    padding: 3% 0 3% 0;
+    margin-top: 2%;
+    display: flex;
+    background-color: #000;
+    justify-content: center;
+}
+
+.conteudo-footer{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.links-footer {
+    list-style: none;
+    align-items: center;
+}
+
+.facebook {
+    padding: 5px 5px 5px 0;
+}
 
 .outline-marker {
     padding-left: 25px;
