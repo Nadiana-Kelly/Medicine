@@ -71,7 +71,7 @@ const criarUsuario = async function(cargo, nome_completo, data_nascimento, idade
         const result = await client.query('SELECT EXISTS (SELECT 1 FROM medicos WHERE username = $1)', [username]);
 
         if(!result.rows[0].exists) {
-          await client.query(`INSERT INTO usuarios_registrados (cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha) VALUES ('${cargo}', '${nome_completo}', '${data_nascimento}', '${idade}', '${endereco_completo}', '${telefone}', '${email}', '${username}', '${senha}')`);
+          const result = await client.query(`INSERT INTO usuarios_registrados (cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha) VALUES ('${cargo}', '${nome_completo}', '${data_nascimento}', '${idade}', '${endereco_completo}', '${telefone}', '${email}', '${username}', '${senha}')`);
           client.release();
           return 1;
         } else {

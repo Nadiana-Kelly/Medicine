@@ -34,7 +34,7 @@ app.get('/teste2', async (req, res) => {
   if( await query.criarUsuario(cargo, nome_completo, data_nascimento, idade, endereco_completo, telefone, email, username, senha)) {
       res.send('Sucesso');
   } else {
-      res.send('Falha ao criar usuario');
+      res.status(500).send('Falha ao criar usuario');
   }
 });
 
