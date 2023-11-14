@@ -85,17 +85,16 @@
         .then(data => {
             console.log(data);
             for(consulta of data) {
-                consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3)
-                consulta.data_consulta = consulta.data_consulta.substring(0,consulta.data_consulta.indexOf("T"))
-                var consultas = document.getElementById("consultas")
+                consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3);
+                var consultas = document.getElementById("consultas");
                 consultas.insertAdjacentHTML("beforeend", `<div class='paciente-info' data-id='${consulta.id}'>`+
                     "<div>"+
                         `<h1>${consulta.nome_completo}</h1>`+
-                    `<p>Horário marcado: ${consulta.horario} horas do dia ${consulta.data_consulta}</p>`+
+                    `<p>Horário marcado: ${consulta.horario} horas do dia ${consulta.data}</p>`+
                         `<p>Motivo da consulta: ${consulta.motivo_consulta} </p>`+
                     " </div>"+
                     "</div>"
-                )
+                );
             }
         })
         .catch(error => {
