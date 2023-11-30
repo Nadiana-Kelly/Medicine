@@ -1,15 +1,15 @@
 const pool = require('../conn/postgresql');
 
-const criarMedico = async function(nome, area_medica, descricao, username, senha, foto) {
-  var client = await pool.connect();
+const criarMedico = async function(nome, area_medica, descricao, username, senha, foto, preco) {
+    var client = await pool.connect();
     try {
         const result = await client.query('SELECT EXISTS (SELECT 1 FROM usuarios_registrados WHERE username = $1)', [username]);
-
+        
         if(!result.rows[0].exists) {
-            await client.query('INSERT INTO medicos (nome, area_medica, descricao, username, senha, foto) VALUES ($1, $2, $3, $4, $5, $6)', [nome, area_medica, descricao, username, senha, foto]);
+            await client.query('INSERT INTO medicos (nome, area_medica, descricao, username, senha, foto, preco) VALUES ($1, $2, $3, $4, $5, $6, $7)', [nome, area_medica, descricao, username, senha, foto, preco]);
             client.release();
             return 1;
-        } 
+        }
         client.release();
         return 0;
     } catch(err) {
@@ -31,17 +31,23 @@ const listarMedicos = async function () {
   }
 };
 
-const editarMedico = async function (id, nome, descricao, foto) {
-  const client = await pool.connect();
-  try {
-    const resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, foto = $3 WHERE id = $4', [nome, descricao, foto, id]);
-    client.release();
-    return resultado.rows; // Retorna true se houver uma correspondência, caso contrário, retorna false.
-  } catch (err) {
-    client.release();
-    console.error(err);
-    return false;
-  }
+const editarMedico = async function (id, nome, descricao, foto, preco) {
+    const client = await pool.connect();
+    try {
+      let resultado;
+      if(foto) {
+          resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, foto = $3, preco = $4 WHERE id = $5', [nome, descricao, foto, preco, id]);
+      } else {
+          resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, preco = $3 WHERE id = $4', [nome, descricao, preco, id]);
+      }
+
+      client.release();
+      return resultado.rows; // Retorna true se houver uma correspondência, caso contrário, retorna false.
+    } catch (err) {
+      client.release();
+      console.error(err);
+      return false;
+    }
 };
 
 const perfilMedico = async function (id_medico) {
@@ -260,6 +266,6 @@ module.exports = {
     atualizarAgendas,
     listarTodosHorarios,
     perfilMedico,
-    editarMedico
+    editarMedico,
 };
 

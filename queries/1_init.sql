@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS agendamento (
    data VARCHAR(20)
 );
 
-CREATE TABLE IF NOT EXISTS horarios(
+CREATE TABLE IF NOT EXISTS horarios (
 	ID SERIAL PRIMARY KEY,
 	id_medico INTEGER,
 	data VARCHAR(20),
@@ -46,5 +46,6 @@ CREATE TABLE IF NOT EXISTS medicos (
 	descricao VARCHAR(200),
 	username VARCHAR(50) UNIQUE,
 	senha VARCHAR(50),
-	foto VARCHAR(200)
+	foto VARCHAR(200),
+	preco NUMERIC(10,5)
 );

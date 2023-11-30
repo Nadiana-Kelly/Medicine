@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
 
+:root {
+    /* #002244 */
+    --btn-color: #0500FF; 
+    /* #375A7F */
+    --btn-hover-color: #131184;
+    
+    /* #0082E0 */
+    --hour-table-selected-state: #0500FF;
+    /* #DEEFFB */
+    --btn-hour-table-available-state: #131184;
+    /* 0082E0 */
+    --text-hour-table-available-state: white;
+
+    /* none; */
+    --border: 2px solid black;
+}
 
 * {
     margin: 0;
@@ -37,7 +53,7 @@ background: #000000;
 /* Informações Médicos */
 
 .information {
-    padding-top: 13%;
+    padding-top: 2%;
     margin: 0 10% 0 10%;
     display: flex;
 	flex-direction: row;
@@ -72,7 +88,7 @@ background: #000000;
     width: 250px;
     height: 50px;
     float:right; 
-    background: #0082E0;
+    background: var(--btn-color);
     border-radius: 30px;
 }
 
@@ -115,16 +131,25 @@ background: #000000;
 }
 
 .selecionado {
-    color: white !important;
-    background-color: #0082E0 !important;
-    border: 1px solid  #0082E0 !important;
+    color: white;
+    background-color: var(--hour-table-selected-state);
+    border: var(--border)
+}
+
+.horario {
+    color: #606060;
+    background-color: #E1E1E1;
+    border: var(--border);
+}
+
+.disponivel {
+    color:      var(--text-hour-table-available-state);
+    background-color: var(--btn-hour-table-available-state);
+    border:     var(--border);
 }
 
 .tabela tbody td {
-    color: #0082E0;
     font-size: 18px;
-    background-color: #DEEFFB;
-    border: 1px solid #DEEFFB;
     border-radius: 5px;
     padding: 8px;
     font-weight: 500;
@@ -246,7 +271,7 @@ footer {
 }
 
 .botaoconfirmar:hover {
-    background-color: #005a99;
+    background-color: var(--btn-hover-color);
 }
 
 .outline-marker {
@@ -286,4 +311,19 @@ footer {
 
 .item3:hover {
     background-color: #0082E0;
+}
+
+.change-info {
+    margin-left: 10%;
+    margin-top: 200px;
+    border: none;
+    color:  #FFFFFF;
+    width: 250px;
+    height: 50px;
+    background: var(--btn-color);
+    border-radius: 30px;
+}
+
+.change-info:hover {
+    background-color: var(--btn-hover-color);
 }

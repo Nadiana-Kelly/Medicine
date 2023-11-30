@@ -1,9 +1,38 @@
 const express = require('express');
 const cors = require('cors');
-const multer = require("multer");
 const fs = require("fs");
+const { v4: uuidv4 } = require('uuid');
 const bodyParser = require('body-parser');
-const query      = require('./dbFuntions/db');
+const query  = require('./dbFuntions/db');
+
+const multer = require("multer");
+//var upload = multer({ dest: 'tmp/' });
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'view/fotos/')
+    },
+    filename: function (req, file, cb) {
+        const uuid      = uuidv4();
+        let fileName    = file.originalname;
+        let extension   = fileName.match(/\.[a-z]{3,}$/);
+
+        console.log('../fotos/' + uuid + extension[0]);
+
+        cb(null, '../fotos/' + uuid + extension[0]);
+    }
+});
+
+const upload = multer({
+    storage,
+    fileFilter: (req, file, cb) => {
+        let fileName = file.originalname;
+        let res      = fileName.match(/\.[a-z]{3,}$/);
+
+        cb(null, res ? true : false);
+    }
+});
+
 const app = express();
 
 app.use(express.json());
@@ -18,10 +47,10 @@ app.use(express.static('view'));
 
 app.use(cors());
 
-app.use(function(req, res, next) {
-    console.log(req.path);
-    next();
-});
+// app.use(function(req, res, next) {
+//     console.log(req.path);
+//     next();
+// });
 
 // Configurar o EJS como mecanismo de visualização
 app.set('view engine', 'ejs');
@@ -41,9 +70,8 @@ app.get('/teste2', async (req, res) => {
 // rota para criar medico
 app.post('/criarMedico', async (req, res) => {
   try {
-      const { nome, area_medica, descricao, username, senha, foto } = req.body;
-      console.log(req.body);
-      if( await query.criarMedico(nome, area_medica, descricao, username, senha, foto)) {
+      const { nome, area_medica, descricao, username, senha, foto, preco } = req.body;
+      if( await query.criarMedico(nome, area_medica, descricao, username, senha, foto, preco)) {
           res.send('Sucesso');
       } else {
           res.send('Falha ao criar medico');
@@ -82,8 +110,8 @@ app.get('/perfilMedico/:id', async (req, res) => {
 
 app.post('/editarMedico', async (req, res) => {
     try {
-        const {id, nome, descricao, foto} = req.body;
-        const result = await query.editarMedico(id, nome, descricao, foto);
+        const {id, nome, descricao, foto, preco} = req.body;
+        const result = await query.editarMedico(id, nome, descricao, foto, preco);
         if(result) {
             res.send(result);
         } else {
@@ -257,27 +285,31 @@ app.post('/login', async (req, res) => {
     }
 });
 
-var upload = multer({ dest: './tmp/'});
-
 // File input field name is simply 'file'
-app.post('/upload', upload.single('foto'), function(req, res) {
-
-  const { nome } = req.body;
-
-  var file =  '../fotos/' + nome;
-
-  console.log(`File: ${req.file}`)
-  fs.rename(req.file.src, file, function(err) {
-    if (err) {
-      console.log(err);
-      res.send(500);
-    } else {
-      res.json({
-        message: 'File uploaded successfully',
-        filename: req.file.src
-      });
+app.post('/upload', upload.single('file'), async (req, res, next) => {
+    try {
+        const { id, nome, preco, descricao } = req.body;
+        console.log(req.body);
+        if(await query.editarMedico(id, nome, descricao, req.file ? req.file.filename : undefined, preco)) {
+            res.status(200).send();
+        } else {
+            res.status(400).send();
+        }
+    } catch(err) {
+        res.status(400).send();
     }
-  });
+
+    // fs.rename(req.file.src, file, function(err) {
+    //     if (err) {
+    //     console.log(err);
+    //     res.send(500);
+    //     } else {
+    //     res.json({
+    //         message: 'File uploaded successfully',
+    //         filename: req.file.src
+    //     });
+    //     }
+    // });
 });
 
 // Iniciar o servidor

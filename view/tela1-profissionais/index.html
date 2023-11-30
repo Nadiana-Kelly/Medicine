@@ -153,7 +153,7 @@
                 for(medico of res) {
                     console.log(medico.foto);
                     divPrincipal.insertAdjacentHTML('beforeend', 
-                        `<div class="retangulo-medico" id='${medico.id}'>` +
+                        `<div data-valor-consulta="${medico.preco}" class="retangulo-medico" id='${medico.id}'>` +
                             '<div class="informacoes-medico">' +
                                 `<img src='${medico.foto}' alt=${medico.nome} width='160' height='160'>` +
                                 '<div>'+
@@ -171,6 +171,7 @@
 
                     document.getElementById('botao'+medico.id).addEventListener('click', function(event) {
                         const target = event.target;
+                        const valor_consulta = Number(target.parentNode.parentNode.getAttribute('data-valor-consulta')).toFixed(2);
                         const h1_info = target.parentNode.parentNode.children[0].children[1];
                         const h1Text = h1_info.children[0].textContent;
                         const descricao  = h1_info.children[1].textContent;
@@ -182,6 +183,7 @@
                         localStorage.setItem('descricaoMedico', descricao);
                         localStorage.setItem('id_medico', id_medico);
                         localStorage.setItem('medicoFoto', medicoFoto);
+                        localStorage.setItem('valor_consulta', valor_consulta);
 
                         location.href = '../tela2-medico/index.html';
                     });

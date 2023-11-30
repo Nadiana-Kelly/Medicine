@@ -32,6 +32,11 @@
             </div>
         </nav>
     </header>
+
+    <div class="m-100">
+        <button class="change-info" onclick="editarPerfil()"> Editar informações </button>
+    </div>
+
     <div class="information">
         <div class="texto">
             <h1>Selecione abaixo os horários disponíveis para atendimento.</h1>
@@ -304,13 +309,15 @@
             localStorage.setItem('fontSize', fontSize);
         }
 
+        function editarPerfil() {
+            window.location.href = '/view/tela9-perfilMedico/index.html';
+        }
+
         // Aplicar o tamanho de fonte armazenado no carregamento da página
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
     </script>
-    <script src="../HeaderFooter/scriptColor.js">
-
-    </script>
+    <script src="../HeaderFooter/scriptColor.js"> </script>
 </body>
 
 </html>

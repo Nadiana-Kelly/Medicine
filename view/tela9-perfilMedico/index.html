@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Medicine</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link  rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo">
+            <div class="nav-list d-flex align-items-center justify-content-center">
+                <div class="dropdown">
+                    <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        ACESSIBILIDADE
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="m-0"><a class="dropdown-item item1" href="#" onclick="aumentarFonte(event)">A+</a></li>
+                        <li class="m-0"><a class="dropdown-item item2" href="#" onclick="diminuirFonte(event)">A-</a></li>
+                        <li class="m-0"><a class="dropdown-item item3" href="#" id="btnColor">ALTERAR TEMA</a></li>
+                    </ul>
+                </div>
+
+                <a id="inicio" href="../tela7-horarios/index.html" class="text-white ms-4 mb-0 font-header">HORÁRIOS</a>
+                <a id="registro" href="../tela8-consultasMedico/index.html" class="text-white ms-4 mb-0 font-header">CONSULTAS</a>
+                <a class="linha-verical ms-3"></a>
+                <a id="login" href="../tela0-login/index.html" class="text-white ms-4 mb-0 font-header outline-marker">LOGOUT</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Corpo   d-flex justify-content-center align-items-center h-100 -->
+    <main class="d-flex justify-content-center align-items-center h-100">
+        <form class="d-flex" action="http://127.0.0.1:3011/upload" method="POST" enctype="multipart/form-data" id="formData">
+            <div class="div-esquerda">
+                <div>
+                    <button class="rounded-4 botao-voltar p-0 ps-4" style="z-index: 1;">VOLTAR</button>
+                    <img src="seta.svg" class="seta-voltar mb-1" style="z-index: 2;">
+                </div>
+                <div class="mt-2">
+                    <h2 class="w-auto">Personalização de Perfil</h2>
+                </div>
+                
+                <div class="mt-5">
+                    <img src="imagem-doc.png" width="345px" height="345px" class="rounded-circle" id="person-img">
+                    <!-- <img src="group26.png" width="75px" height="75px" class="rounded-circle botao-carregar"> -->
+                    <div>
+                        <img src="caneta.svg" class="caneta-position" style="z-index: 2;" onclick="openWindowExplorer()">
+                    <!-- <input type="file" class="botao-carregar" style="z-index: 1;" onclick="Nadiana()"></input> -->
+                    <label for="input-btn" class="btn btn-primary botao-carregar rounded-circle" id="pseudo-input-btn"> </label>
+                    <input type="file" class="file-button" id="input-btn" onchange="onFileSelected(event)" name="file">
+                        <!-- <input type="file" class="file-xbutton" id="input-btn" onchange="onFileSelected(event)" name="file"> -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="div-direita">
+                <input name="id" type="hidden" id="medico_id" value=''>
+
+                <div class="col-12">
+                    <label class="form-label fs-5 fw-bold">Nome</label>
+                    <input type="text" class="applyBorder input-form form-control rounded-4" value="Dra.Juliana Brasil" id="nome" name="nome">
+                </div>
+                <div class="col-12 mt-3">
+                    <label class="form-label fs-5 fw-bold">Descrição</label>
+                    
+                    <div class="applyBorder div-textarea rounded-4 p-2">
+                        <textarea class="w-100 rounded-4" rows="3" style="resize: none;"  id="descricao" name="descricao">
+        Formada em medicina pela Universidade Federal do Ceará (UFC). Especialidades: Psicoterapia, Psiquiatria da Infância e da adolescência.
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <label class="form-label fs-5 fw-bold">Valor consulta</label>
+                    <input type="number" class="applyBorder input-form form-control rounded-4" value="200" id="valor" name="preco">
+                </div>
+                <div class="col-12 d-flex flex-row-reverse mt-3 ">
+                    <button class="btn btn-primary rounded-5 button-salvar-alteracoes fw-medium" onclick="salvarPerfil(event, this.form)"> SALVAR ALTERAÇÕES </button>
+                    <!-- <input type="submit" class="btn btn-primary rounded-5 button-salvar-alteracoes fw-medium" value="SALVAR ALTERAÇÕES"></input> -->
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../HeaderFooter/scriptColor.js"> </script>
+
+    <script>
+        function openWindowExplorer() {
+            const get= document.getElementById('pseudo-input-btn');  
+            get.click();  
+        }
+
+        function onFileSelected(event) {
+            var selectedFile = event.target.files[0];
+            var reader = new FileReader();
+
+            var imgtag = document.getElementById("person-img");
+            imgtag.title = selectedFile.name;
+
+            imgtag.src = event.target.result;
+
+            reader.onload = function(event) {
+                imgtag.src = event.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+
+        function salvarPerfil(event, form) {
+            event.preventDefault();
+            const data = new FormData(form);
+
+            options = {
+                method: 'POST',
+                body: data,
+            };
+
+            fetch('/upload', options).then(res => {
+                if(res.ok) {
+                    alert('Perfil Alterado com sucesso.');
+                } else {
+                    alert('Algum erro ocorreu');
+                }
+            });
+        }
+
+        document.getElementById("medico_id").value = localStorage.getItem("id_medico");
+
+        const id_medico = localStorage.getItem('id_medico');
+
+        const url = `/perfilMedico/${id_medico}`;
+
+        fetch(url).then(res => {
+            if(res.ok) {
+                return res.json();
+            } else {
+                throw new Error("Falha na requisição. Código de status: " + res.status);
+            }
+        }).then(data => {
+            const medico = data[0];
+            console.log(medico);
+            document.getElementById("person-img").src = medico.foto;
+            document.getElementById("nome").value = medico.nome;
+            document.getElementById("descricao").value = medico.descricao;
+            document.getElementById("valor").value = Number(medico.preco).toFixed(2);
+        });
+    </script>
+  </body>
+</html>
+

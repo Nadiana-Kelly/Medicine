@@ -86,21 +86,23 @@ nav {
     padding-top: 1%;
 }
 
-.price {
-    padding-left: 1%;
-    justify-content: space-between;
+/* .price {
+    justify-content: center;
     align-items: center;
     text-align: center;
     display: flex;
     flex-direction: row;
     margin-top: 7%;
-    height: 30px;
-    width: 37%;
+    width: 250px;
     background: #FFFFFF;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+} */
+
+.price {
+    margin-top: 7%;
 }
 
-.price-block{
+.price-block {
     color: white;
     padding: 5px;
     margin: 0;

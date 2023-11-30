@@ -44,9 +44,11 @@
             <h1 id="nomeMedico">Dra. Juliana Brasil</h1>
             <h2 id="descricaoMedico">Formada em medicina pela Universidade Federal do Ceará (UFC). Especialidades: Psicoterapia, Psiquiatria
                 da Infância e da adolescência</h2>
-            <div class="price">
-                <p>VALOR CONSULTA</p>
-                <p class="price-block">200R$</p>
+            <div class="d-flex price gap-4">
+                <div class="d-flex price gap-4 m-0 shadow-lg">
+                    <p class="m-0 pt-1 ms-2">VALOR CONSULTA</p>
+                    <p class="price-block" id="valor-consulta">200R$</p>
+                </div>
             </div>
             <h5>*Valor referente a consulta sem convênio médico.</h5>
         </div>
@@ -191,8 +193,6 @@
 
         const id_medico = localStorage.getItem('id_medico');
 
-        // carregar os horários do médico
-
         // parser date
         function getDateInfo(date) {
             const weekIndex = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
@@ -278,9 +278,11 @@
 
         const nome      = localStorage.getItem("nomeMedico");
         const descricao = localStorage.getItem("descricaoMedico");
+        const valor_consulta = localStorage.getItem("valor_consulta");
 
         document.getElementById('nomeMedico').textContent = nome;
         document.getElementById('descricaoMedico').textContent = descricao;
+        document.getElementById('valor-consulta').textContent = valor_consulta;
 
         // Função para aumentar o tamanho da fonte
         function aumentarFonte() {
