@@ -54,14 +54,14 @@
 
         // Função para diminuir o tamanho da fonte
         function diminuirFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-    
-        if (fontSize >= 16){
-            fontSize -= 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        
+            if (fontSize >= 16){
+                fontSize -= 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
         }
 
         // Aplicar o tamanho de fonte armazenado no carregamento da página
@@ -85,7 +85,7 @@
         .then(data => {
             console.log(data);
             for(consulta of data) {
-                consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3);
+                consulta.horario = consulta.horario.substring(0,consulta.horario.length-3);
                 var consultas = document.getElementById("consultas");
                 consultas.insertAdjacentHTML("beforeend", `<div class='paciente-info' data-id='${consulta.id}'>`+
                     "<div>"+

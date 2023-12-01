@@ -81,6 +81,19 @@ app.post('/criarMedico', async (req, res) => {
   }
 });
 
+app.delete('/apagarMedico/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        if(await query.apagarMedico(id)) {
+            return res.status(200).send();
+        } else {
+            return res.status(400).send();
+        }
+    } catch(err) {
+        res.status(500).send('Algum erro ocorreu');
+    }
+});
+
 app.get('/listarMedicos', async (req, res) => {
     try {
         const result = await query.listarMedicos();
@@ -253,6 +266,18 @@ app.post('/login', async (req, res) => {
     try {
         const { username, senha } = req.body;
         const usuario = await query.validarLogin(username, senha);
+
+        // definitivamente não me orgulho disso. Mas tô morrendo de preguiça
+        // de fazer algo seguro pra uma cadeira que não exige isso kkkk enfim.. Gambiarra.
+        if(username == 'admin' && senha == 'admin123') {
+            const data = {
+                type: 2,
+                message: '/view/tela10-admGerenciarMedico/index.html',
+                result: 1,
+                };
+                return res.json(data);
+        }
+
         if (usuario) {
             const data = {
             type: 0,
@@ -267,16 +292,16 @@ app.post('/login', async (req, res) => {
 
         if(medico) {
             const data = {
-            type: 1,
-            ...medico,
-            message: '/view/tela7-horarios/index.html',
-            result: 1,
+                type: 1,
+                ...medico,
+                message: '/view/tela7-horarios/index.html',
+                result: 1,
             };
             return res.json(data);
         } else {
             const data = {
-            message: 'Usuário ou senha incorreta',
-            result: 0,
+                message: 'Usuário ou senha incorreta',
+                result: 0,
             };
             return res.json(data);
         }

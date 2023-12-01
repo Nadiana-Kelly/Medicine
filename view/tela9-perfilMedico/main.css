@@ -17,10 +17,6 @@
     --border: 2px solid black;
 }
 
-html {
-    height: 100%;
-}
-
 body, html{
     /* display: flex;
     background-color:   #FFFFFF;

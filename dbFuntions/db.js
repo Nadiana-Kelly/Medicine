@@ -18,6 +18,20 @@ const criarMedico = async function(nome, area_medica, descricao, username, senha
     }
 };
 
+const apagarMedico = async function(id) {
+    const client = await pool.connect();
+
+    try {
+        await client.query('DELETE FROM medicos WHERE id = $1', [id]);
+        client.release();
+        return 1;
+    } catch(err) {
+        console.log(err);
+        client.release();
+        return 0;
+    }
+}
+
 const listarMedicos = async function () {
   const client = await pool.connect();
   try {
@@ -267,5 +281,6 @@ module.exports = {
     listarTodosHorarios,
     perfilMedico,
     editarMedico,
+    apagarMedico
 };
 
