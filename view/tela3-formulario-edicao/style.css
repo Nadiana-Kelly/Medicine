@@ -114,8 +114,13 @@ img [src="cruz 1.png"]{
     border-radius: 30px;
 }
 
+.btn-agendar {
+    width: 300px !important;
+}
+
 .botao {
     margin-top: 2%;
+    width: 220px;
 }
 
 .botao button:hover {
