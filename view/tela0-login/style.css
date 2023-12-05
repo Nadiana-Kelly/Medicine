@@ -100,13 +100,12 @@ nav{
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #D9D9D9;
+    border: var(--border);
     border-radius: 8px;
     background: #D9D9D9;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
-
     color: #606060;
     font-family: Raleway;
     font-size: 16px;
