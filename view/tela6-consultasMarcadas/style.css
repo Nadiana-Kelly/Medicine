@@ -106,7 +106,6 @@ background: #000000;
     padding: 20px; /* Espaçamento interno */
     background-color: #ffffff; /* Cor de fundo branca */
     border: var(--border);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     justify-content: space-between;
 }
 
