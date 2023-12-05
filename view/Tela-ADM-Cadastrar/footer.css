@@ -1,0 +1,27 @@
+.footer-height{
+    height: 213px;
+}
+
+.logo{
+    margin-left: 90px;
+}
+
+.conteudo-footer{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.conteudo-footer-info {
+    margin-right: 100px;
+}
+
+.conteudo-footer-info2 {
+    margin-right: 70px;
+}
+
+.footer-mt{
+    margin-top: 100px;
+}

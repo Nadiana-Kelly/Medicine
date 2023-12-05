@@ -12,7 +12,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo">
+            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo" onclick="window.location.href='/view/tela1-profissionais/index.html'">
             <div class="nav-list d-flex align-items-center justify-content-center">
                 <div class="dropdown">
                     <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +25,6 @@
                     </ul>
                 </div>
 
-                <a id="registro" href="../tela8-consultasMedico/index.html" class="text-white ms-4 mb-0 font-header">PROFISSIONAIS</a>
                 <a class="linha-verical ms-3"></a>
                 <a id="login" href="../tela0-login/index.html" class="text-white ms-4 mb-0 font-header outline-marker">LOGOUT</a>
             </div>
@@ -46,7 +45,7 @@
             </div>
 
             <div>
-                <button class="btn btn-primary btn-adicprof rounded-5 p-0 ps-4" style="z-index: 1;"> ADICIONAR PROFISSIONAL </button>
+                <button class="btn btn-primary btn-adicprof rounded-5 p-0 ps-4" style="z-index: 1;" onclick="toCadastrar()"> ADICIONAR PROFISSIONAL </button>
                 <img src="icone1.svg" class="btnadic" style="z-index: 2;">
             </div>
 
@@ -96,6 +95,10 @@
     <script src="../HeaderFooter/scriptColor.js"> </script>
     
     <script>
+        function toCadastrar() {
+            window.location.href = "/Tela-ADM-Cadastrar/index.html";
+        }
+
         function aumentarFonte() {
             var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
             if (fontSize <= 20){
@@ -122,7 +125,7 @@
         var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
         document.documentElement.style.fontSize = fontSize + 'px';
 
-        const url = 'http://localhost:3011/listarMedicos';
+        const url = '/listarMedicos';
 
         const medicosHTML = [];
 
@@ -168,7 +171,7 @@
                     const target = event.target;
                     const medicoId = event.target.id.substring(event.target.id.indexOf('botao')+5);
 
-                    const url = `http://localhost:3011/apagarMedico/${medicoId}`;
+                    const url = `/apagarMedico/${medicoId}`;
 
                     fetch(url, { method: "DELETE" }).then(res => {
                         if(res.ok) {
@@ -208,7 +211,7 @@
                         const target    = event.target;
                         const medicoId  = event.target.id.substring(event.target.id.indexOf('botao')+5);
 
-                        const url = `http://localhost:3011/apagarMedico/${medicoId}`;
+                        const url = `/apagarMedico/${medicoId}`;
 
                         fetch(url, { method: "DELETE" }).then(res => {
                             if(res.ok) {

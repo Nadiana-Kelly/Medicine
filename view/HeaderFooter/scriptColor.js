@@ -15,8 +15,8 @@ const properties = [
 ];
 
 const defaultTheme = [
-    '#002244',
-    '#375A7F',
+    '#0082E0',
+    '#0063E0',
     '#0082E0',
     '#DEEFFB',
     '#0082E0',

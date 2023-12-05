@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Medicine</title>
+      
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link  rel="stylesheet" type="text/css" href="main.css">
+
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+        <nav class="d-flex align-items-center">
+            <div>
+                <img src="../HeaderFooter/logo.png" width="254px" height="54px" alt="logo" onclick="window.location.href='/view/tela1-profissionais/index.html'">
+            </div>
+            <div class="nav-list d-flex align-items-center justify-content-center">
+                <a> </a>
+                <a> </a>
+                <div class="dropdown">
+                    <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        ACESSIBILIDADE
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="m-0"><a class="dropdown-item item1" href="#" onclick="aumentarFonte(event)">A+</a></li>
+                        <li class="m-0"><a class="dropdown-item item2" href="#" onclick="diminuirFonte(event)">A-</a></li>
+                        <li class="m-0"><a class="dropdown-item item3" href="#" id="btnColor">ALTERAR TEMA</a></li>
+                    </ul>
+                </div>
+
+                <a href="/view/tela10-admGerenciarMedico/index.html" class="text-white ms-4 mb-0 font-header">PROFISSIONAIS</a>
+                <a class="linha-verical ms-3"></a>
+                <a href="/tela0-login/index.html" class="text-white ms-4 mb-0 font-header outline-marker">LOGOUT</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- corpo -->
+    <main class="d-flex justify-content-center align-items-center h-100">
+        <div>
+            <div class="col-10 texto">
+                <h2 class="w-auto">Preencha os dados abaixo para cadastrar um novo profissional:</h2>
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Nome:</label>
+                <input id="nome" type="text" class="input-form form-control rounded-2" placeholder="Insira o nome do novo profissional">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">E-mail:</label>
+                <input id="email" type="text" class="input-form form-control rounded-2" placeholder="Digite o e-mail de contato do novo profissional">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Login:</label>
+                <input id="login" type="text" class="input-form form-control rounded-2" placeholder="Insira um login para o novo profissional (ex.: flavio.nogueira)">
+            </div>
+            <div class="col-12">
+                <label class="form-label fs-5 fw-bold mt-2">Senha:</label>
+                <input id="password" type="password" class="input-form form-control rounded-2" placeholder="Insira a senha">
+            </div>
+            <div class="col-12 d-flex flex-row-reverse mt-3 ">
+                <button class="btn btn-primary rounded-5 button-cadastrar-p fw-medium" onclick="cadastrarProfissional()">CADASTRAR PROFISSIONAL</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../HeaderFooter/scriptColor.js"> </script>
+
+    <script>
+        function cadastrarProfissional() {
+            var nome     = document.getElementById('nome').value;
+            var email    = document.getElementById('email').value;
+            var login    = document.getElementById('login').value;
+            var password = document.getElementById('password').value;
+
+            if (nome == "" || email == "" || login == "" || password == "") {
+                alert("Preencha todos os campos!");
+            } else {
+                fetch('/criarMedico', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nome: nome,
+                        email: email,
+                        username: login,
+                        senha: password
+                    }),
+                })
+                .then(response => {
+                    if(response.ok) {
+                        alert("Profissional cadastrado com sucesso!");
+                        window.location.href = "/tela10-admGerenciarMedico/index.html";
+                    } else {
+                        alert('Algum erro ocorreu');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        }
+
+
+        function aumentarFonte() {
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+            if (fontSize <= 30){
+                fontSize += 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        // Função para diminuir o tamanho da fonte
+        function diminuirFonte() {
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        
+            if (fontSize >= 16){
+                fontSize -= 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+        document.documentElement.style.fontSize = fontSize + 'px';
+    </script>
+  </body>
+</html>
+

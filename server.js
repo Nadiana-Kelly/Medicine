@@ -71,7 +71,7 @@ app.get('/teste2', async (req, res) => {
 app.post('/criarMedico', async (req, res) => {
   try {
       const { nome, area_medica, descricao, username, senha, foto, preco } = req.body;
-      if( await query.criarMedico(nome, area_medica, descricao, username, senha, foto, preco)) {
+      if( await query.criarMedico(nome, area_medica, descricao, username, senha, foto ?? '../fotos/sem_foto.jpg', preco)) {
           res.send('Sucesso');
       } else {
           res.send('Falha ao criar medico');
@@ -98,6 +98,12 @@ app.get('/listarMedicos', async (req, res) => {
     try {
         const result = await query.listarMedicos();
         if(result) {
+            for(let obj of result) {
+                if(obj.foto == null) {
+                    obj.foto = '../fotos/sem_foto.jpg'
+                }
+            }
+
             res.send(result);
         } else {
             res.send({});
@@ -123,8 +129,9 @@ app.get('/perfilMedico/:id', async (req, res) => {
 
 app.post('/editarMedico', async (req, res) => {
     try {
-        const {id, nome, descricao, foto, preco} = req.body;
-        const result = await query.editarMedico(id, nome, descricao, foto, preco);
+        const {id, nome, descricao, area_medica, foto, preco} = req.body;
+        console.log(req.body);
+        const result = await query.editarMedico(id, nome, descricao, area_medica, foto, preco);
         if(result) {
             res.send(result);
         } else {
@@ -313,9 +320,9 @@ app.post('/login', async (req, res) => {
 // File input field name is simply 'file'
 app.post('/upload', upload.single('file'), async (req, res, next) => {
     try {
-        const { id, nome, preco, descricao } = req.body;
+        const { id, nome, preco, area_medica, descricao } = req.body;
         console.log(req.body);
-        if(await query.editarMedico(id, nome, descricao, req.file ? req.file.filename : undefined, preco)) {
+        if(await query.editarMedico(id, nome, descricao, area_medica, req.file ? req.file.filename : undefined, preco)) {
             res.status(200).send();
         } else {
             res.status(400).send();

@@ -45,14 +45,14 @@ const listarMedicos = async function () {
   }
 };
 
-const editarMedico = async function (id, nome, descricao, foto, preco) {
+const editarMedico = async function (id, nome, descricao, area_medica, foto, preco) {
     const client = await pool.connect();
     try {
       let resultado;
       if(foto) {
-          resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, foto = $3, preco = $4 WHERE id = $5', [nome, descricao, foto, preco, id]);
+          resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, foto = $3, preco = $4, area_medica = $5 WHERE id = $6', [nome, descricao, foto, preco, area_medica, id]);
       } else {
-          resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, preco = $3 WHERE id = $4', [nome, descricao, preco, id]);
+          resultado = await client.query('UPDATE medicos SET nome = $1, descricao = $2, preco = $3, area_medica = $4 WHERE id = $5', [nome, descricao, preco, area_medica, id]);
       }
 
       client.release();

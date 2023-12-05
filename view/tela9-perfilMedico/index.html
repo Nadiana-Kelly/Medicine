@@ -11,7 +11,7 @@
     <!-- Header -->
     <header>
         <nav>
-            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo">
+            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo" onclick="window.location.href='/view/tela1-profissionais/index.html'">
             <div class="nav-list d-flex align-items-center justify-content-center">
                 <div class="dropdown">
                     <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,10 +34,10 @@
 
     <!-- Corpo   d-flex justify-content-center align-items-center h-100 -->
     <main class="d-flex justify-content-center align-items-center h-100">
-        <form class="d-flex" action="http://127.0.0.1:3011/upload" method="POST" enctype="multipart/form-data" id="formData">
+        <form class="d-flex" id="formData" action="#">
             <div class="div-esquerda">
                 <div>
-                    <button class="rounded-4 botao-voltar p-0 ps-4" style="z-index: 1;">VOLTAR</button>
+                    <button class="rounded-4 botao-voltar p-0 ps-4" style="z-index: 1;" onclick="voltar(event)">VOLTAR</button>
                     <img src="seta.svg" class="seta-voltar mb-1" style="z-index: 2;">
                 </div>
                 <div class="mt-2">
@@ -73,6 +73,12 @@
                         </textarea>
                     </div>
                 </div>
+
+                <div class="col-12 mt-3">
+                    <label class="form-label fs-5 fw-bold">Area médica</label>
+                    <input type="text" class="applyBorder input-form form-control rounded-4" id="area_medica" name="area_medica">
+                </div>
+
                 <div class="col-12 mt-3">
                     <label class="form-label fs-5 fw-bold">Valor consulta</label>
                     <input type="number" class="applyBorder input-form form-control rounded-4" value="200" id="valor" name="preco">
@@ -89,6 +95,11 @@
     <script src="../HeaderFooter/scriptColor.js"> </script>
 
     <script>
+        function voltar(event) {
+            event.preventDefault();
+            window.location.href = "/view/tela7-horarios/index.html";
+        }
+
         function openWindowExplorer() {
             const get= document.getElementById('pseudo-input-btn');  
             get.click();  
@@ -142,10 +153,10 @@
             }
         }).then(data => {
             const medico = data[0];
-            console.log(medico);
             document.getElementById("person-img").src = medico.foto;
             document.getElementById("nome").value = medico.nome;
             document.getElementById("descricao").value = medico.descricao;
+            document.getElementById("area_medica").value = medico.area_medica;
             document.getElementById("valor").value = Number(medico.preco).toFixed(2);
         });
     </script>

@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo">
+            <img class="logo" src="logo.png" width="254px" height="54px" alt="logo" onclick="window.location.href='/view/tela1-profissionais/index.html'">
             <div class="nav-list d-flex align-items-center justify-content-center">
                 <div class="dropdown">
                     <button class="btn border acessib-cor dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +25,6 @@
                     </ul>
                 </div>
 
-                <a id="inicio" href="#" class="text-white ms-4 mb-0 font-header">INICIO</a>
                 <a href="../tela1-profissionais/index.html" class="text-white ms-4 mb-0 font-header">PROFISSIONAIS</a>
                 <a class="linha-verical ms-3"></a>
                 <a id="login" href="../tela0-login/index.html" class="text-white ms-4 mb-0 font-header">LOGIN</a>
@@ -69,6 +68,12 @@
     <script src="../HeaderFooter/scriptColor.js"> </script>
 
     <script>
+        if(localStorage.getItem('id_paciente')) {
+            // document.getElementById('inicio').textContent    = '';
+            document.getElementById('login').textContent = 'LOGOUT';
+            document.getElementById('registrar').remove()
+        }
+
         // Função para aumentar o tamanho da fonte
         function aumentarFonte() {
             var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
@@ -122,8 +127,6 @@
                 id_paciente: localStorage.getItem("id_paciente"),
                 id_medico: localStorage.getItem("id_medico")
             };
-
-            console.log(dados);
 
             // Configurar as opções da requisição POST
             const requestOptions = {
