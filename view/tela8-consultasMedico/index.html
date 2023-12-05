@@ -41,13 +41,13 @@
     <script>
         // Função para aumentar o tamanho da fonte
         function aumentarFonte() {
-        var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
-        if (fontSize <= 20){
-            fontSize += 2;
-        }
-        console.log(fontSize);
-        document.documentElement.style.fontSize = fontSize + 'px';
-        localStorage.setItem('fontSize', fontSize);
+            var fontSize = parseInt(localStorage.getItem('fontSize')) || 16;
+            if (fontSize <= 20){
+                fontSize += 2;
+            }
+            console.log(fontSize);
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fontSize', fontSize);
         }
 
         // Função para diminuir o tamanho da fonte
@@ -74,11 +74,10 @@
         fetch(url)
         .then(response => {
             if (response.ok) {
-            return response.json();
+                return response.json();
             } else {
-            throw new Error("Falha na requisição. Código de status: " + response.status);
+                throw new Error("Falha na requisição. Código de status: " + response.status);
             }
-            
         })
         .then(data => {
             console.log(data);
@@ -98,7 +97,6 @@
         .catch(error => {
             console.log("Erro:", error.message);
         });
-
 
     </script>
     <script src="../HeaderFooter/scriptColor.js">

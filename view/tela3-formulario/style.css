@@ -56,11 +56,11 @@ nav {
     justify-content: center;
 }
 
-.campos h3{
+.campos h3 {
     padding-top: 2%;
 }
 
-.campos input{
+.campos input {
     height: 50px;
     width: 100%;
     font-family: 'Raleway', sans-serif;
@@ -68,11 +68,11 @@ nav {
     font-size: 15px;
     font-weight: 500;
     background-color: #EBEBEB;
-    border: none;
+    border: var(--border);
     border-radius: 10px;
 }
 
-.campos textarea{
+.campos textarea {
     height: 100px;
     width: 100%;
     font-family: 'Raleway', sans-serif;
@@ -81,7 +81,7 @@ nav {
     font-size: 15px;
     font-weight: 500;
     background-color: #EBEBEB;
-    border: none;
+    border: var(--border);
     border-radius: 10px;
 }
 

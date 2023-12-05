@@ -91,6 +91,7 @@ nav{
     background-color: #ffffff; /* Cor de fundo branca */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombreamento preto leve */
     justify-content: space-between;
+    border: var(--border);
 }
 
 .paciente-info h1 {
