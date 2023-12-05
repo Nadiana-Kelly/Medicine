@@ -123,6 +123,7 @@ input[type="password"] {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    border: var(--border)
 }
 
 input[type="submit"] {
@@ -167,7 +168,6 @@ input[type="submit"]:hover {
     line-height: normal
 }
 
-
 .formulario label {
     font-family: 'Raleway', sans-serif;
     color: #000;
@@ -187,7 +187,7 @@ input[type="submit"]:hover {
     padding-top: 7px;
     border-radius: 40px;
     border: 2px solid  white;
-    top:38px;
+    top: 38px;
     height: 40px;
     color: white;
 }
@@ -218,35 +218,4 @@ input[type="submit"]:hover {
 
 .item3:hover {
     background-color: #0082E0;
-}
-
-/* Footer */
-
-footer {
-    padding: 3% 0 3% 0;
-    margin-top: 10%;
-    display: flex;
-    background-color: #000;
-    justify-content: center;
-}
-
-.conteudo-footer{
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-.links-footer {
-    list-style: none;
-    align-items: center;
-}
-
-.links-footer a {
-    padding-top: 10px;
-}
-
-.facebook {
-    padding: 5px 5px 5px 0;
 }
