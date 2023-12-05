@@ -167,6 +167,11 @@
         var horarioMarcado = '';
         var data = '';
         function selecionarHorario(event) {
+            if(!localStorage.getItem('id_paciente')) {
+                alert('Você não está logado.');
+                return;
+            } 
+
             // Verificar se o horário está disponível
             if (!this.classList.contains('indisponivel')) {
                 if(horario != undefined) {

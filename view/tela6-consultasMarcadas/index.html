@@ -83,6 +83,8 @@
         .then(data => {
             console.log(data);
 
+            const ids = [];
+
             for(consulta of data) {
                 consulta.horario       = consulta.horario.substring(0,consulta.horario.length-3)
                 // consulta.data_consulta = consulta.data_consulta.substring(0,consulta.data_consulta.indexOf("T"))
@@ -101,20 +103,24 @@
                     
                 )
 
-                document.getElementById(`alterar${consulta.id}`).addEventListener("click", function(event) {
+                ids.push(['cancelar'+consulta.id, `alterar${consulta.id}`]);
+            }
+
+            for(let elem of ids) {
+                document.getElementById(elem[1]).addEventListener("click", function(event) {
                     localStorage.setItem('consulta_usuario', JSON.stringify(consulta));
                     location.href = "/view/tela3-formulario-edicao/index1.html";
-                })
-
-                document.getElementById('cancelar'+consulta.id).addEventListener('click', function(event) {
+                });
+    
+                document.getElementById(elem[0]).addEventListener('click', function(event) {
                     const parent = event.target.parentNode.parentNode;
                     const id = parent.dataset.id;
                     const url = `/removerAgendamentos/${id}`;
-
+    
                     var header = {
                         method: 'DELETE'
                     }
-
+    
                     fetch(url, header)
                     .then(res => {
                         if(res.ok) {
