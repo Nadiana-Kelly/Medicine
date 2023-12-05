@@ -23,8 +23,8 @@ const apagarMedico = async function(id) {
 
     try {
         await client.query('DELETE FROM medicos WHERE id = $1', [id]);
-        await client.query('DEETE FROM horarios WHERE id_medico = $1', [id]);
-        await client.query('DEETE FROM agendamento WHERE id_medico = $1', [id]);
+        await client.query('DELETE FROM horarios WHERE id_medico = $1', [id]);
+        await client.query('DELETE FROM agendamento WHERE id_medico = $1', [id]);
         client.release();
         return 1;
     } catch(err) {
