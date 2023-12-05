@@ -148,7 +148,7 @@
 
         const skipItems = ['theme'];
 
-        for(let i = 0; localStorage.length > skipItems.length;) {
+        for(let i = 0; localStorage.length > skipItems.length && i < 20;) {
             if(skipItems.indexOf(localStorage.key(i)) == -1) {
                 localStorage.removeItem(localStorage.key(i));
             } else {
