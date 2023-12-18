@@ -51,27 +51,35 @@
 ### Sistema Medicine 👨‍⚕️
 
 <p align="center">
-  <img src="./Medicine/FireShot Capture 002 - Medicine - localhost.png" align="center" >
+  <img src="./Medicine/medicine1.png" align="center" >
 </p>
 
 <p align="center">
-  <img src="./Medicine/FireShot Capture 013 - Medicine - 127.0.0.1.png" align="center" >
+  <img src="./Medicine/medicine2.png" align="center" >
 </p>
 
 <p align="center">
-  <img src="./Medicine/FireShot Capture 014 - Medicine - 127.0.0.1.png" align="center" >
+  <img src="./Medicine/medicine3.png" align="center" >
 </p>
 
 <p align="center">
-  <img src="./Medicine/FireShot Capture 015 - Medicine - 127.0.0.1.png" align="center" >
+  <img src="./Medicine/medicine4.png" align="center" >
 </p>
 
 <p align="center">
-  <img src="./Medicine/FireShot Capture 016 - Medicine - 127.0.0.1.png" align="center" >
+  <img src="../Medicine/medicine5.png" align="center" >
 </p>
 
 <p align="center">
-  <img src="./Medicine/FireShot Capture 017 - Medicine - 127.0.0.1.png" align="center" >
+  <img src="./Medicine/medicine6.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/medicine7.png" align="center" >
+</p>
+
+<p align="center">
+  <img src="./Medicine/medicine8.png" align="center" >
 </p>
 
 
