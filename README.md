@@ -60,7 +60,7 @@
 ### Sistema Medicine 👨‍⚕️
 
 <p align="center">
-  <img src="./Medicine/medicine1.png" align="center" >
+  <img src="./Medicine/medicine9.png" align="center" >
 </p>
 
 <p align="center">
