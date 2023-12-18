@@ -17,6 +17,9 @@
   <br>
   <strong>Excluir um agendamento:</strong> Após fazer um agendamento os usuários podem excluir esse agendamento se preferir.
   <br>
+   <br>
+  <strong>Alterar um agendamento:</strong> Após fazer um agendamento os usuários podem alterar esse agendamento se preferir.
+  <br>
   <br>
   <strong>Listar agendamentos:</strong> Os pacientes cadastrados conseguem visualizar em uma tela todas as suas consultas agendadas. 
   <br>
@@ -27,10 +30,16 @@
   <strong>Listar consultas:</strong> Os médicos conseguem visualizar em uma tela todas as consultas agendadas para o mesmo. 
   <br>
   <br>
-  <strong>Duas opções de tema:</strong> Todos os usuários podem escolher a opção de paleta de cores do sistema (Black ou White) 
+  <strong>Alterar perfil:</strong> Os médicos conseguem alterar sua foto de perfil, descrição profissional e valor da consulta. 
+  <br>
+   <br>
+  <strong>Gerenciar médicos:</strong> Os usuários administradores conseguem gerenciar médicos, criando ou excluindo perfis. 
   <br>
   <br>
-  <strong>Duas opções de tema:</strong> Todos os usuários podem diminuir ou aumentar o tamanho da fonte de texto do sistema. 
+  <strong>Duas opções de paleta de cores:</strong> Todos os usuários podem escolher entre duas opções de paleta de cores do sistema (Layout com mais contraste ou menos constraste) 
+  <br>
+  <br>
+  <strong>Duas opções de fonte:</strong> Todos os usuários podem diminuir ou aumentar o tamanho da fonte de texto do sistema. 
 </p>
 
 ### 🛠 Tecnologias :
